@@ -7,6 +7,9 @@ public class CameraController : MonoBehaviour
     public Transform player;
     private float z;
 
+    public float xMinDifference = 0.5f;
+    public float yMinDifference = 0.5f;//dont use
+
     public CameraLimiter LeftLimiter;
     public CameraLimiter RightLimiter;
     public CameraLimiter UpLimiter;
@@ -27,11 +30,11 @@ public class CameraController : MonoBehaviour
     {
         
         float xDifference = player.position.x - this.transform.position.x;
-        if (xDifference < 0 && LeftLimiter.isVisible == true)
+        if ((xDifference < 0 && LeftLimiter.isVisible == true) || Mathf.Abs(xDifference) < xMinDifference)
         {
             xDifference = 0;
         }
-        else if (xDifference > 0 && RightLimiter.isVisible == true)
+        else if ((xDifference > 0 && RightLimiter.isVisible == true) || Mathf.Abs(xDifference) < xMinDifference)
         {
             xDifference = 0;
         }
@@ -44,6 +47,6 @@ public class CameraController : MonoBehaviour
         {
             yDifference = 0;
         }
-        this.transform.position = new Vector3(this.transform.position.x + xDifference * 0.14f, this.transform.position.y + yDifference * 0.14f, z);
+        this.transform.position = new Vector3(this.transform.position.x + xDifference * 0.025f, this.transform.position.y + yDifference * 0.14f, z);
     }
 }
