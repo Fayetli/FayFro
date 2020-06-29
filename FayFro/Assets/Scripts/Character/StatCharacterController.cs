@@ -37,5 +37,6 @@ public class Stat
 }
 public class StatCharacterController : MonoBehaviour
 {
+    //private StatCharacterController() { }
     public static Stat player = new Stat();
 }

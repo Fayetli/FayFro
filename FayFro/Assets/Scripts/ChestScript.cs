@@ -14,11 +14,11 @@ public class ChestScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D obj)
     {
-        if (anim.GetBool("isOpened") != true)
+        if (anim.GetBool("isUnlock") != true)
         {
             if (obj.transform.name == "Player" && Input.GetKeyDown(KeyCode.Z))
             {
-                anim.SetBool("isOpened", true);
+                anim.SetBool("isUnlock", true);
                 StatCharacterController.player.AddScore(addPoint);
                 InterfaceManager.PrintScore();
             }

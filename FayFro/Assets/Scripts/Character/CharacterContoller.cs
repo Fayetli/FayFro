@@ -25,7 +25,7 @@ public class CharacterContoller : MonoBehaviour
     public LayerMask whatIsWall;
     public Transform wallCheckLeft;//rotating, when flip
     public Transform wallCheckRight;
-    private const float wallRadius = 0.1f;
+    private const float wallRadius = 0.01f;
 
     //Impulses
     public int upImpulse = 600;

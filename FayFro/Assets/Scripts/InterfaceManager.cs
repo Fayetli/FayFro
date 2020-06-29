@@ -14,6 +14,9 @@ public class InterfaceManager : MonoBehaviour
         score = GameObject.Find("Score").gameObject.GetComponent<Text>();
         health = GameObject.Find("Health").gameObject.GetComponent<Text>();
         dash = GameObject.Find("Dash").gameObject.GetComponent<Text>();
+        PrintScore();
+        PrintHealth();
+        PrintDash();
     }
 
 
