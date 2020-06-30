@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Ladder : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField] private float speed = 5;
 
-    float speed = 5;
+
 
     float startGravityScale;
 
