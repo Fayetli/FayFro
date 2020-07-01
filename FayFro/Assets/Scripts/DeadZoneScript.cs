@@ -6,7 +6,7 @@ public class DeadZoneScript : MonoBehaviour
 {
     static private Transform checkPoint;
 
-    public void SetCheckPoint(Transform tr)//when triggered
+    public static void SetCheckPoint(Transform tr)//when triggered
     {
         checkPoint = tr;
     }

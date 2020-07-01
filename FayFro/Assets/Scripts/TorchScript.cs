@@ -13,4 +13,11 @@ public class TorchScript : MonoBehaviour
             if (this.GetComponent<Animator>().GetBool("isActive") == false)
                 this.GetComponent<Animator>().SetBool("isActive", true);
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.name == "Player")
+            if (this.GetComponent<Animator>().GetBool("isActive") == true)
+                this.GetComponent<Animator>().SetBool("isActive", false);
+    }
 }

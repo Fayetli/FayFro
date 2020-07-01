@@ -4,49 +4,56 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform player;
+    [SerializeField] private Transform player;
+
     private float z;
 
-    public float xMinDifference = 0.5f;
-    public float yMinDifference = 0.5f;//dont use
+    private float xMinDifference = 0.1f;
+    private float yMinDifference = 0.1f;
 
-    public CameraLimiter LeftLimiter;
-    public CameraLimiter RightLimiter;
-    public CameraLimiter UpLimiter;
-    public CameraLimiter DownLimiter;
+    private float multiplier = 0.05f;
+
+    private float _leftLimiter;
+    private float _rightLimiter;
+    private float _bottomLimiter;
+    private float _upperLimiter;
 
     void Start()
     {
         z = this.transform.position.z;
 
-        LeftLimiter = GameObject.Find("Left Limiter").GetComponent<CameraLimiter>();
-        RightLimiter = GameObject.Find("Right Limiter").GetComponent<CameraLimiter>();
-        UpLimiter = GameObject.Find("Up Limiter").GetComponent<CameraLimiter>();
-        DownLimiter = GameObject.Find("Down Limiter").GetComponent<CameraLimiter>();
+        _leftLimiter = GameObject.Find("Left Limiter").transform.position.x;
+        _rightLimiter = GameObject.Find("Right Limiter").transform.position.x;
+        _upperLimiter = GameObject.Find("Up Limiter").transform.position.y;
+        _bottomLimiter = GameObject.Find("Down Limiter").transform.position.y;
 
     }
 
-    void Update()
+    float positionX;
+    float positionY;
+    void FixedUpdate()
     {
-        
-        float xDifference = player.position.x - this.transform.position.x;
-        if ((xDifference < 0 && LeftLimiter.isVisible == true) || Mathf.Abs(xDifference) < xMinDifference)
+        if (Mathf.Abs(player.position.x - this.transform.position.x) < xMinDifference)
         {
-            xDifference = 0;
+            positionX = this.transform.position.x;
         }
-        else if ((xDifference > 0 && RightLimiter.isVisible == true) || Mathf.Abs(xDifference) < xMinDifference)
+        else
         {
-            xDifference = 0;
+            positionX = this.transform.position.x + (player.position.x - this.transform.position.x) * multiplier;
         }
-        float yDifference = player.position.y - this.transform.position.y;
-        if (yDifference < 0 && DownLimiter.isVisible == true)
+
+        if (Mathf.Abs(player.position.y - this.transform.position.y) < yMinDifference)
         {
-            yDifference = 0;
+            positionY = this.transform.position.y;
         }
-        else if (yDifference > 0 && UpLimiter.isVisible == true)
+        else
         {
-            yDifference = 0;
+            positionY = this.transform.position.y + (player.position.y - this.transform.position.y) * multiplier;
+
         }
-        this.transform.position = new Vector3(this.transform.position.x + xDifference * 0.025f, this.transform.position.y + yDifference * 0.14f, z);
+
+        this.transform.position = new Vector3(
+            Mathf.Clamp(positionX, _leftLimiter, _rightLimiter),
+            Mathf.Clamp(positionY, _bottomLimiter, _upperLimiter), z);
     }
 }
