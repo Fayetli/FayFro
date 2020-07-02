@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class FeatherCollector : MonoBehaviour
 {
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.name == "Player")
@@ -16,7 +14,4 @@ public class FeatherCollector : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-
-
 }

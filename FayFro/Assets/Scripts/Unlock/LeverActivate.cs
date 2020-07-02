@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LeverActivate : MonoBehaviour
 {
-    [SerializeField] private GameObject unlockObject;
+    [SerializeField] private GameObject _unlockObject;
 
 
 
@@ -17,12 +17,12 @@ public class LeverActivate : MonoBehaviour
                 if (this.GetComponent<Animator>().GetBool("isActive"))
                 {
                     this.GetComponent<Animator>().SetBool("isActive", false);
-                    unlockObject.GetComponent<Animator>().SetBool("isUnlock", false);
+                    _unlockObject.GetComponent<Animator>().SetBool("isUnlock", false);
                 }
                 else
                 {
                     this.GetComponent<Animator>().SetBool("isActive", true);
-                    unlockObject.GetComponent<Animator>().SetBool("isUnlock", true);
+                    _unlockObject.GetComponent<Animator>().SetBool("isUnlock", true);
                 }
             }
         }

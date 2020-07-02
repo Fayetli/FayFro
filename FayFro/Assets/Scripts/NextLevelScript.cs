@@ -3,20 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NextLevelScript : MonoBehaviour
-{
-    public string sceneName;
 
-    public void LoadNewScene(string scene_name)
+public class SceneLoader : MonoBehaviour
+{
+    public static void LoadNewScene(string sceneName)
     {
-        SceneManager.LoadScene(scene_name);
+        SceneManager.LoadScene(sceneName);
     }
+}
+
+
+public class NextLevelScript : SceneLoader
+{
+    [SerializeField] private string _sceneName;
+
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Player")
         {
-            LoadNewScene(sceneName);
+            LoadNewScene(_sceneName);
         }
     }
 

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class UnlockPart : MonoBehaviour
 {
-    UnlockController controller;
-    bool isUnlock;
+    private UnlockController _controller;
+    private bool IsUnlock;
     void Start()
     {
-        controller = GameObject.FindGameObjectWithTag("UnlockController").gameObject.GetComponent<UnlockController>();
-        isUnlock = false;
+        _controller = GameObject.FindGameObjectWithTag("UnlockController").gameObject.GetComponent<UnlockController>();
+        IsUnlock = false;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -18,10 +18,10 @@ public class UnlockPart : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                if (!isUnlock)
+                if (!IsUnlock)
                 {
-                    isUnlock = true;
-                    controller.AddCurrentUnlockPartCount();
+                    IsUnlock = true;
+                    _controller.AddCurrentUnlockPartCount();
                     this.GetComponent<Animator>().SetBool("isUnlock", true);
                 }
             }

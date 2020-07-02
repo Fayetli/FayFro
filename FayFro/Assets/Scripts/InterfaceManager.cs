@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class InterfaceManager : MonoBehaviour
 {
-    public static Text score;
-    public static Text health;
-    public static Text dash;
+    public static Text Score;
+    public static Text Health;
+    public static Text Dash;
 
     private void Start()
     {
-        score = GameObject.Find("Score").gameObject.GetComponent<Text>();
-        health = GameObject.Find("Health").gameObject.GetComponent<Text>();
-        dash = GameObject.Find("Dash").gameObject.GetComponent<Text>();
+        Score = GameObject.Find("Score").gameObject.GetComponent<Text>();
+        Health = GameObject.Find("Health").gameObject.GetComponent<Text>();
+        Dash = GameObject.Find("Dash").gameObject.GetComponent<Text>();
         PrintScore();
         PrintHealth();
         PrintDash();
@@ -22,15 +22,15 @@ public class InterfaceManager : MonoBehaviour
 
     public static void PrintScore()
     {
-        score.text = "Score: " + StatCharacterController.player.GetScore();
+        Score.text = "Score: " + StatCharacterController.player.GetScore();
     }
     public static void PrintHealth()
     {
-        health.text = "Health: " + StatCharacterController.player.GetHealth();
+        Health.text = "Health: " + StatCharacterController.player.GetHealth();
     }
     public static void PrintDash()
     {
-        dash.text = "Dash: " + StatCharacterController.player.GetDash();
+        Dash.text = "Dash: " + StatCharacterController.player.GetDash();
     }
 
 }

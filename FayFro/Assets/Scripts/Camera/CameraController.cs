@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Transform player;
+    [SerializeField] private Transform _player;
 
-    private float z;
 
-    private float xMinDifference = 0.1f;
-    private float yMinDifference = 0.1f;
+    [SerializeField] private float _xMinDifference = 0.1f;
+    [SerializeField] private float _yMinDifference = 0.1f;//DONT USE
 
-    private float multiplier = 0.05f;
+    [SerializeField] private float _multiplier = 0.05f;
 
+    private float _z;
     private float _leftLimiter;
     private float _rightLimiter;
     private float _bottomLimiter;
@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        z = this.transform.position.z;
+        _z = this.transform.position.z;
 
         _leftLimiter = GameObject.Find("Left Limiter").transform.position.x;
         _rightLimiter = GameObject.Find("Right Limiter").transform.position.x;
@@ -33,27 +33,27 @@ public class CameraController : MonoBehaviour
     float positionY;
     void FixedUpdate()
     {
-        if (Mathf.Abs(player.position.x - this.transform.position.x) < xMinDifference)
+        if (Mathf.Abs(_player.position.x - this.transform.position.x) < _xMinDifference)
         {
             positionX = this.transform.position.x;
         }
         else
         {
-            positionX = this.transform.position.x + (player.position.x - this.transform.position.x) * multiplier;
+            positionX = this.transform.position.x + (_player.position.x - this.transform.position.x) * _multiplier;
         }
 
-        if (Mathf.Abs(player.position.y - this.transform.position.y) < yMinDifference)
+        if (Mathf.Abs(_player.position.y - this.transform.position.y) < _xMinDifference)
         {
             positionY = this.transform.position.y;
         }
         else
         {
-            positionY = this.transform.position.y + (player.position.y - this.transform.position.y) * multiplier;
+            positionY = this.transform.position.y + (_player.position.y - this.transform.position.y) * _multiplier;
 
         }
 
         this.transform.position = new Vector3(
             Mathf.Clamp(positionX, _leftLimiter, _rightLimiter),
-            Mathf.Clamp(positionY, _bottomLimiter, _upperLimiter), z);
+            Mathf.Clamp(positionY, _bottomLimiter, _upperLimiter), _z);
     }
 }

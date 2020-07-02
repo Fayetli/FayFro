@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e480e31c443c049b11de770e03a07c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Level_3
+  _sceneName: Level_3
 --- !u!4 &562279436
 Transform:
   m_ObjectHideFlags: 0
@@ -480,6 +480,11 @@ PrefabInstance:
     - target: {fileID: 62331763347461137, guid: ffe4000a03248af4fa26f0289ded1bb9,
         type: 3}
       propertyPath: player
+      value: 
+      objectReference: {fileID: 1506103653}
+    - target: {fileID: 62331763347461137, guid: ffe4000a03248af4fa26f0289ded1bb9,
+        type: 3}
+      propertyPath: _player
       value: 
       objectReference: {fileID: 1506103653}
     - target: {fileID: 62331764415456289, guid: ffe4000a03248af4fa26f0289ded1bb9,

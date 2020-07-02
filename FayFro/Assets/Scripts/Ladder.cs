@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Ladder : MonoBehaviour
 {
-    [SerializeField] private float speed = 5;
+    private float _speed = 1;
+
+    private float _startGravityScale;
 
 
-
-    float startGravityScale;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player")
         {
-            startGravityScale = collision.gameObject.GetComponent<Rigidbody2D>().gravityScale;
+            _startGravityScale = collision.gameObject.GetComponent<Rigidbody2D>().gravityScale;
         }
     }
 
@@ -28,11 +28,11 @@ public class Ladder : MonoBehaviour
 
             if (Input.GetKey(KeyCode.UpArrow))
             {
-                rb.velocity = new Vector2(0, speed);
+                rb.velocity = new Vector2(0, _speed);
             }
             else if (Input.GetKey(KeyCode.DownArrow))
             {
-                rb.velocity = new Vector2(0, -speed);
+                rb.velocity = new Vector2(0, -_speed);
             }
             else
             {
@@ -45,7 +45,7 @@ public class Ladder : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().gravityScale = startGravityScale;
+            collision.gameObject.GetComponent<Rigidbody2D>().gravityScale = _startGravityScale;
         }
     }
 

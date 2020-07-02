@@ -12,25 +12,23 @@ public class CharacterContoller : MonoBehaviour
     private Animator anim;
 
     //Move
-    public float maxSpeed = 10f;
+    public float maxSpeed = 5f;
     private bool isFacingRight = true;
 
     //Jump
     public Transform groundCheck;
     public LayerMask whatIsGround;
     private bool isGrounded = false;
-    private const float groundRadius = 0.2f;
+    private const float groundRadius = 0.01f;
 
     //Jump from wall
-    public LayerMask whatIsWall;
+    public LayerMask _whatIsDontMoveLayer;
     public Transform wallCheckLeft;//rotating, when flip
     public Transform wallCheckRight;
-    private const float wallRadius = 0.01f;
 
     //Impulses
-    public int upImpulse = 600;
-    public int horizontalImpulse = 3000;
-    public int downImpulse = 450;
+    public int upImpulse = 300;
+    public int downImpulse = 150;
 
     //Dash
     public float dashCheckDistance = 3.0f;
@@ -67,14 +65,33 @@ public class CharacterContoller : MonoBehaviour
         anim.SetBool("isGround", isGrounded);
         anim.SetFloat("vSpeed", rb.velocity.y);
 
+        if (Input.GetKeyDown(KeyCode.C) && isGrounded)
+        {
+
+            anim.SetBool("isGround", false);
+
+            rb.AddForce(new Vector2(0, upImpulse));
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow) && !isGrounded)
+        {
+            rb.AddForce(new Vector2(0, -1 * downImpulse));
+        }
+
         //Move
         float move = Input.GetAxis("Horizontal");
 
         bool canMove = true;
-        if (move > 0 && Physics2D.OverlapCircle(wallCheckRight.position, wallRadius, whatIsWall) && transform.localScale.x == localScaleX)
+        Collider2D hitColliders = Physics2D.OverlapBox(wallCheckRight.position, new Vector2(0.01f, 0.16f), 0f, _whatIsDontMoveLayer);
+        Debug.Log(hitColliders);
+        if (move > 0 && hitColliders != null && transform.localScale.x == localScaleX && !isGrounded)
+        {
             canMove = false;
-        if(move < 0 && Physics2D.OverlapCircle(wallCheckRight.position, wallRadius, whatIsWall) && transform.localScale.x == -localScaleX)
+        }
+        if (move < 0 && hitColliders != null && transform.localScale.x == -localScaleX && !isGrounded)
+        {
             canMove = false;
+        }
 
         if (canMove)
         {
@@ -102,40 +119,8 @@ public class CharacterContoller : MonoBehaviour
 
     private void Update()
     {
-        //Jump at wall
-        if (!isGrounded)
-        {
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                bool isWalled =  Physics2D.OverlapCircle(wallCheckLeft.position, wallRadius, whatIsWall) || Physics2D.OverlapCircle(wallCheckRight.position, wallRadius, whatIsWall);
-     
-                if (isWalled)
-                {
-                    float move = Input.GetAxisRaw("Horizontal");
-                    if(move != 0)
-                        rb.AddForce(new Vector2((int)move * horizontalImpulse, upImpulse));
-                }
 
-                bool isPlatform = Physics2D.OverlapCircle(wallCheckLeft.position, wallRadius, whatIsGround) || Physics2D.OverlapCircle(wallCheckRight.position, wallRadius, whatIsGround);
-
-                if (isPlatform)
-                {
-                    rb.AddForce(new Vector2(0, upImpulse));
-                }
-            }
-        }//Simple jump
-        else if (Input.GetKeyDown(KeyCode.C))
-        {
-            
-            anim.SetBool("isGround", false);
-            
-            rb.AddForce(new Vector2(0, upImpulse));
-        }
-        
-        if (Input.GetKeyDown(KeyCode.DownArrow) && !isGrounded)
-        {
-            rb.AddForce(new Vector2(0, -1 * downImpulse));
-        }
+       
 
         //Dash
         if (isGrounded && StatCharacterController.player.GetDash() != StatCharacterController.player.GetMaxDash())

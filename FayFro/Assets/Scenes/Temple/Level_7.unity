@@ -397,6 +397,11 @@ PrefabInstance:
       propertyPath: sceneName
       value: Level_8
       objectReference: {fileID: 0}
+    - target: {fileID: 6022313164863476882, guid: a7d30e93db529314a8d9458f7cfe5f56,
+        type: 3}
+      propertyPath: _sceneName
+      value: Level_8
+      objectReference: {fileID: 0}
     - target: {fileID: 7714984134499556980, guid: a7d30e93db529314a8d9458f7cfe5f56,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -661,6 +666,11 @@ PrefabInstance:
     - target: {fileID: 62331763347461137, guid: ffe4000a03248af4fa26f0289ded1bb9,
         type: 3}
       propertyPath: player
+      value: 
+      objectReference: {fileID: 1025209050}
+    - target: {fileID: 62331763347461137, guid: ffe4000a03248af4fa26f0289ded1bb9,
+        type: 3}
+      propertyPath: _player
       value: 
       objectReference: {fileID: 1025209050}
     - target: {fileID: 62331764415456289, guid: ffe4000a03248af4fa26f0289ded1bb9,
@@ -3582,6 +3592,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3289184301197654503, guid: fb6b9e8e6ed5c1d4cac30e0d7951530a,
         type: 3}
+    - target: {fileID: 763155283537266605, guid: a9a7ad91526f48e4d8ee6eb73a674150,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 763155283537266605, guid: a9a7ad91526f48e4d8ee6eb73a674150,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1608318105
+      objectReference: {fileID: 0}
+    - target: {fileID: 763155283537266605, guid: a9a7ad91526f48e4d8ee6eb73a674150,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 763155283537266606, guid: a9a7ad91526f48e4d8ee6eb73a674150,
         type: 3}
       propertyPath: m_Tiles.Array.size

@@ -5,26 +5,26 @@ using UnityEngine;
 public class UnlockController : MonoBehaviour
 {
     
-    int CurrentUnlockPartCount;
-    int AllUnlockPartCount;
+    private int _currentUnlockPartCount;
+    private int _allUnlockPartCount;
 
     void Start()
     {
         GameObject[] unlockParts = GameObject.FindGameObjectsWithTag("UnlockPart");
-        AllUnlockPartCount = unlockParts.Length;
-        CurrentUnlockPartCount = 0;
+        _allUnlockPartCount = unlockParts.Length;
+        _currentUnlockPartCount = 0;
     }
 
     public void AddCurrentUnlockPartCount()
     {
-        if(CurrentUnlockPartCount == AllUnlockPartCount - 1)
+        if(_currentUnlockPartCount == _allUnlockPartCount - 1)
         {
             this.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
             this.GetComponent<Animator>().SetBool("isUnlock", true);
         }
         else
         {
-            CurrentUnlockPartCount += 1;
+            _currentUnlockPartCount += 1;
         }
     }
 }

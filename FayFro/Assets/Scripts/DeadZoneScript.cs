@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class DeadZoneScript : MonoBehaviour
 {
-    static private Transform checkPoint;
+    static private Transform _checkPoint;
 
-    public static void SetCheckPoint(Transform tr)//when triggered
+    public static void SetCheckPoint(Transform transform)//when triggered
     {
-        checkPoint = tr;
+        _checkPoint = transform;
     }
     private void Start()
     {
-        checkPoint = GameObject.Find("CheckPoint(0)").gameObject.transform;
+        _checkPoint = GameObject.Find("CheckPoint(0)").gameObject.transform;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,7 +22,7 @@ public class DeadZoneScript : MonoBehaviour
             if (StatCharacterController.player.IsOneHP())
             {
                 StatCharacterController.player.SetHealthToMaxHealth();
-                collision.transform.position = checkPoint.position;
+                collision.transform.position = _checkPoint.position;
             }
             else
             {

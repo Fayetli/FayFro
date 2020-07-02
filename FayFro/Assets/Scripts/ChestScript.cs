@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// DONT USING
+/// </summary>
+
+
+
 public class ChestScript : MonoBehaviour
 {
     public int addPoint;

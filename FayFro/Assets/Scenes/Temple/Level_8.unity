@@ -806,6 +806,11 @@ PrefabInstance:
       propertyPath: multiplier
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 62331763347461137, guid: ffe4000a03248af4fa26f0289ded1bb9,
+        type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1652027993}
     - target: {fileID: 62331764415456289, guid: ffe4000a03248af4fa26f0289ded1bb9,
         type: 3}
       propertyPath: m_Name
@@ -928,6 +933,11 @@ PrefabInstance:
     - target: {fileID: 6022313164863476882, guid: a7d30e93db529314a8d9458f7cfe5f56,
         type: 3}
       propertyPath: sceneName
+      value: Level_9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022313164863476882, guid: a7d30e93db529314a8d9458f7cfe5f56,
+        type: 3}
+      propertyPath: _sceneName
       value: Level_9
       objectReference: {fileID: 0}
     - target: {fileID: 7714984134499556980, guid: a7d30e93db529314a8d9458f7cfe5f56,

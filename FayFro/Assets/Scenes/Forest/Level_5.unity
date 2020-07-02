@@ -6339,6 +6339,11 @@ PrefabInstance:
       propertyPath: yMinDifference
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 62331763347461137, guid: ffe4000a03248af4fa26f0289ded1bb9,
+        type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1793007142}
     - target: {fileID: 62331764415456289, guid: ffe4000a03248af4fa26f0289ded1bb9,
         type: 3}
       propertyPath: m_Name
@@ -6518,7 +6523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e480e31c443c049b11de770e03a07c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Level_6
+  _sceneName: Level_6
 --- !u!61 &1171392466
 BoxCollider2D:
   m_ObjectHideFlags: 0
