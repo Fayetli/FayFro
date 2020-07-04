@@ -8,14 +8,15 @@ public class Ladder : MonoBehaviour
 
     private float _startGravityScale;
 
-
-
+    private Rigidbody2D rb;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player")
         {
-            _startGravityScale = collision.gameObject.GetComponent<Rigidbody2D>().gravityScale;
+            rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            _startGravityScale = rb.gravityScale;
+            rb.gravityScale = 0;
         }
     }
 
@@ -23,9 +24,6 @@ public class Ladder : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
-            rb.gravityScale = 0;
-
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 rb.velocity = new Vector2(0, _speed);
@@ -41,11 +39,13 @@ public class Ladder : MonoBehaviour
         }
     }
 
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player")
         {
             collision.gameObject.GetComponent<Rigidbody2D>().gravityScale = _startGravityScale;
+            rb = null;
         }
     }
 

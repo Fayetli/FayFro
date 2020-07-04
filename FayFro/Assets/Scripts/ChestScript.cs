@@ -25,7 +25,7 @@ public class ChestScript : MonoBehaviour
             if (obj.transform.name == "Player" && Input.GetKeyDown(KeyCode.Z))
             {
                 anim.SetBool("isUnlock", true);
-                StatCharacterController.player.AddScore(addPoint);
+                StatCharacterController.player.Score += addPoint;
                 InterfaceManager.PrintScore();
             }
         }

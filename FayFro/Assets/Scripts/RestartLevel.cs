@@ -16,13 +16,12 @@ public class RestartLevel : MonoBehaviour
 
     private void Start()
     {
-        _scoreOnStart = StatCharacterController.player.GetScore();
+        _scoreOnStart = StatCharacterController.player.Score;
     }
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        int minusScore = -1 * (StatCharacterController.player.GetScore() - _scoreOnStart);
-        StatCharacterController.player.AddScore(minusScore);
+        StatCharacterController.player.Score = _scoreOnStart;
     }
 
 

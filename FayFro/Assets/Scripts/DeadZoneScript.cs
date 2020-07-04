@@ -26,7 +26,7 @@ public class DeadZoneScript : MonoBehaviour
             }
             else
             {
-                StatCharacterController.player.AddHealth(-1);
+                StatCharacterController.player.Health++; ;
             }
             InterfaceManager.PrintHealth();
         }

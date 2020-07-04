@@ -11,6 +11,7 @@ TagManager:
   - Ladder
   - UnlockPart
   - UnlockController
+  - box_attack_boss
   layers:
   - Default
   - TransparentFX
@@ -25,8 +26,8 @@ TagManager:
   - Player
   - Grid
   - 
-  - 
-  - 
+  - Jump solid
+  - box_attack_boss
   - 
   - Camera Limiter
   - 

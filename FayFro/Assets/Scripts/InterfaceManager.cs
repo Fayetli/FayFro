@@ -22,15 +22,15 @@ public class InterfaceManager : MonoBehaviour
 
     public static void PrintScore()
     {
-        Score.text = "Score: " + StatCharacterController.player.GetScore();
+        Score.text = "Score: " + StatCharacterController.player.Score;
     }
     public static void PrintHealth()
     {
-        Health.text = "Health: " + StatCharacterController.player.GetHealth();
+        Health.text = "Health: " + StatCharacterController.player.Health;
     }
     public static void PrintDash()
     {
-        Dash.text = "Dash: " + StatCharacterController.player.GetDash();
+        Dash.text = "Dash: " + StatCharacterController.player.Dash;
     }
 
 }

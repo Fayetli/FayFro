@@ -4,50 +4,53 @@ using UnityEngine;
 
 public class LinearMover : MonoBehaviour
 {
-    private float _startY;
     [Tooltip("abs(module) value")]
-    [SerializeField] private float _distance = 1;
-    [SerializeField] private int _moveCount = 50;
+    [SerializeField] private float _distance = 0.0f;
+    [SerializeField] private float _speed = 0.0f;
+    [SerializeField] private float _speedMulty = 0.0f;
 
-
-
-    [SerializeField] private bool _isUpMoving;
-
+    [SerializeField] private bool _isUpMoving = true;
     public void ChangeVectorMoving()
     {
         _isUpMoving = (_isUpMoving) ? false : true;
     }
     public void MoveObject()
     {
-        _startY = this.transform.position.y;
         if (_isUpMoving)
         {
-            StartCoroutine(MovingUpCoroutine(_distance / _moveCount, _startY + _distance));
+            StartCoroutine(MovingUpCoroutine());
         }
         else
         {
-            StartCoroutine(MovingDownCoroutine(_distance / _moveCount * -1, _startY + _distance));
+            StartCoroutine(MovingDownCoroutine());
         }
     }
 
-    IEnumerator MovingUpCoroutine(float oneMove, float finishY)
+    public IEnumerator MovingUpCoroutine()
     {
-        while(this.transform.position.y < finishY)
+        float moveSpeed = _speed;
+        float finishY = this.gameObject.transform.position.y + _distance;
+        while (this.transform.position.y < finishY)
         {
-            this.transform.position += Vector3.up * oneMove;
+            this.transform.position += Vector3.up * moveSpeed;
+            moveSpeed *= _speedMulty;
             yield return new WaitForFixedUpdate();
         }
         ChangeVectorMoving();
+
     }
 
-    IEnumerator MovingDownCoroutine(float oneMove, float finishY)
+    public IEnumerator MovingDownCoroutine()
     {
-        finishY *= -1;
+        float moveSpeed = _speed;
+        float finishY = this.gameObject.transform.position.y - _distance;
         while (this.transform.position.y > finishY)
         {
-            this.transform.position += Vector3.up * oneMove;
+            this.transform.position -= Vector3.up * moveSpeed;
+            moveSpeed *= _speedMulty;
             yield return new WaitForFixedUpdate();
         }
         ChangeVectorMoving();
+
     }
 }
