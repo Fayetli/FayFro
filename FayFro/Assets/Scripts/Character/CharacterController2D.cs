@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class CharacterController2D : MonoBehaviour
 {
-	private float m_JumpForce = 125f;                          // Amount of force added when the player jumps.
+	private float m_JumpForce = 150f;                          // Amount of force added when the player jumps.
 	private float m_CrouchSpeed = 0;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
 	private float m_MovementSmoothing = .01f;  // How much to smooth out the movement
 	private bool m_AirControl = true;                         // Whether or not a player can steer while jumping;
