@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController2D controller;
+    private CharacterController2D _controller;
+
+    [SerializeField] private bool _HaveTP = false;
+
+    [SerializeField] private bool _HaveShield = false;
 
     private float _horizontalMove = 0f;
 
@@ -13,7 +18,16 @@ public class PlayerMovement : MonoBehaviour
     private bool _jump = false;
 
     private bool _crouch;
-    void Update()
+
+    private bool _dash = false;
+
+    private bool _useShield = false;
+
+    private void Start()
+    {
+        _controller = GetComponent<CharacterController2D>();
+    }
+void Update()
     {
 
         _horizontalMove = Input.GetAxisRaw("Horizontal") * _runSpeed;
@@ -32,16 +46,29 @@ public class PlayerMovement : MonoBehaviour
             _crouch = false;
         }
 
+        if (Input.GetKeyDown(KeyCode.X) && _HaveTP)
+        {
+            _dash = true;
+        }
+        if (Input.GetKeyDown(KeyCode.V) && _HaveShield)
+        {
+            _useShield = true;
+        }
+        else if (Input.GetKeyUp(KeyCode.V) && _HaveShield)
+        {
+            _useShield = false;
+        }
+
     }
 
 
     private void FixedUpdate()
     {
         //Move our character
-        controller.Move(_horizontalMove * Time.fixedDeltaTime, _crouch, _jump);
+        _controller.Move(_horizontalMove * Time.fixedDeltaTime, _crouch, _jump, _dash, _useShield);
 
         _jump = false;
 
-
+        _dash = false;
     }
 }

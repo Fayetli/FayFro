@@ -12,6 +12,7 @@ TagManager:
   - UnlockPart
   - UnlockController
   - box_attack_boss
+  - tp_wall
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - Camera Limiter
   - 
   - 
-  - 
+  - tp_wall
   - 
   - 
   - 
