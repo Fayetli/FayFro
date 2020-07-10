@@ -12,14 +12,23 @@ public class CircleMover : MonoBehaviour
 
     [SerializeField] private int _platformCount;
 
+    [SerializeField] private bool Reversed = false;
+
     private GameObject[] _moveObjects;
 
     const float k_pi = 3.1415f;
+
+    private int _reversedKoef = 1;
 
     private float[] _angles;
 
     private void Start()
     {
+        if (Reversed)
+        {
+            _reversedKoef = -1;
+        }
+
         _moveObjects = new GameObject[_platformCount];
 
         for(int i = 0; i < _platformCount; i++)
@@ -47,7 +56,7 @@ public class CircleMover : MonoBehaviour
         {
             for (int i = 0; i < _moveObjects.Length; i++)
             {
-                _angles[i] += _angleSpeed;
+                _angles[i] += _angleSpeed * _reversedKoef;
                 float x = _radius * Mathf.Cos(_angles[i] * k_pi / 180);
                 float y = _radius * Mathf.Sin(_angles[i] * k_pi / 180);
                 _moveObjects[i].transform.localPosition = new Vector2(x, y);

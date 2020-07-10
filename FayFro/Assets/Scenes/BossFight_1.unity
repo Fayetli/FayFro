@@ -130,7 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 48061075}
-  - component: {fileID: 48061074}
+  - component: {fileID: 48061076}
   m_Layer: 0
   m_Name: Spires (4)
   m_TagString: Untagged
@@ -138,22 +138,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &48061074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48061073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f920e2e93358ebf43b1a179fa6bf53f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _distance: 1.8
-  _speed: 0.02
-  _speedMulty: 1.025
-  _isUpMoving: 0
 --- !u!4 &48061075
 Transform:
   m_ObjectHideFlags: 0
@@ -177,6 +161,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -539.984}
+--- !u!114 &48061076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48061073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cedd28b5748062f47910d3461340cf45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distance: 1.8
+  _speed: 0.02
+  _speedMulty: 1.025
+  OnStart: 0
+  FirstMoveOnUp: 1
 --- !u!1001 &106047171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -366,7 +367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 178706076}
-  - component: {fileID: 178706075}
+  - component: {fileID: 178706077}
   m_Layer: 0
   m_Name: Spires(2)
   m_TagString: Untagged
@@ -374,22 +375,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &178706075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 178706074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f920e2e93358ebf43b1a179fa6bf53f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _distance: 1.8
-  _speed: 0.02
-  _speedMulty: 1.025
-  _isUpMoving: 0
 --- !u!4 &178706076
 Transform:
   m_ObjectHideFlags: 0
@@ -408,6 +393,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -179.99501}
+--- !u!114 &178706077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178706074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cedd28b5748062f47910d3461340cf45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distance: 1.8
+  _speed: 0.02
+  _speedMulty: 1.025
+  OnStart: 0
+  FirstMoveOnUp: 1
 --- !u!1001 &190031233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -889,13 +891,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 481046828}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f920e2e93358ebf43b1a179fa6bf53f3, type: 3}
+  m_Script: {fileID: 11500000, guid: cedd28b5748062f47910d3461340cf45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _distance: 1.6
   _speed: 0.01
   _speedMulty: 1.025
-  _isUpMoving: 1
+  OnStart: 0
+  FirstMoveOnUp: 1
 --- !u!4 &481046830
 Transform:
   m_ObjectHideFlags: 0
@@ -2398,7 +2401,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1658232782}
-  - component: {fileID: 1658232781}
+  - component: {fileID: 1658232783}
   m_Layer: 0
   m_Name: Spires(3)
   m_TagString: Untagged
@@ -2406,22 +2409,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1658232781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1658232780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f920e2e93358ebf43b1a179fa6bf53f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _distance: 1.6
-  _speed: 0.01
-  _speedMulty: 1.025
-  _isUpMoving: 1
 --- !u!4 &1658232782
 Transform:
   m_ObjectHideFlags: 0
@@ -2445,6 +2432,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -359.981}
+--- !u!114 &1658232783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658232780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cedd28b5748062f47910d3461340cf45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distance: 1.6
+  _speed: 0.01
+  _speedMulty: 1.025
+  OnStart: 0
+  FirstMoveOnUp: 0
 --- !u!1001 &1696417553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2788,7 +2792,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1805519777}
-  - component: {fileID: 1805519776}
+  - component: {fileID: 1805519778}
   m_Layer: 0
   m_Name: Spires
   m_TagString: Untagged
@@ -2796,22 +2800,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1805519776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1805519775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f920e2e93358ebf43b1a179fa6bf53f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _distance: 1.6
-  _speed: 0.01
-  _speedMulty: 1.025
-  _isUpMoving: 1
 --- !u!4 &1805519777
 Transform:
   m_ObjectHideFlags: 0
@@ -2830,6 +2818,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1805519778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805519775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cedd28b5748062f47910d3461340cf45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distance: 1.6
+  _speed: 0.01
+  _speedMulty: 1.025
+  OnStart: 0
+  FirstMoveOnUp: 0
 --- !u!1001 &1819250344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3411,10 +3416,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 8
   _columns: {fileID: 481046829}
-  _spires: {fileID: 1805519776}
-  _spires2: {fileID: 178706075}
-  _spires3: {fileID: 1658232781}
-  _spires4: {fileID: 48061074}
+  _spires: {fileID: 1805519778}
+  _spires2: {fileID: 178706077}
+  _spires3: {fileID: 1658232783}
+  _spires4: {fileID: 48061076}
   _boxes: {fileID: 1254437841}
   _boxPref: {fileID: 643720832760640295, guid: 5aa9585b3bb86dc4da2ea8ececa190fb, type: 3}
   _bossSecondStageHPValue: 8

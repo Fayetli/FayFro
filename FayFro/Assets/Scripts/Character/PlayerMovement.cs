@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float _horizontalMove = 0f;
 
-    private float _runSpeed = 7.5f;
+    private float _runSpeed = 33f;
 
     private bool _jump = false;
 
@@ -30,7 +30,17 @@ public class PlayerMovement : MonoBehaviour
 void Update()
     {
 
-        _horizontalMove = Input.GetAxisRaw("Horizontal") * _runSpeed;
+        _horizontalMove = Input.GetAxis("Horizontal");
+        if (_horizontalMove >= -0.2f && _horizontalMove < 0)
+        {
+            _horizontalMove = -0.00001f;
+
+        }
+        else if(_horizontalMove > 0 && _horizontalMove <= 0.2f)
+        {
+            _horizontalMove = 0.00001f;
+        }
+        _horizontalMove *= _runSpeed;
 
         if (Input.GetButtonDown("Jump"))
         {

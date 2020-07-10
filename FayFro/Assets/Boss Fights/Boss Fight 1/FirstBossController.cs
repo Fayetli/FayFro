@@ -5,12 +5,12 @@ using UnityEngine;
 class FirstBossController : DefaultBoss
 {
 
-    [SerializeField] private LinearMover _columns = null;//have one column[0] and four transforms for this column
+    [SerializeField] private VerticalMover _columns = null;//have one column[0] and four transforms for this column
 
-    [SerializeField] private LinearMover _spires = null;
-    [SerializeField] private LinearMover _spires2 = null;
-    [SerializeField] private LinearMover _spires3 = null;
-    [SerializeField] private LinearMover _spires4 = null;
+    [SerializeField] private VerticalMover _spires = null;
+    [SerializeField] private VerticalMover _spires2 = null;
+    [SerializeField] private VerticalMover _spires3 = null;
+    [SerializeField] private VerticalMover _spires4 = null;
 
     [SerializeField] private GameObject _boxes = null;
     [SerializeField] private GameObject _boxPref = null;
