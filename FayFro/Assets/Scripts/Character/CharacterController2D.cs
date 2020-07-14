@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(CapsuleCollider2D))]
+[RequireComponent(typeof(CapsuleCollider2D), typeof(Animator))]
 public class CharacterController2D : MonoBehaviour
 {
-	private float m_JumpForce = 600f;                          // Amount of force added when the player jumps.
+	private float m_JumpForce = 450f;                          // Amount of force added when the player jumps.
 	private float m_MovementSmoothing = .01f;  // How much to smooth out the movement
 	private bool m_AirControl = true;                         // Whether or not a player can steer while jumping;
-	[SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
-	[SerializeField] private LayerMask _whatIsTPWall;
-	[SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
+	[SerializeField] private LayerMask m_WhatIsGround = 0;                          // A mask determining what is ground to the character
+	[SerializeField] private LayerMask _whatIsTPWall = 0;
+	[SerializeField] private Transform m_GroundCheck = null;                           // A position marking where to check if the player is grounded.
 																				//[SerializeField] private Transform m_CeilingCheck;                          // A position marking where to check for ceilings
-	[SerializeField] private Transform _tpRaycaster;
-	[SerializeField] public GameObject Shield;
+	[SerializeField] private Transform _tpRaycaster = null;
+	[SerializeField] private GameObject _shield = null;
 
+	private Animator animator;
 
 	const float k_GroundedRadius = 0.02f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
@@ -21,7 +22,7 @@ public class CharacterController2D : MonoBehaviour
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
-	const float _tpDistance = 1.28f;
+	const float _tpDistance = 2.56f;
 
 	[Header("Events")]
 	[Space]
@@ -30,7 +31,9 @@ public class CharacterController2D : MonoBehaviour
 
 	private void Start()
 	{
-		Shield.SetActive(false);
+		animator = GetComponent<Animator>();
+		_shield.SetActive(false);
+
 	}
 
 	private void Awake()
@@ -39,9 +42,6 @@ public class CharacterController2D : MonoBehaviour
 
 		if (OnLandEvent == null)
 			OnLandEvent = new UnityEvent();
-
-
-
 	}
 
 	private void FixedUpdate()
@@ -71,7 +71,7 @@ public class CharacterController2D : MonoBehaviour
 		if (hit.collider != null)
 		{
 			float direction = transform.TransformDirection(Vector3.right).x;
-			transform.position = new Vector2(hit.transform.position.x + direction * 0.32f, transform.position.y);
+			transform.position = new Vector2(hit.transform.position.x + direction * 0.96f, transform.position.y);
 		}
 
 	}
@@ -80,16 +80,16 @@ public class CharacterController2D : MonoBehaviour
 	{
 		if (useShield)
 		{
-			if (!Shield.activeInHierarchy)
+			if (!_shield.activeInHierarchy)
 			{
-				Shield.SetActive(true);
+				_shield.SetActive(true);
 			}
 		}
 		else
 		{
-			if (Shield.activeInHierarchy)
+			if (_shield.activeInHierarchy)
 			{
-				Shield.SetActive(false);
+				_shield.SetActive(false);
 			}
 		}
 
@@ -119,6 +119,8 @@ public class CharacterController2D : MonoBehaviour
 			Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
 			// And then smoothing it out and applying it to the character
 			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+
+			animator.SetFloat("Speed", Mathf.Abs(move));
 
 			// If the input is moving the player right and the player is facing left...
 			if (move > 0 && !m_FacingRight)

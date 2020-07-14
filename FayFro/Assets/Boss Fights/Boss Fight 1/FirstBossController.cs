@@ -19,14 +19,14 @@ class FirstBossController : DefaultBoss
     [SerializeField] private int _bossThirdStageHPValue = 0;
     [SerializeField] private int _bossFourthStageHPValue = 0;
 
-    [SerializeField] private LayerMask _boxLayer;
+    [SerializeField] private LayerMask _boxLayer = 0;
 
-    [SerializeField] private float _boxUpForce;
+    [SerializeField] private float _boxUpForce = 0.0f;
 
-    [SerializeField] private Transform _symbolTransform;
-    [SerializeField] private GameObject _redSymbolPref;
-    [SerializeField] private GameObject _yellowSymbolPref;
-    [SerializeField] private GameObject _greenSymbolPref;
+    //[SerializeField] private Transform _symbolTransform = null;
+    [SerializeField] private GameObject _redSymbolPref = null;
+    [SerializeField] private GameObject _yellowSymbolPref = null;
+    [SerializeField] private GameObject _greenSymbolPref = null;
 
     private const float _circleRadius = 0.10f;
 

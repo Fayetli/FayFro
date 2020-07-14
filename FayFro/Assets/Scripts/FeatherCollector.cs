@@ -9,8 +9,7 @@ public class FeatherCollector : MonoBehaviour
     {
         if(collision.name == "Player")
         {
-            StatCharacterController.player.Score += _addScore;
-            InterfaceManager.PrintScore();
+            Score._value += _addScore;
             //mb anim
             Destroy(this.gameObject);
         }

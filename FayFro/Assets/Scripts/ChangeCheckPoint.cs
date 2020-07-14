@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChangeCheckPoint : MonoBehaviour
 {
-    [SerializeField] private Transform _checkPoint;
+    [SerializeField] private Transform _checkPoint = null;
 
 
 
@@ -12,7 +12,7 @@ public class ChangeCheckPoint : MonoBehaviour
     {
         if(collision.name == "Player")
         {
-            DeadZoneScript.SetCheckPoint(_checkPoint);
+            DeadZone.SetCheckPoint(_checkPoint);
         }
     }
 }

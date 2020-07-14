@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Transform _player;
+    private Transform _player = null;
 
 
     [SerializeField] private float _xMinDifference = 0.1f;
-    [SerializeField] private float _yMinDifference = 0.1f;//DONT USE
+    //[SerializeField] private float _yMinDifference = 0.1f;//DONT USE
 
     [SerializeField] private float _multiplier = 0.05f;
 
@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour
         _rightLimiter = GameObject.Find("Right Limiter").transform.position.x;
         _upperLimiter = GameObject.Find("Up Limiter").transform.position.y;
         _bottomLimiter = GameObject.Find("Down Limiter").transform.position.y;
-
+        _player = GameObject.Find("Player").transform;
     }
 
     float positionX;

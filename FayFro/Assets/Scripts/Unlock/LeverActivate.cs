@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LeverActivate : MonoBehaviour
 {
-    [SerializeField] private GameObject _unlockObject;
+    [SerializeField] private GameObject _unlockObject = null;
 
 
 

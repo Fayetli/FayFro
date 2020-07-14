@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ButtonGroundActivate : MonoBehaviour
 {
-    [SerializeField] private GameObject unlockObject;
+    [SerializeField] private GameObject _unlockObject = null;
 
 
 
@@ -13,7 +13,7 @@ public class ButtonGroundActivate : MonoBehaviour
         if (collision.CompareTag("UnlockPart"))
         {
             this.GetComponent<Animator>().SetBool("isActive", true);
-            unlockObject.GetComponent<Animator>().SetBool("isUnlock", true);
+            _unlockObject.GetComponent<Animator>().SetBool("isUnlock", true);
         }
     }
 
@@ -22,7 +22,7 @@ public class ButtonGroundActivate : MonoBehaviour
         if (collision.CompareTag("UnlockPart"))
         {
             this.GetComponent<Animator>().SetBool("isActive", false);
-            unlockObject.GetComponent<Animator>().SetBool("isUnlock", false);
+            _unlockObject.GetComponent<Animator>().SetBool("isUnlock", false);
         }
     }
 
