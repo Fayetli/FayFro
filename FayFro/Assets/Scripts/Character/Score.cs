@@ -5,18 +5,21 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    static public int _value
+    static private int _value = 0;
+
+    static public int get_value()
     {
-        get
-        {
-            return _value;
-        }
-        set
-        {
-            if (value >= 0)
-            {
-                _value = value;
-            }
-        }
+        return _value;
     }
+
+    static public void add_value(int adder)
+    {
+        _value += adder;
+    }
+
+    static public void set_value(int value)
+    {
+        _value = value;
+    }
+
 }

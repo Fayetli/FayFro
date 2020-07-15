@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: temple_v_6
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 604353108650044004, guid: 90e159f57062489448d9ac61eca25eb6, type: 3}
+  m_Sprite: {fileID: 604353108650044004, guid: 9151f9fcbea078b4ca2cf47f754f394e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

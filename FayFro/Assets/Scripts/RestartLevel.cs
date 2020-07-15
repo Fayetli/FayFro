@@ -16,12 +16,12 @@ public class RestartLevel : MonoBehaviour
 
     private void Start()
     {
-        _scoreOnStart = Score._value;
+        _scoreOnStart = Score.get_value();
     }
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Score._value = _scoreOnStart;
+        Score.set_value(_scoreOnStart);
     }
 
 

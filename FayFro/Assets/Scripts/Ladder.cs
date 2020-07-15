@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ladder : MonoBehaviour
 {
-    private float _speed = 1;
+    private float _speed = 5;
 
     private float _startGravityScale;
 
@@ -12,7 +12,7 @@ public class Ladder : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.GetComponent<CharacterController2D>() != null)
         {
             rb = collision.gameObject.GetComponent<Rigidbody2D>();
             _startGravityScale = rb.gravityScale;
@@ -22,7 +22,7 @@ public class Ladder : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.GetComponent<CharacterController2D>() != null)
         {
             if (Input.GetKey(KeyCode.UpArrow))
             {
@@ -42,7 +42,7 @@ public class Ladder : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.GetComponent<CharacterController2D>() != null)
         {
             collision.gameObject.GetComponent<Rigidbody2D>().gravityScale = _startGravityScale;
             rb = null;

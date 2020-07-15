@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class LeverActivate : MonoBehaviour
 {
     [SerializeField] private GameObject _unlockObject = null;
