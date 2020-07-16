@@ -5,6 +5,8 @@ using UnityEngine;
 public class VerticalMover : LinearMover
 {
     [SerializeField] private bool FirstMoveOnUp = true;
+
+    private bool isDoneFirstMove = false;
     void Start()
     {
         if (OnStart)
@@ -30,6 +32,8 @@ public class VerticalMover : LinearMover
         }
     }
 
+
+
     public IEnumerator MovingUpCoroutine()
     {
         float moveSpeed = _speed;
@@ -53,6 +57,6 @@ public class VerticalMover : LinearMover
             moveSpeed *= _speedMulty;
             yield return new WaitForFixedUpdate();
         }
-
+        
     }
 }

@@ -96,7 +96,7 @@ public class CharacterController2D : MonoBehaviour
 	}
 
 
-	public void Move(float move, bool crouch, bool jump, bool dash, bool useShield)
+	public void Move(float move, bool jump, bool dash, bool useShield)
 	{
 
 		UseShield(useShield);

@@ -46,16 +46,6 @@ void Update()
         {
             _jump = true;
         }
-
-        if (Input.GetButtonDown("Crouch"))
-        {
-            _crouch = true;
-        }
-        else if (Input.GetButtonUp("Crouch"))
-        {
-            _crouch = false;
-        }
-
         if (Input.GetKeyDown(KeyCode.X) && _HaveTP)
         {
             _dash = true;
@@ -75,7 +65,7 @@ void Update()
     private void FixedUpdate()
     {
         //Move our character
-        _controller.Move(_horizontalMove * Time.fixedDeltaTime, _crouch, _jump, _dash, _useShield);
+        _controller.Move(_horizontalMove * Time.fixedDeltaTime, _jump, _dash, _useShield);
 
         _jump = false;
 

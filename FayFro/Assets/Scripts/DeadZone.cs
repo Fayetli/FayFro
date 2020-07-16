@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DeadZone : MonoBehaviour
 {
     static private Transform _checkPoint;
@@ -15,9 +16,10 @@ public class DeadZone : MonoBehaviour
         _checkPoint = GameObject.Find("CheckPoint(0)").gameObject.transform;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {        
-        if(collision.transform.tag == "Player")
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<CharacterController2D>() != null)
         {
             collision.transform.position = _checkPoint.position;
         }
