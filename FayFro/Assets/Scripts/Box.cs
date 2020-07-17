@@ -11,5 +11,5 @@ public class Box : MonoBehaviour, BounceObject, PlatformerObject
         startTransform = gameObject.transform;
     }
 
- 
+    
 }
