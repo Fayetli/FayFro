@@ -6,7 +6,7 @@ public class VerticalMover : LinearMover
 {
     [SerializeField] private bool FirstMoveOnUp = true;
 
-    private bool isDoneFirstMove = false;
+    private bool isReady = false;
     void Start()
     {
         if (OnStart)
@@ -31,8 +31,6 @@ public class VerticalMover : LinearMover
             yield return StartCoroutine(MovingDownCoroutine());
         }
     }
-
-
 
     public IEnumerator MovingUpCoroutine()
     {

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController2D))]
-public class PlayerMovement : MonoBehaviour
+[RequireComponent(typeof(CharacterController2D), typeof(BoxPlayerMover))]
+public class PlayerMovement : MonoBehaviour, PlatformerObject
 {
     private CharacterController2D _controller;
+    private BoxPlayerMover _boxMover;
 
     [SerializeField] private bool _HaveTP = false;
 
@@ -23,23 +24,18 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _useShield = false;
 
+    private bool _isNotToFlip = false;
+
     private void Start()
     {
         _controller = GetComponent<CharacterController2D>();
+        _boxMover = GetComponent<BoxPlayerMover>();
     }
-void Update()
+    void FixedUpdate()
     {
 
         _horizontalMove = Input.GetAxis("Horizontal");
-        if (_horizontalMove >= -0.2f && _horizontalMove < 0)
-        {
-            _horizontalMove = -0.00001f;
-
-        }
-        else if(_horizontalMove > 0 && _horizontalMove <= 0.2f)
-        {
-            _horizontalMove = 0.00001f;
-        }
+        
         _horizontalMove *= _runSpeed;
 
         if (Input.GetButtonDown("Jump"))
@@ -59,16 +55,41 @@ void Update()
             _useShield = false;
         }
 
-    }
+        if (Input.GetKey(KeyCode.Z))
+        {
+            bool isBox = _boxMover.IsBox();
+            if (isBox)
+            {
+                _isNotToFlip = true;
+                _horizontalMove /= 2;
+            }
 
-
-    private void FixedUpdate()
-    {
-        //Move our character
-        _controller.Move(_horizontalMove * Time.fixedDeltaTime, _jump, _dash, _useShield);
+        }
+        
+        _controller.Move(_horizontalMove * Time.fixedDeltaTime, _jump, _dash, _useShield, _isNotToFlip);
 
         _jump = false;
 
         _dash = false;
+
+        _isNotToFlip = false;
+    }
+
+
+    //private void FixedUpdate()
+    //{
+    //    _controller.Move(_horizontalMove * Time.fixedDeltaTime, _jump, _dash, _useShield, _isNotToFlip);
+
+    //    _jump = false;
+
+    //    _dash = false;
+
+    //    _isNotToFlip = false;
+
+    //}
+
+    public float GetMove()
+    {
+        return _horizontalMove;
     }
 }

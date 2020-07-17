@@ -13,7 +13,7 @@ public class ButtonGroundActivate : MonoBehaviour
         if (collision.CompareTag("UnlockPart"))
         {
             this.GetComponent<Animator>().SetBool("isActive", true);
-            //_unlockObject.GetComponent<LinearMover>().
+            _unlockObject.GetComponent<Animator>().SetBool("isUnlock", true);
         }
     }
 

@@ -9,33 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Play.unity
     guid: fdf20126a5f5ddc4e800b2d4c92f7459
   - enabled: 1
-    path: Assets/Scenes/Forest/Level_1.unity
-    guid: 40f60ff231451924db9c00bc277a7ea4
+    path: Assets/Scenes/Temple 2.0/ch_1_lvl_1.unity
+    guid: ee3cc550399c76a4aae1241b3070afd4
   - enabled: 1
-    path: Assets/Scenes/Forest/Level_2.unity
-    guid: af53d4228ec276044acb5747a0c7d061
+    path: Assets/Scenes/Temple 2.0/ch_1_lvl_2.unity
+    guid: 6fde9044eb330384fb006158dfa2e802
   - enabled: 1
-    path: Assets/Scenes/Forest/Level_3.unity
-    guid: 3d3765ec5857cb64b9b71b59d3648006
-  - enabled: 1
-    path: Assets/Scenes/Forest/Level_4.unity
-    guid: 851362e99e1a8e94a81193ef4c580b92
-  - enabled: 1
-    path: Assets/Scenes/Forest/Level_5.unity
-    guid: d227c46c5b229e94180f72b865f38ccc
-  - enabled: 1
-    path: Assets/Scenes/Temple/Level_6.unity
-    guid: 2356e1af4cf56d34896f65628f6d75d2
-  - enabled: 1
-    path: Assets/Scenes/Temple/Level_7.unity
-    guid: 9051177cf53d35d4c8bee593876fc768
-  - enabled: 1
-    path: Assets/Scenes/Temple/Level_8.unity
-    guid: 82db14f86ab6ddb4ab7c6b17a265f4de
-  - enabled: 1
-    path: Assets/Scenes/Temple/Level_9.unity
-    guid: c342a6b6d0561bb4886be0205af85601
-  - enabled: 1
-    path: Assets/Scenes/Temple/Level_10.unity
-    guid: 58cf79aeb19a16845864468726d24d5c
+    path: Assets/Scenes/Temple 2.0/ch_1_lvl_3.unity
+    guid: 101baddc04c1d154dba454957e35e186
   m_configObjects: {}

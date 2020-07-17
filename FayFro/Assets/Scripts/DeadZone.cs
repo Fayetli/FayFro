@@ -23,5 +23,9 @@ public class DeadZone : MonoBehaviour
         {
             collision.transform.position = _checkPoint.position;
         }
+        else if(collision.gameObject.GetComponent<Box>() != null)
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
