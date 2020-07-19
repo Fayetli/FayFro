@@ -23,6 +23,7 @@ public class VerticalBouncer : MonoBehaviour
 
         if (_onBouncer)
         {
+            gameObject.GetComponent<Animator>().SetBool("push", true);
             Rigidbody2D rigidBody = _bounceObject.GetComponent<Rigidbody2D>();
             rigidBody.AddForce(new Vector2(0f, _bounceForce * rigidBody.mass));
             rigidBody.velocity = new Vector3(0, 0, 0);
@@ -52,6 +53,8 @@ public class VerticalBouncer : MonoBehaviour
         if (collision.gameObject.GetComponent<BounceObject>() != null)
         {
             _onBouncer = false;
+            _bounceObject = null;
+            gameObject.GetComponent<Animator>().SetBool("push", false);
         }
     }
 }

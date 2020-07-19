@@ -20,14 +20,13 @@ public class HorizontalBouncer : MonoBehaviour
     }
     private IEnumerator Bounce()
     {
-        Debug.Log("Bounce");
         if (_withPause)
         {
             yield return new WaitForSeconds(0.5f);
         }
         if (_onBouncer)
         {
-            Debug.Log("Take Bounce");
+            gameObject.GetComponent<Animator>().SetBool("push", true);
             Rigidbody2D rigidBody = _bounceObject.GetComponent<Rigidbody2D>();
             rigidBody.AddForce(new Vector2(_bounceForce * rigidBody.mass, 0f));
             rigidBody.velocity = new Vector3(0, 0, 0);
@@ -53,6 +52,8 @@ public class HorizontalBouncer : MonoBehaviour
         if (collision.gameObject.GetComponent<BounceObject>() != null)
         {
             _onBouncer = false;
+            _bounceObject = null;
+            gameObject.GetComponent<Animator>().SetBool("push", false);
         }
     }
 }

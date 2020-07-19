@@ -28,6 +28,8 @@ class FirstBossController : DefaultBoss
     [SerializeField] private GameObject _yellowSymbolPref = null;
     [SerializeField] private GameObject _greenSymbolPref = null;
 
+    [SerializeField] private GameObject _platform = null;
+
     private const float _circleRadius = 0.10f;
 
     private GameObject _column = null;
@@ -180,6 +182,7 @@ class FirstBossController : DefaultBoss
                 _spires4.transform.GetChild(randDeactiveSpire4).gameObject.SetActive(true);
             }
 
+            _platform.GetComponent<Collider2D>().isTrigger = true;
 
             for (int i = 0; i < _boxes.transform.childCount; i++)
             {
@@ -203,11 +206,13 @@ class FirstBossController : DefaultBoss
                 tempSymbol.transform.position = new Vector3(_column.transform.position.x, 0.65f, tempSymbol.transform.position.z);
             }
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2.5f);
             //green symbols, pause, destroy
             //column up
             
             yield return StartCoroutine(_columns.MovingUpCoroutine());
+
+            _platform.GetComponent<Collider2D>().isTrigger = false;
 
             TryToForceBox();
 

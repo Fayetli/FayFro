@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ladder : MonoBehaviour
 {
-    private float _speed = 5;
+    private float _speed = 3;
 
     private float _startGravityScale;
 

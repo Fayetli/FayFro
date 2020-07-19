@@ -6,7 +6,6 @@ public class VerticalMover : LinearMover
 {
     [SerializeField] private bool FirstMoveOnUp = true;
 
-    private bool isReady = false;
     void Start()
     {
         if (OnStart)

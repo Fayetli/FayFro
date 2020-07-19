@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject
 
     private float _horizontalMove = 0f;
 
-    private float _runSpeed = 33f;
+    private float _runSpeed = 23f;
 
     private bool _jump = false;
 
@@ -31,11 +31,11 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject
         _controller = GetComponent<CharacterController2D>();
         _boxMover = GetComponent<BoxPlayerMover>();
     }
-    void FixedUpdate()
-    {
 
+    private void Update()
+    {
         _horizontalMove = Input.GetAxis("Horizontal");
-        
+
         _horizontalMove *= _runSpeed;
 
         if (Input.GetButtonDown("Jump"))
@@ -54,6 +54,11 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject
         {
             _useShield = false;
         }
+    }
+    void FixedUpdate()
+    {
+
+        
 
         if (Input.GetKey(KeyCode.Z))
         {
@@ -61,7 +66,7 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject
             if (isBox)
             {
                 _isNotToFlip = true;
-                _horizontalMove /= 2;
+                _horizontalMove /= 4;
             }
 
         }
@@ -90,6 +95,6 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject
 
     public float GetMove()
     {
-        return _horizontalMove;
+        return _horizontalMove / 2;
     }
 }
