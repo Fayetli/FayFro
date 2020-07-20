@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Temple 2.0/ch_1_lvl_1.unity
+- path: Assets/Scenes/BossFight_1.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
