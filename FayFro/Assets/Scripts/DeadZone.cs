@@ -22,10 +22,15 @@ public class DeadZone : MonoBehaviour
         if (collision.gameObject.GetComponent<CharacterController2D>() != null)
         {
             collision.transform.position = _checkPoint.position;
+            ResetObject[] resetObjects = FindObjectsOfType<ResetObject>();
+            foreach(ResetObject obj in resetObjects)
+            {
+                obj.Reset();
+            }
         }
-        else if(collision.gameObject.GetComponent<Box>() != null)
+        else if(collision.gameObject.GetComponent<ResetObject>() != null)
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<ResetObject>().Reset();
         }
     }
 }

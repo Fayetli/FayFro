@@ -5,7 +5,8 @@ using UnityEngine;
 public class VerticalMover : LinearMover
 {
     [SerializeField] private bool FirstMoveOnUp = true;
-
+    [SerializeField] private float waitTime = 0.0f;
+    [SerializeField] private float beetwenWaitTime = 0.0f;
     void Start()
     {
         if (OnStart)
@@ -21,13 +22,17 @@ public class VerticalMover : LinearMover
 
     private IEnumerator VerticalMoveObject()
     {
+        yield return new WaitForSeconds(waitTime);
         if (!FirstMoveOnUp)
         {
             yield return StartCoroutine(MovingDownCoroutine());
+            yield return new WaitForSeconds(beetwenWaitTime);
         }
         while (true) {
             yield return StartCoroutine(MovingUpCoroutine());
+            yield return new WaitForSeconds(beetwenWaitTime);
             yield return StartCoroutine(MovingDownCoroutine());
+            yield return new WaitForSeconds(beetwenWaitTime);
         }
     }
 
