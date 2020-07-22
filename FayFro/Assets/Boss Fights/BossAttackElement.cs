@@ -9,9 +9,13 @@ public class BossAttackElement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name == "Player")
+        if (collision.gameObject.GetComponent<CharacterController2D>() != null)
         {
             Debug.Log("Take damage");
+        }
+        else if(collision.gameObject.GetComponent<Box>() != null)
+        {
+            Destroy(collision.gameObject);
         }
     }
 }

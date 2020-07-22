@@ -17,7 +17,10 @@ public class NextLevel : SceneLoader
 {
     [SerializeField] private string _sceneName = null;
 
-    
+    public void LoadScene(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
