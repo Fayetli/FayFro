@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class ResetObject : MonoBehaviour
 {
-    Vector3 _startPosition;
+    private Vector3 _startPosition = new Vector3(0, 0, 0);
 
+    [SerializeField] private GameObject _destroyAnimationObject = null;
+
+    public bool _reset = true;
     private void Start()
     {
         _startPosition = transform.position;
@@ -13,8 +16,9 @@ public class ResetObject : MonoBehaviour
 
     public void Reset()
     {
-        Debug.Log("reset");
-        transform.position = _startPosition;
-        GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+        GameObject boxAnimObj = Instantiate(_destroyAnimationObject);
+        boxAnimObj.transform.position = gameObject.transform.position;
+
+        gameObject.transform.position = _startPosition;
     }
 }

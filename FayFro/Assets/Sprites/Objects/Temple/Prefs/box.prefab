@@ -151,6 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9184a31aff025a47af33552a8f843c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroyAnimationObject: {fileID: 8268245891028114898, guid: bc5e92a166ff0a942b09169a4172ed2f,
+    type: 3}
+  _reset: 1
 --- !u!114 &2886678636459505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +166,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d662b6949b6484740860d4d53f963e22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroyAnimationObject: {fileID: 0}
+  _reset: 1

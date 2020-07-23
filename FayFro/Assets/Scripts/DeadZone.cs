@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DeadZone : MonoBehaviour
 {
-    static private Transform _checkPoint;
+    static private Transform _checkPoint = null;
 
     public static void SetCheckPoint(Transform transform)//when triggered
     {
@@ -17,11 +17,15 @@ public class DeadZone : MonoBehaviour
     }
 
 
+  
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<CharacterController2D>() != null)
+        if (collision.gameObject.GetComponent<PlayerReset>() != null)
         {
-            collision.transform.position = _checkPoint.position;
+            collision.gameObject.GetComponent<PlayerReset>().ResetPlayer(_checkPoint);
+
             ResetObject[] resetObjects = FindObjectsOfType<ResetObject>();
             foreach(ResetObject obj in resetObjects)
             {

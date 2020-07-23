@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Box : MonoBehaviour, BounceObject, PlatformerObject
+public class Box : ResetObject, BounceObject, PlatformerObject
 {
-    
 
-    
+
 }
