@@ -15,7 +15,7 @@ public class BossAttackElement : MonoBehaviour
         }
         else if(collision.gameObject.GetComponent<Box>() != null)
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<ResetObject>().Destroy();
         }
     }
 }

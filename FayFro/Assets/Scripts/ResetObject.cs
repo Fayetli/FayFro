@@ -21,4 +21,12 @@ public class ResetObject : MonoBehaviour
 
         gameObject.transform.position = _startPosition;
     }
+
+    public void Destroy()
+    {
+        GameObject boxAnimObj = Instantiate(_destroyAnimationObject);
+        boxAnimObj.transform.position = gameObject.transform.position;
+
+        Destroy(gameObject);
+    }
 }

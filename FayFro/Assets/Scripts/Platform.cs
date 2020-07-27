@@ -8,7 +8,7 @@ public class Platform : MonoBehaviour
 {
     private Collider2D collider = null;
 
-
+    [SerializeField] private bool _downMove = true;
     private void Start()
     {
         collider = gameObject.GetComponent<Collider2D>();
@@ -21,9 +21,12 @@ public class Platform : MonoBehaviour
         {
             if(collision.gameObject.GetComponent<PlatformerObject>() != null)
             {
-                if (collider.isTrigger == false)
+                if (_downMove)
                 {
-                    collider.isTrigger = true;
+                    if (collider.isTrigger == false)
+                    {
+                        collider.isTrigger = true;
+                    }
                 }
             }
         }

@@ -11,4 +11,8 @@ abstract class DefaultBoss : MonoBehaviour
 
     public abstract void FinishAttack();
 
+    public abstract void TakeDamage();
+
+    public abstract int GetHP();
+
 }

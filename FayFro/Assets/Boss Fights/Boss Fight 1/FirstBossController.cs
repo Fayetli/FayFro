@@ -12,7 +12,6 @@ class FirstBossController : DefaultBoss
     [SerializeField] private VerticalMover _spiresUp = null;
     [SerializeField] private VerticalMover _chapteredSpires = null;
     private VerticalMover[] _chapterSpires;
-    [SerializeField] private VerticalMover _spires4 = null;
 
     [SerializeField] private GameObject _startBox = null;
     [SerializeField] private Transform _boxSpawnTransform = null;
@@ -95,6 +94,16 @@ class FirstBossController : DefaultBoss
         currentSymbol.transform.position = new Vector3(transform.position.x, y, currentSymbol.transform.position.z);
     }
 
+    public override void TakeDamage()
+    {
+        hp--;
+    }
+
+    public override int GetHP()
+    {
+        return hp;
+    }
+
     private IEnumerator Attacking()
     {
         //_Spires down
@@ -128,10 +137,6 @@ class FirstBossController : DefaultBoss
 
             for (int j = 0; j < currentRepaetValue; j++)
             {
-
-
-
-
                 yield return new WaitForSeconds(1f);
 
                 //int randNonActiveChapterSpires = Random.Range(0, _chapterSpires.Length);
@@ -195,7 +200,7 @@ class FirstBossController : DefaultBoss
                 {
 
 
-
+                    //StageThree
 
                 }
 
@@ -233,11 +238,10 @@ class FirstBossController : DefaultBoss
                 yield return StartCoroutine(_columns.MovingDownCoroutine());
 
 
-
                 yield return new WaitForSeconds(1f);
 
                 DestroyLateBoxes();
-                hp--;
+                
             }
 
 
