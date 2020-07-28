@@ -4904,9 +4904,9 @@ MonoBehaviour:
   _speed: 0.001
   _speedMulty: 1.05
   OnStart: 1
-  FirstMoveOnUp: 0
-  waitTime: 0.1
   beetwenWaitTime: 0
+  waitTime: 0.1
+  FirstMoveOnUp: 0
 --- !u!1 &1635612465
 GameObject:
   m_ObjectHideFlags: 0
@@ -5216,6 +5216,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dynamic_platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 1800625332359917285, guid: 87b99246a68241546bd1b30e43d0fb6a,
+        type: 3}
+      propertyPath: beetwenWaitTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1800625332359917285, guid: 87b99246a68241546bd1b30e43d0fb6a,
+        type: 3}
+      propertyPath: waitTime
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87b99246a68241546bd1b30e43d0fb6a, type: 3}

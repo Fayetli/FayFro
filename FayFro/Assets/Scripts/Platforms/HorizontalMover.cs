@@ -6,6 +6,17 @@ public class HorizontalMover : LinearMover
 {
 
     [SerializeField] private bool FirstMoveOnRight = true;
+    
+    
+    public override void StopMove()
+    {
+        _stopMove = true;
+    }
+
+    public override void ContinueMove()
+    {
+        _stopMove = false;
+    }
     void Start()
     {
         if (OnStart)
@@ -14,21 +25,33 @@ public class HorizontalMover : LinearMover
         }
     }
 
-    public void ActivateMove()
+    public override void ActivateMove()
     {
         StartCoroutine(HorizontalMoveObject());
     }
 
     private IEnumerator HorizontalMoveObject()
     {
+        
+        yield return new WaitForSeconds(waitTime);
         if (!FirstMoveOnRight)
         {
             yield return StartCoroutine(MovingLeftCoroutine());
+            yield return new WaitForSeconds(beetwenWaitTime);
         }
         while (true)
         {
-            yield return StartCoroutine(MovingRightCoroutine());
-            yield return StartCoroutine(MovingLeftCoroutine());
+            if (!_stopMove)
+            {
+                yield return StartCoroutine(MovingRightCoroutine());
+                yield return new WaitForSeconds(beetwenWaitTime);
+                yield return StartCoroutine(MovingLeftCoroutine());
+                yield return new WaitForSeconds(beetwenWaitTime);
+            }
+            else
+            {
+                yield return null;
+            }
         }
 
     }

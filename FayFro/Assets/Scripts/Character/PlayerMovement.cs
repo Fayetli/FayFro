@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController2D), typeof(BoxPlayerMover))]
-public class PlayerMovement : MonoBehaviour, PlatformerObject
+public class PlayerMovement : MonoBehaviour, PlatformerObject, ChilderObject
 {
     private CharacterController2D _controller;
     private BoxPlayerMover _boxMover;

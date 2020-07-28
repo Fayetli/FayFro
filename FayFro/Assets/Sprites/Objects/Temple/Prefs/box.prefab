@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8241604932822167372}
   - component: {fileID: 7604103758279049815}
   - component: {fileID: 6022628621351539618}
-  - component: {fileID: 2886678636459505}
   m_Layer: 8
   m_Name: box
   m_TagString: UnlockPart
@@ -153,18 +152,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _destroyAnimationObject: {fileID: 8268245891028114898, guid: bc5e92a166ff0a942b09169a4172ed2f,
     type: 3}
-  _reset: 1
---- !u!114 &2886678636459505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6867145518033285702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d662b6949b6484740860d4d53f963e22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _destroyAnimationObject: {fileID: 0}
   _reset: 1
