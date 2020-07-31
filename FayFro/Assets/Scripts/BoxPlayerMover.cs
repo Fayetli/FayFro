@@ -25,7 +25,6 @@ public class BoxPlayerMover : MonoBehaviour
         {
             Vector2 postion = new Vector2(_boxOverlap.transform.position.x, _boxOverlap.transform.position.y);
             Collider2D hit = Physics2D.OverlapCircle(postion, 0.05f, _whatIsBox);
-            Debug.Log(hit);
 
             if (hit != null)
             {
@@ -45,7 +44,6 @@ public class BoxPlayerMover : MonoBehaviour
                 Vector2 postion = new Vector2(_boxOverlap.transform.position.x, _boxOverlap.transform.position.y);
                 Collider2D hit = Physics2D.OverlapCircle(postion, 0.25f, _whatIsBox);
 
-                Debug.Log(hit);
                 if (hit == null)
                 {
                     _box = null;
@@ -82,7 +80,6 @@ public class BoxPlayerMover : MonoBehaviour
 
     public bool IsBox()
     {
-        Debug.Log(_box != null);
         return (_box != null);
     }
 }

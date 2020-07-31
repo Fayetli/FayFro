@@ -10788,7 +10788,7 @@ Transform:
   m_Children:
   - {fileID: 1209120574}
   m_Father: {fileID: 1869923827}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &964976470
 PrefabInstance:
@@ -10800,6 +10800,11 @@ PrefabInstance:
     - target: {fileID: 4281385360011081923, guid: 9b92fdd86b290c947954888627f86ba7,
         type: 3}
       propertyPath: _unlockObject
+      value: 
+      objectReference: {fileID: 1209120573}
+    - target: {fileID: 4281385360011081923, guid: 9b92fdd86b290c947954888627f86ba7,
+        type: 3}
+      propertyPath: _activateObject
       value: 
       objectReference: {fileID: 1209120573}
     - target: {fileID: 4380406004338794909, guid: 9b92fdd86b290c947954888627f86ba7,
@@ -11727,9 +11732,9 @@ MonoBehaviour:
   _speed: 0.01
   _speedMulty: 1.02
   OnStart: 1
-  FirstMoveOnUp: 0
-  waitTime: 0
   beetwenWaitTime: 0
+  waitTime: 0
+  FirstMoveOnUp: 0
 --- !u!4 &1370604353 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2280972330652023833, guid: 119d135e497fdd245b4ba2e3005f96ba,

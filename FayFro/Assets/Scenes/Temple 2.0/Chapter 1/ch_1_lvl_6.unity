@@ -647,9 +647,9 @@ MonoBehaviour:
   _speed: 0.01
   _speedMulty: 1.02
   OnStart: 1
-  FirstMoveOnUp: 0
-  waitTime: 0.4
   beetwenWaitTime: 0.25
+  waitTime: 0.4
+  FirstMoveOnUp: 0
 --- !u!4 &733195985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3565021630229602865, guid: 30e58d1c1491906438cdfff6bdb9d879,
@@ -666,6 +666,11 @@ PrefabInstance:
     - target: {fileID: 4281385360011081923, guid: 9b92fdd86b290c947954888627f86ba7,
         type: 3}
       propertyPath: _unlockObject
+      value: 
+      objectReference: {fileID: 297680330}
+    - target: {fileID: 4281385360011081923, guid: 9b92fdd86b290c947954888627f86ba7,
+        type: 3}
+      propertyPath: _activateObject
       value: 
       objectReference: {fileID: 297680330}
     - target: {fileID: 4380406004338794909, guid: 9b92fdd86b290c947954888627f86ba7,
@@ -752,9 +757,9 @@ MonoBehaviour:
   _speed: 0.01
   _speedMulty: 1.02
   OnStart: 1
-  FirstMoveOnUp: 0
-  waitTime: 0.2
   beetwenWaitTime: 0.25
+  waitTime: 0.2
+  FirstMoveOnUp: 0
 --- !u!4 &864630757 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3565021630229602865, guid: 30e58d1c1491906438cdfff6bdb9d879,
@@ -783,9 +788,9 @@ MonoBehaviour:
   _speed: 0.01
   _speedMulty: 1.02
   OnStart: 1
-  FirstMoveOnUp: 1
-  waitTime: 0.4
   beetwenWaitTime: 0.25
+  waitTime: 0.4
+  FirstMoveOnUp: 1
 --- !u!4 &893239842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3565021630229602865, guid: 30e58d1c1491906438cdfff6bdb9d879,
@@ -814,9 +819,9 @@ MonoBehaviour:
   _speed: 0.01
   _speedMulty: 1.02
   OnStart: 1
-  FirstMoveOnUp: 1
-  waitTime: 0.2
   beetwenWaitTime: 0.25
+  waitTime: 0.2
+  FirstMoveOnUp: 1
 --- !u!4 &894903113 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3565021630229602865, guid: 30e58d1c1491906438cdfff6bdb9d879,
@@ -7542,9 +7547,9 @@ MonoBehaviour:
   _speed: 0.01
   _speedMulty: 1.02
   OnStart: 1
-  FirstMoveOnUp: 0
-  waitTime: 0
   beetwenWaitTime: 0.25
+  waitTime: 0
+  FirstMoveOnUp: 0
 --- !u!4 &1281497799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3565021630229602865, guid: 30e58d1c1491906438cdfff6bdb9d879,
@@ -8010,9 +8015,9 @@ MonoBehaviour:
   _speed: 0.01
   _speedMulty: 1.02
   OnStart: 1
-  FirstMoveOnUp: 1
-  waitTime: 0
   beetwenWaitTime: 0.25
+  waitTime: 0
+  FirstMoveOnUp: 1
 --- !u!4 &2087556702 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3565021630229602865, guid: 30e58d1c1491906438cdfff6bdb9d879,

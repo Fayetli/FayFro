@@ -1209,6 +1209,11 @@ PrefabInstance:
       propertyPath: _unlockObject
       value: 
       objectReference: {fileID: 1730059359}
+    - target: {fileID: 4281385360011081923, guid: 9b92fdd86b290c947954888627f86ba7,
+        type: 3}
+      propertyPath: _activateObject
+      value: 
+      objectReference: {fileID: 1730059359}
     - target: {fileID: 4380406004338794909, guid: 9b92fdd86b290c947954888627f86ba7,
         type: 3}
       propertyPath: m_Name

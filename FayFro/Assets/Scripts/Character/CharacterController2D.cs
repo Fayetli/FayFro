@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(CapsuleCollider2D), typeof(Animator))]
@@ -15,6 +17,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private GameObject _shield = null;
 
     private Animator animator;
+    [SerializeField] private GameObject ch_destroy_on_tp;
 
     const float k_GroundedRadius = 0.02f; // Radius of the overlap circle to determine if grounded
     private bool m_Grounded;            // Whether or not the player is grounded.
@@ -63,6 +66,17 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
+    private float waitToDashTime = 0.2f;
+    private IEnumerator Dash(RaycastHit2D hit)
+    {
+        yield return new WaitForSeconds(waitToDashTime);
+
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+
+        float direction = transform.TransformDirection(Vector3.right).x;
+        transform.position = new Vector2(hit.transform.position.x + direction * 0.96f, transform.position.y);
+    }
+
 
     private void TryToDash()
     {
@@ -70,8 +84,12 @@ public class CharacterController2D : MonoBehaviour
 
         if (hit.collider != null)
         {
-            float direction = transform.TransformDirection(Vector3.right).x;
-            transform.position = new Vector2(hit.transform.position.x + direction * 0.96f, transform.position.y);
+            GameObject anim = Instantiate(ch_destroy_on_tp);//
+            anim.transform.position = gameObject.transform.position;//
+
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+            StartCoroutine(Dash(hit));
         }
 
     }

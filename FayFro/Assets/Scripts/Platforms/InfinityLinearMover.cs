@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InfinityLinearMover : MonoBehaviour
+public abstract class InfinityLinearMover : MonoBehaviour
 {
     [SerializeField] protected float _speed = 0.0f;
     [SerializeField] protected bool OnStart = false;
@@ -11,12 +11,7 @@ public class InfinityLinearMover : MonoBehaviour
     [SerializeField] protected float _objectDistance;
 
     protected List<GameObject> _moveObjects;
-    void Start()
-    {
-        
-    }
 
-
-
-
+    public abstract void StartMove();
+    public abstract void ChangeVector();
 }

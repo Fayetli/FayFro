@@ -62,7 +62,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1871871445684980826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.42, y: 1.793, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 1783286766718138981}
@@ -200,6 +200,9 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 1871871446627245947}
   _tpRaycaster: {fileID: 2260752970556021327}
   _shield: {fileID: 7451285983487915411}
+  ch_destroy_on_tp: {fileID: 8033774031211395611, guid: be30f43256fb9ad47832d1bc466baed1,
+    type: 3}
+  m_FacingRight: 1
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []

@@ -7,7 +7,6 @@ public class InfinityVerticalMover : InfinityLinearMover
     [SerializeField] private bool MoveOnUp = true;
     private float maxY;
     private float minY;
-    private bool StopCoroutine = false;
     
     void Start()
     {
@@ -22,6 +21,11 @@ public class InfinityVerticalMover : InfinityLinearMover
             item.transform.position = firstObjectPosition - Vector2.up * i * _objectDistance;
             _moveObjects.Add(item);
         }
+        StartMove();
+    }
+
+    public override void StartMove()
+    {
         if (MoveOnUp)
         {
             StartCoroutine(VerticalMoveUpObjects());
@@ -32,11 +36,12 @@ public class InfinityVerticalMover : InfinityLinearMover
         }
     }
 
-    public void StopMoving()
-    {
-        StopCoroutine = true;
-    }
 
+
+    public override void ChangeVector()
+    {
+        MoveOnUp = !MoveOnUp;
+    }
     public void MoveUp()
     {
         StartCoroutine(VerticalMoveUpObjects());
@@ -48,13 +53,9 @@ public class InfinityVerticalMover : InfinityLinearMover
     }
     private IEnumerator VerticalMoveUpObjects()
     {
+
         while (true)
         {
-            if (StopCoroutine)
-            {
-                StopCoroutine = false;
-                yield break;
-            }
             foreach(GameObject obj in _moveObjects)
             {
                 obj.transform.position += Vector3.up * _speed;
@@ -76,13 +77,9 @@ public class InfinityVerticalMover : InfinityLinearMover
 
     private IEnumerator VerticalMoveDownObjects()
     {
+
         while (true)
         {
-            if (StopCoroutine)
-            {
-                StopCoroutine = false;
-                yield break;
-            }
             foreach (GameObject obj in _moveObjects)
             {
                 obj.transform.position -= Vector3.up * _speed;
