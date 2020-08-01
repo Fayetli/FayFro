@@ -36,7 +36,6 @@ public class CharacterController2D : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         _shield.SetActive(false);
-
     }
 
     private void Awake()
@@ -50,31 +49,30 @@ public class CharacterController2D : MonoBehaviour
     private void FixedUpdate()
     {
         bool wasGrounded = m_Grounded;
-        m_Grounded = false;
 
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         // This can be done using layers instead but Sample Assets will not overwrite your project settings.
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-        for (int i = 0; i < colliders.Length; i++)
+        m_Grounded = Physics2D.OverlapCircle(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
+
+        if (m_Grounded)
         {
-            if (colliders[i].gameObject != gameObject)
-            {
-                m_Grounded = true;
-                if (!wasGrounded)
-                    OnLandEvent.Invoke();
-            }
+            if (!wasGrounded)
+                OnLandEvent.Invoke();
         }
+        animator.SetBool("Ground", m_Grounded);
+        animator.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
+        Debug.Log(m_Rigidbody2D.velocity.y);
     }
 
     private float waitToDashTime = 0.2f;
-    private IEnumerator Dash(RaycastHit2D hit)
+    private IEnumerator Dash(float x, float y, float direction)
     {
         yield return new WaitForSeconds(waitToDashTime);
 
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        m_Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
 
-        float direction = transform.TransformDirection(Vector3.right).x;
-        transform.position = new Vector2(hit.transform.position.x + direction * 0.96f, transform.position.y);
+        transform.position = new Vector2(x + direction * 0.96f, y);
     }
 
 
@@ -84,12 +82,20 @@ public class CharacterController2D : MonoBehaviour
 
         if (hit.collider != null)
         {
-            GameObject anim = Instantiate(ch_destroy_on_tp);//
-            anim.transform.position = gameObject.transform.position;//
+            GameObject anim = Instantiate(ch_destroy_on_tp);
+            anim.transform.position = gameObject.transform.position;
+            if (m_FacingRight == false)
+            {
+                anim.transform.Rotate(0f, 180f, 0f);
+            }
 
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            m_Rigidbody2D.bodyType = RigidbodyType2D.Static;
 
-            StartCoroutine(Dash(hit));
+
+            float direction = transform.TransformDirection(Vector3.right).x;
+
+            StartCoroutine(Dash(hit.transform.position.x, transform.position.y, direction));
         }
 
     }
@@ -152,7 +158,6 @@ public class CharacterController2D : MonoBehaviour
                 {
 
                     Flip();
-
                 }
             }
         }
@@ -169,7 +174,6 @@ public class CharacterController2D : MonoBehaviour
     private void Flip()
     {
         m_FacingRight = !m_FacingRight;
-
         transform.Rotate(0f, 180f, 0f);
     }
 

@@ -662,6 +662,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: TP_Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 5215852286933760786, guid: e75f9c0134f36ee4aa7f780395deeb02,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1610756759
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215852286933760786, guid: e75f9c0134f36ee4aa7f780395deeb02,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5215852286933760788, guid: e75f9c0134f36ee4aa7f780395deeb02,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4604,12 +4614,22 @@ PrefabInstance:
     - target: {fileID: 1467710235403748193, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.71
+      value: -4.22
       objectReference: {fileID: 0}
     - target: {fileID: 1467710235403748193, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.66
+      value: -0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1467710235403748204, guid: a793d717e54157f4c8f72e16d646e1d4,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1467710235403748204, guid: a793d717e54157f4c8f72e16d646e1d4,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1467710235403748205, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
@@ -4620,7 +4640,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ch_destroy_on_tp
       value: 
-      objectReference: {fileID: 8033774031211395611, guid: be30f43256fb9ad47832d1bc466baed1,
+      objectReference: {fileID: 4090472522795615308, guid: be30f43256fb9ad47832d1bc466baed1,
         type: 3}
     - target: {fileID: 3027845463584922165, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
