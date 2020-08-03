@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Temple 2.0/Chapter 2/ch_2_lvl_4.unity
+- path: Assets/Scenes/Temple 2.0/Chapter 2/ch_2_lvl_5.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

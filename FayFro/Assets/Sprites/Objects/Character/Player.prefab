@@ -200,7 +200,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 1871871446627245947}
   _tpRaycaster: {fileID: 2260752970556021327}
   _shield: {fileID: 7451285983487915411}
-  ch_destroy_on_tp: {fileID: 8033774031211395611, guid: be30f43256fb9ad47832d1bc466baed1,
+  ch_destroy_on_tp: {fileID: 4090472522795615308, guid: be30f43256fb9ad47832d1bc466baed1,
     type: 3}
   m_FacingRight: 1
   OnLandEvent:
