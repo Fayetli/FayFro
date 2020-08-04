@@ -24,8 +24,6 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, ChilderObject
 
     private bool _useShield = false;
 
-    private bool _isNotToFlip = false;
-
     private void Start()
     {
         _controller = GetComponent<CharacterController2D>();
@@ -58,26 +56,12 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, ChilderObject
     void FixedUpdate()
     {
 
-        
-
-        if (Input.GetKey(KeyCode.Z))
-        {
-            bool isBox = _boxMover.IsBox();
-            if (isBox)
-            {
-                _isNotToFlip = true;
-                _horizontalMove /= 4;
-            }
-
-        }
-        
-        _controller.Move(_horizontalMove * Time.fixedDeltaTime, _jump, _dash, _useShield, _isNotToFlip);
+        _controller.Move(_horizontalMove * Time.fixedDeltaTime, _jump, _dash, _useShield);
 
         _jump = false;
 
         _dash = false;
 
-        _isNotToFlip = false;
     }
 
 

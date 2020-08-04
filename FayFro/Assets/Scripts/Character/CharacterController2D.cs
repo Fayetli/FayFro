@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(CapsuleCollider2D), typeof(Animator))]
+[RequireComponent(typeof(CapsuleCollider2D), typeof(Animator), typeof(BoxPlayerMover))]
 public class CharacterController2D : MonoBehaviour
 {
     private float m_JumpForce = 365f;                          // Amount of force added when the player jumps.
@@ -26,6 +26,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private Vector3 m_Velocity = Vector3.zero;
     const float _tpDistance = 2.56f;
+    private BoxPlayerMover _boxMover;
 
     [Header("Events")]
     [Space]
@@ -36,6 +37,7 @@ public class CharacterController2D : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         _shield.SetActive(false);
+        _boxMover = gameObject.GetComponent<BoxPlayerMover>();
     }
 
     private void Awake()
@@ -61,7 +63,11 @@ public class CharacterController2D : MonoBehaviour
         }
         animator.SetBool("Ground", m_Grounded);
         animator.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
-        Debug.Log(m_Rigidbody2D.velocity.y);
+
+    }
+    public bool IsGrounded()
+    {
+        return m_Grounded;
     }
 
     private float waitToDashTime = 0.2f;
@@ -120,8 +126,14 @@ public class CharacterController2D : MonoBehaviour
     }
 
 
-    public void Move(float move, bool jump, bool dash, bool useShield, bool isNotToFlip)
+    public void Move(float move, bool jump, bool dash, bool useShield)
     {
+        bool withBox = _boxMover.IsBox;
+        if (withBox)
+        {
+            jump = false;
+            move /= 4;
+        }
 
         UseShield(useShield);
         if (useShield)
@@ -146,7 +158,7 @@ public class CharacterController2D : MonoBehaviour
 
             animator.SetFloat("Speed", Mathf.Abs(move));
 
-            if (!isNotToFlip)
+            if (withBox == false)
             {
                 // If the input is moving the player right and the player is facing left...
                 if (move > 0 && !m_FacingRight)
@@ -177,5 +189,8 @@ public class CharacterController2D : MonoBehaviour
         transform.Rotate(0f, 180f, 0f);
     }
 
-
+    public void CameraFlip()
+    {
+        m_FacingRight = !m_FacingRight;
+    }
 }

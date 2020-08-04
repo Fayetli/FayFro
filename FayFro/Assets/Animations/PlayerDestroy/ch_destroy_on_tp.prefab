@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4295189855938874547}
+  - component: {fileID: -8335646214557333868}
   m_Layer: 0
   m_Name: ch_destroy_on_tp
   m_TagString: Untagged
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8335646214557333868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4090472522795615308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52f74c7732f3de41a35f71fbe80e8de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeToAutoDestroy: 1
 --- !u!1 &7958264356785955675
 GameObject:
   m_ObjectHideFlags: 0

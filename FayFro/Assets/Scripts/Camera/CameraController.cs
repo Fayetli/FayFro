@@ -4,29 +4,23 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private Transform _player = null;
+    [SerializeField] private Transform _player = null;
 
 
     [SerializeField] private float _xMinDifference = 0.1f;
-    //[SerializeField] private float _yMinDifference = 0.1f;//DONT USE
 
     [SerializeField] private float _multiplier = 0.05f;
 
     private float _z;
-    private float _leftLimiter;
-    private float _rightLimiter;
-    private float _bottomLimiter;
-    private float _upperLimiter;
+    [SerializeField] private Transform _leftLimiter;
+    [SerializeField] private Transform _rightLimiter;
+    [SerializeField] private Transform _bottomLimiter;
+    [SerializeField] private Transform _upperLimiter;
 
     void Start()
     {
         _z = this.transform.position.z;
 
-        _leftLimiter = GameObject.Find("Left Limiter").transform.position.x;
-        _rightLimiter = GameObject.Find("Right Limiter").transform.position.x;
-        _upperLimiter = GameObject.Find("Up Limiter").transform.position.y;
-        _bottomLimiter = GameObject.Find("Down Limiter").transform.position.y;
-        _player = GameObject.Find("Player").transform;
     }
 
     float positionX;
@@ -53,7 +47,7 @@ public class CameraController : MonoBehaviour
         }
 
         this.transform.position = new Vector3(
-            Mathf.Clamp(positionX, _leftLimiter, _rightLimiter),
-            Mathf.Clamp(positionY, _bottomLimiter, _upperLimiter), _z);
+            Mathf.Clamp(positionX, _leftLimiter.position.x, _rightLimiter.position.x),
+            Mathf.Clamp(positionY, _bottomLimiter.position.y, _upperLimiter.position.y), _z);
     }
 }
