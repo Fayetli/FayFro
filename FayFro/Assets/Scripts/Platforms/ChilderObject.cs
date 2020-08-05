@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ChilderObject
+public interface IChilderObject
 {
-    
+
+    void SetStartParent();
 }

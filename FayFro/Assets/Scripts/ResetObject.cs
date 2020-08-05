@@ -8,10 +8,10 @@ public class ResetObject : MonoBehaviour
 
     [SerializeField] private GameObject _destroyAnimationObject = null;
 
-    public bool _reset = true;
-    private void Start()
+    private void Awake()
     {
         _startPosition = transform.position;
+        Debug.Log(_startPosition);
     }
 
     public void Reset()

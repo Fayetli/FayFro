@@ -59,10 +59,10 @@ public class HorizontalMover : LinearMover
     public IEnumerator MovingRightCoroutine()
     {
         float moveSpeed = _speed;
-        float finishY = this.gameObject.transform.position.x + _distance;
-        while (this.transform.position.x < finishY)
+        float finishY = this.gameObject.transform.localPosition.x + _distance;
+        while (this.transform.localPosition.x < finishY)
         {
-            this.transform.position += Vector3.right * moveSpeed;
+            this.transform.localPosition += Vector3.right * moveSpeed;
             moveSpeed *= _speedMulty;
             yield return new WaitForFixedUpdate();
         }
@@ -72,10 +72,10 @@ public class HorizontalMover : LinearMover
     public IEnumerator MovingLeftCoroutine()
     {
         float moveSpeed = _speed;
-        float finishY = this.gameObject.transform.position.x - _distance;
-        while (this.transform.position.x > finishY)
+        float finishY = this.gameObject.transform.localPosition.x - _distance;
+        while (this.transform.localPosition.x > finishY)
         {
-            this.transform.position -= Vector3.right * moveSpeed;
+            this.transform.localPosition -= Vector3.right * moveSpeed;
             moveSpeed *= _speedMulty;
             yield return new WaitForFixedUpdate();
         }

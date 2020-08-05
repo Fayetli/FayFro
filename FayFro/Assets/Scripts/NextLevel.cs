@@ -17,8 +17,6 @@ public class NextLevel : SceneLoader
 {
     [SerializeField] private string _sceneName = null;
 
-    [SerializeField] private bool _haveResetObjects = true;
-
     public void LoadScene(string name)
     {
         SceneManager.LoadScene(name);
@@ -28,14 +26,6 @@ public class NextLevel : SceneLoader
     {
         if (collision.name == "Player")
         {
-            if (_haveResetObjects)
-            {
-                ResetObject[] resetObjects = GameObject.FindObjectsOfType<ResetObject>();
-                foreach(ResetObject resetObject in resetObjects)
-                {
-                    resetObject._reset = false;
-                }
-            }
             LoadNewScene(_sceneName);
         }
     }

@@ -289,6 +289,11 @@ PrefabInstance:
       propertyPath: _cameraLimiters
       value: 
       objectReference: {fileID: 1434488509}
+    - target: {fileID: 1131582347763102690, guid: a793d717e54157f4c8f72e16d646e1d4,
+        type: 3}
+      propertyPath: _flip
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1467710235403748193, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -318,6 +323,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -70.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696129763125857765, guid: a793d717e54157f4c8f72e16d646e1d4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.49
       objectReference: {fileID: 0}
     - target: {fileID: 7500064454432047250, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}

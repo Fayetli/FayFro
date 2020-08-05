@@ -13,13 +13,10 @@ public class CameraFlipper : MonoBehaviour
     private void Start()
     {
         int startFlip = PlayerPrefs.GetInt("CameraFlip");
-        Debug.Log(startFlip);
         if (startFlip == 0)
             StartCoroutine(StartFlip());
-        else if(_flip == true)
-        {
+        if(_flip == true)
             StartCoroutine(StartFlip());
-        }
     }
 
     private IEnumerator StartFlip()

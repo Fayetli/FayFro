@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class PlatformParenter : MonoBehaviour
 {
-    private Transform _startParentTransform;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponent<ChilderObject>() != null)
+        if(collision.gameObject.GetComponent<IChilderObject>() != null)
         {
-            _startParentTransform = collision.transform.parent;
             collision.transform.parent = transform;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<ChilderObject>() != null)
+        if (collision.gameObject.GetComponent<IChilderObject>() != null)
         {
-            collision.transform.parent = _startParentTransform;
+            collision.gameObject.GetComponent<IChilderObject>().SetStartParent();
         }
     }
 }

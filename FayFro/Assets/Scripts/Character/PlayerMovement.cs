@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController2D), typeof(BoxPlayerMover))]
-public class PlayerMovement : MonoBehaviour, PlatformerObject, ChilderObject
+public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
 {
     private CharacterController2D _controller;
-    private BoxPlayerMover _boxMover;
 
     [SerializeField] private bool _HaveTP = false;
 
@@ -18,16 +17,21 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, ChilderObject
 
     private bool _jump = false;
 
-    private bool _crouch;
 
     private bool _dash = false;
 
     private bool _useShield = false;
 
+    Transform _startParent;
     private void Start()
     {
         _controller = GetComponent<CharacterController2D>();
-        _boxMover = GetComponent<BoxPlayerMover>();
+        _startParent = gameObject.transform.parent;
+    }
+
+    public void SetStartParent()
+    {
+        gameObject.transform.parent = _startParent;
     }
 
     private void Update()
