@@ -36,27 +36,33 @@ public class VerticalMover : LinearMover
             yield return new WaitForSeconds(beetwenWaitTime);
         }
         while (true) {
-            if (!_stopMove)
-            {
-                yield return StartCoroutine(MovingUpCoroutine());
-                yield return new WaitForSeconds(beetwenWaitTime);
-                yield return StartCoroutine(MovingDownCoroutine());
-                yield return new WaitForSeconds(beetwenWaitTime);
-            }
-            else
+            while (_stopMove)
             {
                 yield return null;
+                
             }
+
+            yield return StartCoroutine(MovingUpCoroutine());
+            yield return new WaitForSeconds(beetwenWaitTime);
+
+            while (_stopMove)
+            {
+                yield return null;
+                
+            }
+
+            yield return StartCoroutine(MovingDownCoroutine());
+            yield return new WaitForSeconds(beetwenWaitTime);
         }
     }
 
     public IEnumerator MovingUpCoroutine()
     {
         float moveSpeed = _speed;
-        float finishY = this.gameObject.transform.position.y + _distance;
-        while (this.transform.position.y < finishY)
+        float finishY = this.gameObject.transform.localPosition.y + _distance;
+        while (this.transform.localPosition.y < finishY)
         {
-            this.transform.position += Vector3.up * moveSpeed;
+            this.transform.localPosition += Vector3.up * moveSpeed;
             moveSpeed *= _speedMulty;
             yield return new WaitForFixedUpdate();
         }
@@ -66,10 +72,10 @@ public class VerticalMover : LinearMover
     public IEnumerator MovingDownCoroutine()
     {
         float moveSpeed = _speed;
-        float finishY = this.gameObject.transform.position.y - _distance;
-        while (this.transform.position.y > finishY)
+        float finishY = this.gameObject.transform.localPosition.y - _distance;
+        while (this.transform.localPosition.y > finishY)
         {
-            this.transform.position -= Vector3.up * moveSpeed;
+            this.transform.localPosition -= Vector3.up * moveSpeed;
             moveSpeed *= _speedMulty;
             yield return new WaitForFixedUpdate();
         }

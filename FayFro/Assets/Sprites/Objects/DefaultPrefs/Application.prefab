@@ -856,6 +856,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5331439941899507715}
     m_Modifications:
+    - target: {fileID: 62331763347461136, guid: ffe4000a03248af4fa26f0289ded1bb9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -80
+      objectReference: {fileID: 0}
     - target: {fileID: 62331763347461137, guid: ffe4000a03248af4fa26f0289ded1bb9,
         type: 3}
       propertyPath: _leftLimiter
@@ -899,7 +904,7 @@ PrefabInstance:
     - target: {fileID: 62331764415456350, guid: ffe4000a03248af4fa26f0289ded1bb9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -80
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 62331764415456350, guid: ffe4000a03248af4fa26f0289ded1bb9,
         type: 3}

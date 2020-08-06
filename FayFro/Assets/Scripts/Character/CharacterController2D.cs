@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(CapsuleCollider2D), typeof(Animator), typeof(BoxPlayerMover))]
 public class CharacterController2D : MonoBehaviour
 {
-    private float m_JumpForce = 365f;                          // Amount of force added when the player jumps.
+    [SerializeField] private float m_JumpForce = 365f;                          // Amount of force added when the player jumps.
     private float m_MovementSmoothing = .01f;  // How much to smooth out the movement
     private bool m_AirControl = true;                         // Whether or not a player can steer while jumping;
     [SerializeField] private LayerMask m_WhatIsGround = 0;                          // A mask determining what is ground to the character

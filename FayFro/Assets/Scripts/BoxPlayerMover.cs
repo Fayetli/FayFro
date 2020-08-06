@@ -16,7 +16,7 @@ public class BoxPlayerMover : MonoBehaviour
     {
         _controller = gameObject.GetComponent<CharacterController2D>();
     }
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -31,7 +31,7 @@ public class BoxPlayerMover : MonoBehaviour
             }
 
         }
-        if (Input.GetKey(KeyCode.Z))
+        else if (Input.GetKey(KeyCode.Z))
         {
 
 
@@ -42,27 +42,30 @@ public class BoxPlayerMover : MonoBehaviour
 
                 if (hit == null || hit.gameObject.GetComponent<Box>() == null || _controller.IsGrounded() == false)
                 {
-                    _box.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                    _box = null;
-                    IsBox = false;
+                    RevertBox();
                 }
 
             }
         }
-        if (Input.GetKeyUp(KeyCode.Z))
+        else if (Input.GetKeyUp(KeyCode.Z))
         {
             if (_box != null)
             {
-                _box.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                _box.GetComponent<Box>().SetStartParent();
-                _box = null;
-                IsBox = false;
+                RevertBox();
             }
         }
 
+       
 
     }
 
+    private void RevertBox()
+    {
+        _box.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        _box.GetComponent<Box>().SetStartParent();
+        _box = null;
+        IsBox = false;
+    }
 
 
 

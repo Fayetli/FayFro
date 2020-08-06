@@ -15,7 +15,7 @@ public class LeverActivate : MonoBehaviour
 {
     [SerializeField] private GameObject _activateObject = null;
     [SerializeField] private Mode mode;
-    private bool _activate = true;
+    [SerializeField] private bool _activate = true;
 
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -52,6 +52,7 @@ public class LeverActivate : MonoBehaviour
                                 _activateObject.GetComponent<LinearMover>().ContinueMove();
                                 break;
                             }
+                        
                     }
 
                 }
@@ -78,6 +79,7 @@ public class LeverActivate : MonoBehaviour
                                 _activateObject.GetComponent<LinearMover>().StopMove();
                                 break;
                             }
+                       
                     }
 
                 }
