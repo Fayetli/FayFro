@@ -6,16 +6,19 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform _player = null;
 
-
-    [SerializeField] private float _xMinDifference = 0.1f;
-
-    [SerializeField] private float _multiplier = 0.05f;
-
     private float _z;
-    [SerializeField] private Transform _leftLimiter;
-    [SerializeField] private Transform _rightLimiter;
-    [SerializeField] private Transform _bottomLimiter;
-    [SerializeField] private Transform _upperLimiter;
+    private bool _leftLimiter;
+    private bool _rightLimiter;
+    private bool _bottomLimiter;
+    private bool _upperLimiter;
+
+    public enum CameraDirection
+    {
+        Left,
+        Right,
+        Up,
+        Down
+    }
 
     void Start()
     {
@@ -23,31 +26,85 @@ public class CameraController : MonoBehaviour
 
     }
 
-    float positionX;
-    float positionY;
+    public void SetDirectionBool(CameraDirection direction, bool value)
+    {
+        switch(direction)
+        {
+            case CameraDirection.Left:
+                {
+                    _leftLimiter = value;
+                    break;
+                }
+            case CameraDirection.Right:
+                {
+                    _rightLimiter = value;
+                    break;
+                }
+            case CameraDirection.Up:
+                {
+                    _upperLimiter = value;
+                    break;
+                }
+            case CameraDirection.Down:
+                {
+                    _bottomLimiter = value;
+                    break;
+                }
+        }
+    }
+
+
+    private float _positionX;
+    private float _positionY;
+    [SerializeField] private float _clamp;
     void FixedUpdate()
     {
-        if (Mathf.Abs(_player.position.x - this.transform.position.x) < _xMinDifference)
+        float moveX =  _player.transform.position.x - gameObject.transform.position.x;
+
+        if (_leftLimiter && moveX < 0)
         {
-            positionX = this.transform.position.x;
+            moveX = 0;
         }
-        else
+        if(_rightLimiter && moveX > 0)
         {
-            positionX = this.transform.position.x + (_player.position.x - this.transform.position.x) * _multiplier;
+            moveX = 0;
         }
 
-        if (Mathf.Abs(_player.position.y - this.transform.position.y) < _xMinDifference)
-        {
-            positionY = this.transform.position.y;
-        }
-        else
-        {
-            positionY = this.transform.position.y + (_player.position.y - this.transform.position.y) * _multiplier;
+        float moveY = _player.transform.position.y - gameObject.transform.position.y;
 
+        
+        if(_upperLimiter && moveY > 0)
+        {
+            moveY = 0;
+        }
+        if(_bottomLimiter && moveY < 0)
+        {
+            moveY = 0;
         }
 
-        this.transform.position = new Vector3(
-            Mathf.Clamp(positionX, _leftLimiter.position.x, _rightLimiter.position.x),
-            Mathf.Clamp(positionY, _bottomLimiter.position.y, _upperLimiter.position.y), _z);
+        int dirRight = 1;
+        if (moveX < 0)
+        {
+            dirRight = -1;
+        }
+
+        
+        float maxMove = 0.08f;
+        moveX *= _clamp;
+        moveY *= _clamp;
+
+        if (Mathf.Abs(moveX) > maxMove)
+        {
+            moveX = maxMove * dirRight;
+        }
+        if(Mathf.Abs(moveY) > maxMove)
+        {
+            moveY = maxMove * dirRight;
+        }
+
+        _positionX = gameObject.transform.position.x + moveX;
+        _positionY = gameObject.transform.position.y + moveY;
+
+        gameObject.transform.position = new Vector3(_positionX, _positionY, _z);
     }
 }

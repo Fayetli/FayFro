@@ -27,6 +27,8 @@ public class CharacterController2D : MonoBehaviour
     private Vector3 m_Velocity = Vector3.zero;
     const float _tpDistance = 2.56f;
     private BoxPlayerMover _boxMover;
+    private bool _haveDoubleJump = false;
+    private bool _jumpOnAir = false;
 
     [Header("Events")]
     [Space]
@@ -60,10 +62,20 @@ public class CharacterController2D : MonoBehaviour
         {
             if (!wasGrounded)
                 OnLandEvent.Invoke();
+
+            if (_haveDoubleJump)
+            {
+                _jumpOnAir = true;
+            }
         }
         animator.SetBool("Ground", m_Grounded);
         animator.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
 
+    }
+
+    public void SetHaveDoubleJumpTrue()
+    {
+        _haveDoubleJump = true;
     }
     public bool IsGrounded()
     {
@@ -179,6 +191,13 @@ public class CharacterController2D : MonoBehaviour
             // Add a vertical force to the player.
             m_Grounded = false;
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+            
+        }
+        else if(jump && _jumpOnAir)
+        {
+            m_Rigidbody2D.velocity = new Vector2(0, 0);
+            m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+            _jumpOnAir = false;
         }
     }
 

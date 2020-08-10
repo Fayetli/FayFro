@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Start menu.unity
     guid: fdf20126a5f5ddc4e800b2d4c92f7459
   - enabled: 1
+    path: Assets/Scenes/Story Scene.unity
+    guid: 088f133aa3ef17440a02faf9dd9f779d
+  - enabled: 1
+    path: Assets/Scenes/Settings Scene.unity
+    guid: 653071b0098c7df47940a8b3bc796ca3
+  - enabled: 1
     path: Assets/Scenes/Temple 2.0/Chapter 1/ch_1_lvl_1.unity
     guid: ee3cc550399c76a4aae1241b3070afd4
   - enabled: 1

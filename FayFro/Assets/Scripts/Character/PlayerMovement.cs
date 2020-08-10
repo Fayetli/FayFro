@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
 
     [SerializeField] private bool _HaveShield = false;
 
+    [SerializeField] private bool _HaveDoubleJump = false;
+
     private float _horizontalMove = 0f;
 
     private float _runSpeed = 23f;
@@ -27,6 +29,10 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
     {
         _controller = GetComponent<CharacterController2D>();
         _startParent = gameObject.transform.parent;
+        if (_HaveDoubleJump)
+        {
+            _controller.SetHaveDoubleJumpTrue();
+        }
     }
 
     public void SetStartParent()
