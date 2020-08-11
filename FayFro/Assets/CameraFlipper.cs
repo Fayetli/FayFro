@@ -23,19 +23,27 @@ public class CameraFlipper : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        _apllicationTransform.Rotate(0f, 180f, 0f);
-        _characterController.CameraFlip();
-        _cameraTransform.Rotate(0f, 180f, 0f);
-        _cameraLimiters.localScale = new Vector3(_cameraLimiters.localScale.x * -1, _cameraLimiters.localScale.y, _cameraLimiters.localScale.z);
+
+        DefaultFlip();
     }
     
-    public void Flip()
+    private void DefaultFlip()
     {
         _apllicationTransform.Rotate(0f, 180f, 0f);
         _characterController.CameraFlip();
         _cameraTransform.Rotate(0f, 180f, 0f);
         _cameraLimiters.localScale = new Vector3(_cameraLimiters.localScale.x * -1, _cameraLimiters.localScale.y, _cameraLimiters.localScale.z);
 
+        CameraLimiter[] limiters = GameObject.FindObjectsOfType<CameraLimiter>();
+        foreach(CameraLimiter limiter in limiters)
+        {
+            limiter.Invert();
+        }
+    }
+    public void Flip()
+    {
+
+        DefaultFlip();
         int oldFlip = PlayerPrefs.GetInt("CameraFlip");
         if(oldFlip == 0)
             PlayerPrefs.SetInt("CameraFlip", 1);

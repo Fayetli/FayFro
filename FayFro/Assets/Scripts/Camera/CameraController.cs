@@ -5,12 +5,16 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform _player = null;
+    [SerializeField] private float _clamp = 0.05f;
+    //[SerializeField] private float _waitTime = 0.1f;
 
+    private bool _canMove = false;
     private float _z;
-    private bool _leftLimiter;
-    private bool _rightLimiter;
-    private bool _bottomLimiter;
-    private bool _upperLimiter;
+    private bool _leftLimiter = false;
+    private bool _rightLimiter = false;
+    private bool _bottomLimiter = false;
+    private bool _upperLimiter = false;
+
 
     public enum CameraDirection
     {
@@ -23,7 +27,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         _z = this.transform.position.z;
-
+        //StartCoroutine(StartMoveCamera());
     }
 
     public void SetDirectionBool(CameraDirection direction, bool value)
@@ -53,58 +57,69 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    //private IEnumerator StartMoveCamera()
+    //{
+    //    yield return new WaitForSeconds(_waitTime);
+    //    _canMove = true;
+    //}
 
-    private float _positionX;
-    private float _positionY;
-    [SerializeField] private float _clamp;
+    
     void FixedUpdate()
     {
-        float moveX =  _player.transform.position.x - gameObject.transform.position.x;
 
-        if (_leftLimiter && moveX < 0)
-        {
-            moveX = 0;
-        }
-        if(_rightLimiter && moveX > 0)
-        {
-            moveX = 0;
-        }
-
+        //if(_canMove == false)
+        //{
+        //    return;
+        //}
+        float moveX = _player.transform.position.x - gameObject.transform.position.x;
         float moveY = _player.transform.position.y - gameObject.transform.position.y;
 
         
-        if(_upperLimiter && moveY > 0)
+
+        Debug.Log("LeftLimiter: " + _leftLimiter);
+        Debug.Log("RightLimiter: " + _rightLimiter);
+        Debug.Log("UpperLimiter: " + _upperLimiter);
+        Debug.Log("BottomLimiter: " + _bottomLimiter);
+        
+
+
+        if (_leftLimiter == true && moveX < 0)
+        {
+            moveX = 0;
+        }
+        if(_rightLimiter == true && moveX > 0)
+        {
+            moveX = 0;
+        }
+        
+
+
+        if (_upperLimiter == true && moveY > 0)
         {
             moveY = 0;
         }
-        if(_bottomLimiter && moveY < 0)
+        if(_bottomLimiter == true && moveY < 0)
         {
             moveY = 0;
         }
 
-        int dirRight = 1;
-        if (moveX < 0)
+        moveX *= _clamp;
+        moveY *= _clamp;
+        
+        if(moveX > 0.04f)
         {
-            dirRight = -1;
+            moveX = 0.04f;
+        }
+        else if(moveX < -0.04f)
+        {
+            moveX = -0.04f;
         }
 
         
-        float maxMove = 0.08f;
-        moveX *= _clamp;
-        moveY *= _clamp;
 
-        if (Mathf.Abs(moveX) > maxMove)
-        {
-            moveX = maxMove * dirRight;
-        }
-        if(Mathf.Abs(moveY) > maxMove)
-        {
-            moveY = maxMove * dirRight;
-        }
+        float positionX = gameObject.transform.position.x + moveX;
+        float positionY = gameObject.transform.position.y + moveY;
 
-        _positionX = gameObject.transform.position.x + moveX;
-        _positionY = gameObject.transform.position.y + moveY;
-
-        gameObject.transform.position = new Vector3(_positionX, _positionY, _z);
+        gameObject.transform.position = new Vector3(positionX, positionY, _z);
     }
 }

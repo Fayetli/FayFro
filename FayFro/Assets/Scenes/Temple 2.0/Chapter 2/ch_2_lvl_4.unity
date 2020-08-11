@@ -929,7 +929,7 @@ PrefabInstance:
     - target: {fileID: 117441164852326138, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
       propertyPath: _sceneName
-      value: ch_2_lvl_5
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 384842890167955653, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
@@ -1864,7 +1864,7 @@ PrefabInstance:
     - target: {fileID: 1131582347763102690, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
       propertyPath: _flip
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1435497955210615146, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}

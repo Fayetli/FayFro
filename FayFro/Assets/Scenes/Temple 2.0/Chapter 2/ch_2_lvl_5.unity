@@ -552,7 +552,7 @@ PrefabInstance:
     - target: {fileID: 1131582347763102690, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
       propertyPath: _flip
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1467710235403748193, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
