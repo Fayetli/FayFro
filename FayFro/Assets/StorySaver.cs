@@ -16,8 +16,15 @@ public class StorySaver : MonoBehaviour
 
     public void LoadLastLevel()
     {
-        int lastSceneIndex = PlayerPrefs.GetInt("LastSceneIndex");
-        Debug.Log(lastSceneIndex);
-        SceneManager.LoadScene(lastSceneIndex);
+        if (PlayerPrefs.GetInt("LastSceneIndex") != 0)
+        {
+            int lastSceneIndex = PlayerPrefs.GetInt("LastSceneIndex");
+            Debug.Log(lastSceneIndex);
+            SceneManager.LoadScene(lastSceneIndex);
+        }
+        else
+        {
+            SceneManager.LoadScene("ch_1_lvl_1");
+        }
     }
 }
