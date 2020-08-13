@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform _player = null;
     [SerializeField] private float _clamp = 0.05f;
-    //[SerializeField] private float _waitTime = 0.1f;
+    [SerializeField] private float _waitTime = 0.5f;
 
     private bool _canMove = false;
     private float _z;
@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         _z = this.transform.position.z;
-        //StartCoroutine(StartMoveCamera());
+        StartCoroutine(StartMoveCamera());
     }
 
     public void SetDirectionBool(CameraDirection direction, bool value)
@@ -57,30 +57,22 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    //private IEnumerator StartMoveCamera()
-    //{
-    //    yield return new WaitForSeconds(_waitTime);
-    //    _canMove = true;
-    //}
+    private IEnumerator StartMoveCamera()
+    {
+        yield return new WaitForSeconds(_waitTime);
+        _canMove = true;
+    }
 
-    
+
     void FixedUpdate()
     {
 
-        //if(_canMove == false)
-        //{
-        //    return;
-        //}
+        if (_canMove == false)
+        {
+            return;
+        }
         float moveX = _player.transform.position.x - gameObject.transform.position.x;
         float moveY = _player.transform.position.y - gameObject.transform.position.y;
-
-        
-
-        Debug.Log("LeftLimiter: " + _leftLimiter);
-        Debug.Log("RightLimiter: " + _rightLimiter);
-        Debug.Log("UpperLimiter: " + _upperLimiter);
-        Debug.Log("BottomLimiter: " + _bottomLimiter);
-        
 
 
         if (_leftLimiter == true && moveX < 0)

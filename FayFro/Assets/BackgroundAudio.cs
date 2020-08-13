@@ -10,7 +10,7 @@ public class BackgroundAudio : MonoBehaviour
 
 
     private int currentTrack = 0;
-    private void Start()
+    private void Awake()
     {
         _audio.clip = _backgroundClips[0];
         DontDestroyOnLoad(gameObject);

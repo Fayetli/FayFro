@@ -11,7 +11,7 @@ public class ResetObject : MonoBehaviour
     private void Awake()
     {
         _startPosition = transform.position;
-        Debug.Log(_startPosition);
+
     }
 
     public void Reset()

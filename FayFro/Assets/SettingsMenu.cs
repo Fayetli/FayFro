@@ -24,80 +24,24 @@ public class SettingsMenu : MonoBehaviour
 
     private void Start()
     {
-        _fullscrenToggle.isOn = Screen.fullScreen;
-
-        SetStartResolutionToDropdown();
-        
-
-
-
-
-
-
-
-        float value;
-        _masterVolume.audioMixer.GetFloat("MasterVolume", out value);
-        _masterSlider.value = value;
-
-        _musicVolume.audioMixer.GetFloat("MusicVolume", out value);
-        _musicSlider.value = value;
-
-        _soundVolume.audioMixer.GetFloat("SoundVolume", out value);
-        _soundSlider.value = value;
+        UpdateCanvas();
     }
 
-    private void SetStartResolutionToDropdown()
-    {
-        _resolutions = Screen.resolutions;
-
-        _resolutionDropdown.ClearOptions();
-
-        List<string> options = new List<string>();
-
-        int currentWidth = PlayerPrefs.GetInt("Resolution.Width");
-        int currentHeight = PlayerPrefs.GetInt("Resolution.Height");
-        Debug.Log("Screen: " + Screen.currentResolution.width + " " + Screen.currentResolution.height);
-        Debug.Log("Pref: " + currentWidth + " " + currentHeight);
-
-        int currentResolutionIndex = 0;
-
-        for (int i = 0; i < _resolutions.Length; i++)
-        {
-            string option = _resolutions[i].width + " x " + _resolutions[i].height;
-            options.Add(option);
-
-            if (_resolutions[i].width == currentWidth && _resolutions[i].height == currentHeight)
-            {
-                currentResolutionIndex = i;
-            }
-        }
-
-        _resolutionDropdown.AddOptions(options);
-        _resolutionDropdown.value = currentResolutionIndex;
-        _resolutionDropdown.RefreshShownValue();
-
-
-
-
-    }
 
 
     public void SetVolume(float volume)
     {
-        Debug.Log(volume);
         _masterVolume.audioMixer.SetFloat("MasterVolume", volume);
     }
 
     public void SetMusicVolume(float volume)
     {
-        Debug.Log(volume);
         _musicVolume.audioMixer.SetFloat("MusicVolume", volume);
 
     }
 
     public void SetSoundVolume(float volume)
     {
-        Debug.Log(volume);
         _soundVolume.audioMixer.SetFloat("SoundVolume", volume);
 
     }
@@ -119,6 +63,53 @@ public class SettingsMenu : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
+    }
+
+    public void UpdateCanvas()
+    {
+        _fullscrenToggle.isOn = Screen.fullScreen;
+
+        float value;
+        _masterVolume.audioMixer.GetFloat("MasterVolume", out value);
+        _masterSlider.value = value;
+
+        _musicVolume.audioMixer.GetFloat("MusicVolume", out value);
+        _musicSlider.value = value;
+
+        _soundVolume.audioMixer.GetFloat("SoundVolume", out value);
+        _soundSlider.value = value;
+
+        /////////////////////////////////
+        _resolutions = Screen.resolutions;
+
+        _resolutionDropdown.ClearOptions();
+
+        List<string> options = new List<string>();
+
+        int currentWidth = PlayerPrefs.GetInt("Resolution.Width");
+        int currentHeight = PlayerPrefs.GetInt("Resolution.Height");
+        if (currentWidth == 0 || currentHeight == 0)
+        {
+            currentWidth = Screen.currentResolution.width;
+            currentHeight = Screen.currentResolution.height;
+        }
+
+        int currentResolutionIndex = 0;
+
+        for (int i = 0; i < _resolutions.Length; i++)
+        {
+            string option = _resolutions[i].width + " x " + _resolutions[i].height;
+            options.Add(option);
+
+            if (_resolutions[i].width == currentWidth && _resolutions[i].height == currentHeight)
+            {
+                currentResolutionIndex = i;
+            }
+        }
+
+        _resolutionDropdown.AddOptions(options);
+        _resolutionDropdown.value = currentResolutionIndex;
+        _resolutionDropdown.RefreshShownValue();
     }
 }
