@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform _player = null;
-    [SerializeField] private float _clamp = 0.05f;
+    [SerializeField] private float _clamp = 0.1f;
     [SerializeField] private float _waitTime = 0.5f;
 
     private bool _canMove = false;

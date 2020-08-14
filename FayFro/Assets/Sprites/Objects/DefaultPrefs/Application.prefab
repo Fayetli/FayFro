@@ -5289,7 +5289,7 @@ PrefabInstance:
     - target: {fileID: 62331763347461137, guid: ffe4000a03248af4fa26f0289ded1bb9,
         type: 3}
       propertyPath: _clamp
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 62331764415456289, guid: ffe4000a03248af4fa26f0289ded1bb9,
         type: 3}
