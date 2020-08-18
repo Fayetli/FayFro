@@ -14,7 +14,7 @@ public class Ladder : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<CharacterController2D>() != null)
         {
-
+            collision.gameObject.GetComponent<Animator>().SetBool("onLadder", true);
             rb = collision.gameObject.GetComponent<Rigidbody2D>();
             _startGravityScale = rb.gravityScale;
             rb.gravityScale = 0;
@@ -39,6 +39,7 @@ public class Ladder : MonoBehaviour
                 {
                     rb.velocity = new Vector2(0, 0);
                 }
+                collision.gameObject.GetComponent<Animator>().SetFloat("vSpeed", rb.velocity.y);
             }
         }
     }
@@ -48,7 +49,7 @@ public class Ladder : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<CharacterController2D>() != null)
         {
-
+            collision.gameObject.GetComponent<Animator>().SetBool("onLadder", false);
             collision.gameObject.GetComponent<Rigidbody2D>().gravityScale = _startGravityScale;
             rb = null;
         }

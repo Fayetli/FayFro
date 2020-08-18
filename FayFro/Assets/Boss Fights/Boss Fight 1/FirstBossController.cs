@@ -3,6 +3,7 @@ using UnityEngine;
 
 class FirstBossController : DefaultBoss
 {
+    [SerializeField] private float _waitTime;
 
     [SerializeField] private VerticalMover _columns = null;//have one column[0] and four transforms for this column
 
@@ -38,7 +39,8 @@ class FirstBossController : DefaultBoss
 
     private GameObject _column = null;
 
-    private int currentRepaetValue = 1;
+    private int _currentRepaetValue = 1;
+    private float _waitTimeMultiplier = 1;
     private void Start()
     {
         _column = _columns.transform.GetChild(0).gameObject;
@@ -47,11 +49,10 @@ class FirstBossController : DefaultBoss
         {
             _chapterSpires[i] = _chapteredSpires.transform.GetChild(i).gameObject.GetComponent<VerticalMover>();
         }
-        StartAttack();
     }
     public override void StartAttack()
     {
-        StartCoroutine("Attacking");
+        StartCoroutine(Attacking());
     }
 
 
@@ -78,7 +79,6 @@ class FirstBossController : DefaultBoss
         Collider2D upBox = Physics2D.OverlapCircle(checkBoxTransform.position, _circleRadius, _boxLayer);
         if (upBox != null)
         {
-            Debug.Log("upBox");
             upBox.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, _boxUpForce));
         }
     }
@@ -96,16 +96,18 @@ class FirstBossController : DefaultBoss
 
     public override void TakeDamage()
     {
-        hp--;
+        _hp--;
     }
 
     public override int GetHP()
     {
-        return hp;
+        return _hp;
     }
 
     private IEnumerator Attacking()
     {
+        yield return new WaitForSeconds(_waitTime);
+
         //_Spires down
         SpawnSymbol(_spiresDown.transform.GetChild(0).gameObject.transform, _redSymbolPref, _startBox.transform.position.y);
         SpawnSymbol(_spiresDown.transform.GetChild(1).gameObject.transform, _redSymbolPref, _startBox.transform.position.y);
@@ -122,43 +124,42 @@ class FirstBossController : DefaultBoss
 
         yield return StartCoroutine(_chapteredSpires.MovingUpCoroutine());
 
-        while (hp != 0)
+        while (_hp > 0)
         {
+            Debug.Log("Boss attacked! Hp: " + _hp);
 
-            //pause
-
-            //red symbols, pause, destory symbols
-            //spires up
-            if (hp < _bossFourthStageHPValue)
+            if (_hp < _bossFourthStageHPValue)
             {
-                currentRepaetValue += 1;
+                _currentRepaetValue += 1;
             }
 
 
-            for (int j = 0; j < currentRepaetValue; j++)
+            for (int j = 0; j < _currentRepaetValue; j++)
             {
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(1f * _waitTimeMultiplier);
 
-                //int randNonActiveChapterSpires = Random.Range(0, _chapterSpires.Length);
 
-                SpawnSymbol(_symbolsTransform[0], _redSymbolPref);
-                SpawnSymbol(_symbolsTransform[2], _redSymbolPref);
+                {
+                    SpawnSymbol(_symbolsTransform[0], _redSymbolPref);
+                    SpawnSymbol(_symbolsTransform[2], _redSymbolPref);
 
-                StartCoroutine(_spiresRight.MovingLeftCoroutine());
-                yield return StartCoroutine(_spiresLeft.MovingRightCoroutine());
-
-                SpawnSymbol(_symbolsTransform[1], _redSymbolPref);
-
-                StartCoroutine(_spiresRight.MovingRightCoroutine());
-                yield return StartCoroutine(_spiresLeft.MovingLeftCoroutine());
+                    StartCoroutine(_spiresRight.MovingLeftCoroutine());
+                    yield return StartCoroutine(_spiresLeft.MovingRightCoroutine());
 
 
 
-                yield return StartCoroutine(_spiresUp.MovingDownCoroutine());
-                yield return StartCoroutine(_spiresUp.MovingUpCoroutine());
+                    SpawnSymbol(_symbolsTransform[1], _redSymbolPref);
+
+                    StartCoroutine(_spiresRight.MovingRightCoroutine());
+                    yield return StartCoroutine(_spiresLeft.MovingLeftCoroutine());
 
 
-                if (hp <= _bossSecondStageHPValue)
+
+                    yield return StartCoroutine(_spiresUp.MovingDownCoroutine());
+                    yield return StartCoroutine(_spiresUp.MovingUpCoroutine());
+                }
+
+                if (_hp <= _bossSecondStageHPValue)
                 {
                     int[] skipSpire = { 3, 1, 2 };
                     for (int i = 0; i < skipSpire.Length; i++)
@@ -179,7 +180,7 @@ class FirstBossController : DefaultBoss
 
                         }
 
-                        yield return new WaitForSeconds(2.5f);
+                        yield return new WaitForSeconds(2.5f * _waitTimeMultiplier);
 
                         for (int l = 0; l < _chapterSpires.Length; l++)
                         {
@@ -190,33 +191,66 @@ class FirstBossController : DefaultBoss
 
                         }
 
-                        yield return new WaitForSeconds(2.5f);
+                        yield return new WaitForSeconds(2.5f * _waitTimeMultiplier);
                     }
 
 
                 }
 
-                if(hp < _bossThirdStageHPValue)
+                if (_hp < _bossThirdStageHPValue)
                 {
 
+                    StartCoroutine(_chapterSpires[1].gameObject.transform.GetChild(1).gameObject.GetComponent<VerticalMover>().MovingUpCoroutine());
 
-                    //StageThree
+
+                    SpawnSymbol(_symbolsTransform[0], _redSymbolPref);
+                    SpawnSymbol(_symbolsTransform[2], _redSymbolPref);
+
+                    StartCoroutine(_spiresRight.MovingLeftCoroutine());
+                    yield return StartCoroutine(_spiresLeft.MovingRightCoroutine());
+
+                    yield return new WaitForSeconds(1.0f);
+
+                    StartCoroutine(_chapterSpires[1].gameObject.transform.GetChild(1).gameObject.GetComponent<VerticalMover>().MovingDownCoroutine());
+                    StartCoroutine(_chapterSpires[0].gameObject.transform.GetChild(1).gameObject.GetComponent<VerticalMover>().MovingUpCoroutine());
+                    StartCoroutine(_chapterSpires[2].gameObject.transform.GetChild(1).gameObject.GetComponent<VerticalMover>().MovingUpCoroutine());
+
+
+
+                    StartCoroutine(_spiresRight.MovingRightCoroutine());
+                    StartCoroutine(_spiresLeft.MovingLeftCoroutine());
+
+                    yield return new WaitForSeconds(2.0f);
+
+                    SpawnSymbol(_symbolsTransform[1], _redSymbolPref);
+
+                    yield return new WaitForSeconds(1.0f);
+
+                    yield return StartCoroutine(_spiresUp.MovingDownCoroutine());
+                    yield return StartCoroutine(_spiresUp.MovingUpCoroutine());
+
+                    StartCoroutine(_chapterSpires[0].gameObject.transform.GetChild(1).gameObject.GetComponent<VerticalMover>().MovingDownCoroutine());
+                    StartCoroutine(_chapterSpires[2].gameObject.transform.GetChild(1).gameObject.GetComponent<VerticalMover>().MovingDownCoroutine());
+
+
+
+
 
                 }
 
 
                 _platform.GetComponent<Collider2D>().isTrigger = true;
 
-                
 
-                yield return new WaitForSeconds(1f);
+
+                yield return new WaitForSeconds(1f * _waitTimeMultiplier);
                 //yellow symbols, pause, destroy
                 //box down
 
                 GameObject box = Instantiate(_boxPref);
                 box.transform.position = new Vector2(_boxSpawnTransform.position.x, _boxSpawnTransform.position.y);
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(1f * _waitTimeMultiplier);
 
                 int randomColumnTransformNum = Random.Range(1, _columns.transform.childCount);
                 _column.gameObject.transform.position = _columns.transform.GetChild(randomColumnTransformNum).transform.position;
@@ -225,7 +259,7 @@ class FirstBossController : DefaultBoss
                     tempSymbol.transform.position = new Vector3(_column.transform.position.x, 0.65f, tempSymbol.transform.position.z);
                 }
 
-                yield return new WaitForSeconds(2.5f);
+                yield return new WaitForSeconds(2.5f * _waitTimeMultiplier);
                 //green symbols, pause, destroy
                 //column up
 
@@ -238,10 +272,11 @@ class FirstBossController : DefaultBoss
                 yield return StartCoroutine(_columns.MovingDownCoroutine());
 
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(1f * _waitTimeMultiplier);
 
                 DestroyLateBoxes();
-                
+
+                _waitTimeMultiplier -= 0.01f;
             }
 
 

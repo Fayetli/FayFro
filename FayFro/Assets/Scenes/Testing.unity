@@ -600,6 +600,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9167985b7925f6743a66beec593f287c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1543778689
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8368918055617601011, guid: 75b32283c70ca234887d97f0f164c2e2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.708249
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368918055617601011, guid: 75b32283c70ca234887d97f0f164c2e2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.2838607
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368918055617601011, guid: 75b32283c70ca234887d97f0f164c2e2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368918055617601011, guid: 75b32283c70ca234887d97f0f164c2e2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368918055617601011, guid: 75b32283c70ca234887d97f0f164c2e2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368918055617601011, guid: 75b32283c70ca234887d97f0f164c2e2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368918055617601011, guid: 75b32283c70ca234887d97f0f164c2e2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368918055617601011, guid: 75b32283c70ca234887d97f0f164c2e2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368918055617601011, guid: 75b32283c70ca234887d97f0f164c2e2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368918055617601011, guid: 75b32283c70ca234887d97f0f164c2e2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368918055617601011, guid: 75b32283c70ca234887d97f0f164c2e2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368918055617601020, guid: 75b32283c70ca234887d97f0f164c2e2,
+        type: 3}
+      propertyPath: m_Name
+      value: Firegun
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 75b32283c70ca234887d97f0f164c2e2, type: 3}
 --- !u!1001 &2944866620561069005
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> _sentences;
     private GameObject _player;
+    private ActivateObject _activateObject;
 
     void Start()
     {
@@ -19,8 +20,10 @@ public class DialogueManager : MonoBehaviour
         _player = GameObject.FindObjectOfType<CharacterController2D>().gameObject;
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, ActivateObject activateObject = null)
     {
+        _activateObject = activateObject;
+
         PlayerControllOff();
 
         _dialogueObejct.SetActive(true);
@@ -35,7 +38,6 @@ public class DialogueManager : MonoBehaviour
         }
 
         DisplayNextSentence();
-
     }
 
     private void PlayerControllOff()
@@ -79,6 +81,13 @@ public class DialogueManager : MonoBehaviour
     {
         _dialogueObejct.SetActive(false);
         PlayerControllOn();
+
+        if(_activateObject != null)
+        {
+            _activateObject.Activate();
+            _activateObject = null;
+        }
+
     }
 
     private void Update()

@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-abstract class DefaultBoss : MonoBehaviour
+abstract class DefaultBoss : ActivateObject
 {
-    [SerializeField] protected int hp;
+    [SerializeField] protected int _hp;
 
+    public override void Activate()
+    {
+        StartAttack();
+    }
 
     public abstract void StartAttack();
 
