@@ -267,7 +267,7 @@ class FirstBossController : DefaultBoss
 
                 _platform.GetComponent<Collider2D>().isTrigger = false;
 
-                TryToForceBox();
+                //TryToForceBox();
 
                 yield return StartCoroutine(_columns.MovingDownCoroutine());
 
