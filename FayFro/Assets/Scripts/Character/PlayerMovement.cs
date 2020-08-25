@@ -75,20 +75,4 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
     }
 
 
-    //private void FixedUpdate()
-    //{
-    //    _controller.Move(_horizontalMove * Time.fixedDeltaTime, _jump, _dash, _useShield, _isNotToFlip);
-
-    //    _jump = false;
-
-    //    _dash = false;
-
-    //    _isNotToFlip = false;
-
-    //}
-
-    public float GetMove()
-    {
-        return _horizontalMove / 2;
-    }
 }
