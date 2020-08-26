@@ -9,7 +9,10 @@ public class PlatformParenter : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<IChilderObject>() != null)
         {
-            collision.transform.parent = transform;
+            if(collision.gameObject.GetComponent<Box>() == null || collision.gameObject.transform.parent.GetComponent<CharacterController2D>() == null)
+            { 
+                collision.transform.parent = transform;
+            }
         }
     }
 
@@ -17,7 +20,10 @@ public class PlatformParenter : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<IChilderObject>() != null)
         {
-            collision.gameObject.GetComponent<IChilderObject>().SetStartParent();
+            if (collision.gameObject.GetComponent<Box>() == null || collision.gameObject.transform.parent.GetComponent<CharacterController2D>() == null)
+            {
+                collision.gameObject.GetComponent<IChilderObject>().SetStartParent();
+            }
         }
     }
 }

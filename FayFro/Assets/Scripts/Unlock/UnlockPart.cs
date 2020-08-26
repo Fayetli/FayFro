@@ -8,13 +8,13 @@ public class UnlockPart : MonoBehaviour
     private bool IsUnlock;
     void Start()
     {
-        _controller = GameObject.FindGameObjectWithTag("UnlockController").gameObject.GetComponent<UnlockController>();
+        _controller = GameObject.FindObjectOfType<UnlockController>();
         IsUnlock = false;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.name == "Player")
+        if (collision.gameObject.GetComponent<CharacterController2D>() != null)
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {

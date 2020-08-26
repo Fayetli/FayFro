@@ -65,6 +65,114 @@ TextureImporter:
   - first:
       213: 4135466196936834004
     second: ForestPalette_20
+  - first:
+      213: 380386041869384727
+    second: ForestPalette_0
+  - first:
+      213: -2417637890089445557
+    second: ForestPalette_1
+  - first:
+      213: 4940554768198615017
+    second: ForestPalette_2
+  - first:
+      213: -279477068794998495
+    second: ForestPalette_3
+  - first:
+      213: 725841903735820714
+    second: ForestPalette_4
+  - first:
+      213: -8834051600643828691
+    second: ForestPalette_5
+  - first:
+      213: 1942437405015049187
+    second: ForestPalette_6
+  - first:
+      213: -5586335883146831746
+    second: ForestPalette_7
+  - first:
+      213: -8049801053277044637
+    second: ForestPalette_8
+  - first:
+      213: -8947525457376047347
+    second: ForestPalette_9
+  - first:
+      213: -6979615172474787432
+    second: ForestPalette_10
+  - first:
+      213: -3041567266866676160
+    second: ForestPalette_11
+  - first:
+      213: -2403625486560953348
+    second: ForestPalette_12
+  - first:
+      213: -6651541369080024238
+    second: ForestPalette_13
+  - first:
+      213: -7884714678465964332
+    second: ForestPalette_14
+  - first:
+      213: -4457183789655455284
+    second: ForestPalette_15
+  - first:
+      213: 2915305971951907810
+    second: ForestPalette_16
+  - first:
+      213: -6292061411625715809
+    second: ForestPalette_17
+  - first:
+      213: -2441630605798359259
+    second: ForestPalette_18
+  - first:
+      213: 1001708803028560238
+    second: ForestPalette_19
+  - first:
+      213: -3226268730972149910
+    second: ForestPalette_20
+  - first:
+      213: 8100307740237453957
+    second: ForestPalette_21
+  - first:
+      213: 2075167716799164708
+    second: ForestPalette_22
+  - first:
+      213: -1418826425254208704
+    second: ForestPalette_23
+  - first:
+      213: -5240738557224170387
+    second: ForestPalette_24
+  - first:
+      213: -1178592331529691351
+    second: ForestPalette_25
+  - first:
+      213: 4968062734244225630
+    second: ForestPalette_26
+  - first:
+      213: 5668489340757600719
+    second: ForestPalette_27
+  - first:
+      213: 4914170233557538667
+    second: ForestPalette_21
+  - first:
+      213: -8172783680869601211
+    second: ForestPalette_22
+  - first:
+      213: 8262029667777464558
+    second: ForestPalette_23
+  - first:
+      213: 7870112438978801845
+    second: ForestPalette_24
+  - first:
+      213: -7202532971478486522
+    second: ForestPalette_25
+  - first:
+      213: -1925651316007936125
+    second: ForestPalette_26
+  - first:
+      213: -5695987320895856602
+    second: ForestPalette_27
+  - first:
+      213: 2633012347481444002
+    second: ForestPalette_28
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -212,8 +320,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72d877e2ea042c9c0800000000000000
-      internalID: -3908490409756095193
+      spriteID: 71c3427f617674500800000000000000
+      internalID: 380386041869384727
       vertices: []
       indices: 
       edges: []
@@ -233,8 +341,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f7e541d04dc205e0800000000000000
-      internalID: -1944766410798012427
+      spriteID: b4791bde523d27ed0800000000000000
+      internalID: -2417637890089445557
       vertices: []
       indices: 
       edges: []
@@ -254,8 +362,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e00f7b079c197cf70800000000000000
-      internalID: 9207488257547825166
+      spriteID: 9ef37dfa260609440800000000000000
+      internalID: 4940554768198615017
       vertices: []
       indices: 
       edges: []
@@ -275,8 +383,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 988b9b0b9ffdc6f40800000000000000
-      internalID: 5723195489985869961
+      spriteID: 1215b9f26191f1cf0800000000000000
+      internalID: -279477068794998495
       vertices: []
       indices: 
       edges: []
@@ -296,8 +404,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03c69445b3edb69d0800000000000000
-      internalID: -2779883998572614608
+      spriteID: aa15443ad55b21a00800000000000000
+      internalID: 725841903735820714
       vertices: []
       indices: 
       edges: []
@@ -317,8 +425,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9076dc2c27fe98800800000000000000
-      internalID: 615286100286334729
+      spriteID: d245720cfd4276580800000000000000
+      internalID: -8834051600643828691
       vertices: []
       indices: 
       edges: []
@@ -338,8 +446,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcc4f14dc99a66080800000000000000
-      internalID: -9194475098191475509
+      spriteID: 3e38a54478ce4fa10800000000000000
+      internalID: 1942437405015049187
       vertices: []
       indices: 
       edges: []
@@ -359,8 +467,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79a14151a7915f200800000000000000
-      internalID: 213104569500310167
+      spriteID: e78d309ac195972b0800000000000000
+      internalID: -5586335883146831746
       vertices: []
       indices: 
       edges: []
@@ -380,8 +488,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ddcfa3897b99bf30800000000000000
-      internalID: 4591872241283616213
+      spriteID: 3604bda779c594090800000000000000
+      internalID: -8049801053277044637
       vertices: []
       indices: 
       edges: []
@@ -401,8 +509,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fd0941c3213f5240800000000000000
-      internalID: 4782595358927162870
+      spriteID: d0f0656a00104d380800000000000000
+      internalID: -8947525457376047347
       vertices: []
       indices: 
       edges: []
@@ -422,8 +530,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51ac447adfc0a9580800000000000000
-      internalID: -8819722636679132651
+      spriteID: 899a6bfeafc632f90800000000000000
+      internalID: -6979615172474787432
       vertices: []
       indices: 
       edges: []
@@ -443,8 +551,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f382e2dc16d858b0800000000000000
-      internalID: -5163141553494785034
+      spriteID: 04eb4f98fae2ac5d0800000000000000
+      internalID: -3041567266866676160
       vertices: []
       indices: 
       edges: []
@@ -464,8 +572,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04b7aabd5ff244560800000000000000
-      internalID: 7297010029245922112
+      spriteID: cfb757cda5b94aed0800000000000000
+      internalID: -2403625486560953348
       vertices: []
       indices: 
       edges: []
@@ -485,8 +593,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42c7ee1b8ffeb11a0800000000000000
-      internalID: -6837607757815841756
+      spriteID: 2537b2fbd5af0b3a0800000000000000
+      internalID: -6651541369080024238
       vertices: []
       indices: 
       edges: []
@@ -506,8 +614,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af94df88694b1df20800000000000000
-      internalID: 3445733748551535098
+      spriteID: 4d65ab266cdd39290800000000000000
+      internalID: -7884714678465964332
       vertices: []
       indices: 
       edges: []
@@ -527,8 +635,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a8bee6246a1b6390800000000000000
-      internalID: -7824130910173874012
+      spriteID: cc905fe55f6e422c0800000000000000
+      internalID: -4457183789655455284
       vertices: []
       indices: 
       edges: []
@@ -548,8 +656,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2f7f4134d397e900800000000000000
-      internalID: 713701605531156269
+      spriteID: 2e3b4c5e55f357820800000000000000
+      internalID: 2915305971951907810
       vertices: []
       indices: 
       edges: []
@@ -569,8 +677,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20099482e40a89290800000000000000
-      internalID: -7883374890168250366
+      spriteID: f973b1f9b7b1ea8a0800000000000000
+      internalID: -6292061411625715809
       vertices: []
       indices: 
       edges: []
@@ -590,8 +698,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a5e65d4c41bb70c0800000000000000
-      internalID: -4576869655018805851
+      spriteID: 52fbaac76e59d1ed0800000000000000
+      internalID: -2441630605798359259
       vertices: []
       indices: 
       edges: []
@@ -611,14 +719,182 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ff786e1b678db150800000000000000
-      internalID: 5890012781811892213
+      spriteID: e6926ec59d8c6ed00800000000000000
+      internalID: 1001708803028560238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
       name: ForestPalette_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 440
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a676474ceadf933d0800000000000000
+      internalID: -3226268730972149910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForestPalette_21
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 440
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b67def08ac3a23440800000000000000
+      internalID: 4914170233557538667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForestPalette_22
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 424
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54078a32b80749e80800000000000000
+      internalID: -8172783680869601211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForestPalette_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 408
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee84d9f6530a8a270800000000000000
+      internalID: 8262029667777464558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForestPalette_24
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 408
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b0f6bbc091483d60800000000000000
+      internalID: 7870112438978801845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForestPalette_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 392
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6027cff4c667b0c90800000000000000
+      internalID: -7202532971478486522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForestPalette_26
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 392
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38f5514a456b645e0800000000000000
+      internalID: -1925651316007936125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForestPalette_27
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 392
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 620afd4d5b9c3f0b0800000000000000
+      internalID: -5695987320895856602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForestPalette_28
       rect:
         serializedVersion: 2
         x: 320
@@ -632,8 +908,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4db3e017890246930800000000000000
-      internalID: 4135466196936834004
+      spriteID: 2ae49dc97c65a8420800000000000000
+      internalID: 2633012347481444002
       vertices: []
       indices: 
       edges: []
