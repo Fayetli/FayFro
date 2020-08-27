@@ -18,12 +18,18 @@ public class RestartLevel : MonoBehaviour
     {
         _scoreOnStart = Score.get_value();
     }
-    public void Restart()
+    public IEnumerator Restart()
     {
+        float fadeTime = GameObject.FindObjectOfType<Fading>().BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Score.set_value(_scoreOnStart);
     }
 
+    public void StartRestart()
+    {
+        StartCoroutine(Restart());
+    }
 
 
     private void Update()
@@ -36,7 +42,7 @@ public class RestartLevel : MonoBehaviour
             float deltaTime = Time.time - _touchStartTime;
             if(deltaTime > _timeToReset)
             {
-                Restart();
+                StartCoroutine(Restart());
             }
         }
     }

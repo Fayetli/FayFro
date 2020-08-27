@@ -1,30 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UnlockController : MonoBehaviour
 {
-    
+
     private int _currentUnlockPartCount;
-    private int _allUnlockPartCount;
+    private int _allUnlockPartCount = 0;
+
+    public UnityEvent OnUnlock;
 
     void Start()
     {
-        GameObject[] unlockParts = GameObject.FindGameObjectsWithTag("UnlockPart");
-        _allUnlockPartCount = unlockParts.Length;
-        _currentUnlockPartCount = 0;
+        _allUnlockPartCount = GameObject.FindObjectsOfType<UnlockPart>().Length;
+
+        if(OnUnlock == null)
+        {
+            OnUnlock = new UnityEvent();
+        }
     }
 
     public void AddCurrentUnlockPartCount()
     {
-        if(_currentUnlockPartCount == _allUnlockPartCount - 1)
+        _currentUnlockPartCount += 1;
+
+        if (_currentUnlockPartCount == _allUnlockPartCount)
         {
             this.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
             this.GetComponent<Animator>().SetBool("isUnlock", true);
-        }
-        else
-        {
-            _currentUnlockPartCount += 1;
+            OnUnlock.Invoke();
         }
     }
 }

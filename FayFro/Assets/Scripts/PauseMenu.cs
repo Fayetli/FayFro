@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.Events;
 public class PauseMenu : MonoBehaviour
 {
 
@@ -17,17 +18,21 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private AudioMixerGroup _masterVolume;
     private float _masterVolumeValue;
 
+    public UnityEvent OnPause;
+    public UnityEvent OffPause;
 
 
     public void OnMenu()
     {
         _pausePanel.SetActive(true);
+        OnPause.Invoke();
         Time.timeScale = 0;
     }
 
     public void OffMenu()
     {
         _pausePanel.SetActive(false);
+        OffPause.Invoke();
         Time.timeScale = 1;
     }
 
@@ -57,6 +62,15 @@ public class PauseMenu : MonoBehaviour
         if (gameObject.activeInHierarchy)
         {
             OffMenu();
+        }
+
+        if(OnPause == null)
+        {
+            OnPause = new UnityEvent();
+        }
+        if (OnPause == null)
+        {
+            OffPause = new UnityEvent();
         }
 
         float value;
