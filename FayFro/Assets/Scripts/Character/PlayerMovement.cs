@@ -74,5 +74,11 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
 
     }
 
+    private void OnDisable()
+    {
+        _controller.Move(0.0f, false, false, false);
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+    }
+
 
 }

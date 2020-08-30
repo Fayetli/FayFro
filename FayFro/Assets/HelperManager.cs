@@ -22,6 +22,14 @@ public class HelperManager : MonoBehaviour
         }
     }
 
-
+    public void Off()
+    {
+        if (_activateObject != null)
+        {
+            _activateObject.SetActive(false);
+            _activateObject = null;
+        }
+        Destroy(this);
+    }
 
 }

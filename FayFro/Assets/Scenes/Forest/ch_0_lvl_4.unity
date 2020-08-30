@@ -4331,7 +4331,7 @@ PrefabInstance:
     - target: {fileID: 4117293662885487644, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.15
+      value: 6.3
       objectReference: {fileID: 0}
     - target: {fileID: 4117293662885487644, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
@@ -8643,6 +8643,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Slider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7709189716714221814, guid: a87271d71b82632459b3f77bd8b83cd3,
+        type: 3}
+      propertyPath: m_MaxValue
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7709189716714221814, guid: a87271d71b82632459b3f77bd8b83cd3,
+        type: 3}
+      propertyPath: m_Value
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7709189716714221815, guid: a87271d71b82632459b3f77bd8b83cd3,
         type: 3}

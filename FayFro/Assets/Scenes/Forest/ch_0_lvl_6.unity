@@ -9320,12 +9320,12 @@ PrefabInstance:
     - target: {fileID: 4117293662885487644, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.08
+      value: 1.84
       objectReference: {fileID: 0}
     - target: {fileID: 4117293662885487644, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.6
+      value: 6.37
       objectReference: {fileID: 0}
     - target: {fileID: 4117293662885487644, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
@@ -13738,6 +13738,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slider
       objectReference: {fileID: 0}
+    - target: {fileID: 7709189716714221814, guid: a87271d71b82632459b3f77bd8b83cd3,
+        type: 3}
+      propertyPath: m_MaxValue
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7709189716714221814, guid: a87271d71b82632459b3f77bd8b83cd3,
+        type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7709189716714221815, guid: a87271d71b82632459b3f77bd8b83cd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14401,7 +14411,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1953808908769288345, guid: 82c85f8f68a823540918c19dadaa72d1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 82c85f8f68a823540918c19dadaa72d1, type: 3}
 --- !u!4 &1882504399 stripped
 Transform:

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -14,10 +15,17 @@ public class DialogueManager : MonoBehaviour
     private GameObject _player;
     private ActivateObject _activateObject;
 
+    public UnityEvent OnDialogueEnd;
+
     void Start()
     {
         _sentences = new Queue<string>();
         _player = GameObject.FindObjectOfType<CharacterController2D>().gameObject;
+
+        if(OnDialogueEnd == null)
+        {
+            OnDialogueEnd = new UnityEvent();
+        }
     }
 
     public void StartDialogue(Dialogue dialogue, ActivateObject activateObject = null)
@@ -49,6 +57,7 @@ public class DialogueManager : MonoBehaviour
 
     private void PlayerControllOn()
     {
+        _player.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         _player.GetComponent<CharacterController2D>().enabled = true;
         _player.GetComponent<PlayerMovement>().enabled = true;
         _player.GetComponent<BoxPlayerMover>().enabled = true;
@@ -79,6 +88,7 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
+        OnDialogueEnd.Invoke();
         _dialogueObejct.SetActive(false);
         PlayerControllOn();
 

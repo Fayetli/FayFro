@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Transform _player = null;
+    [SerializeField] private Transform _target = null;
     [SerializeField] private float _clamp = 0.1f;
     [SerializeField] private float _waitTime = 0.5f;
 
@@ -71,8 +71,8 @@ public class CameraController : MonoBehaviour
         {
             return;
         }
-        float moveX = _player.transform.position.x - gameObject.transform.position.x;
-        float moveY = _player.transform.position.y - gameObject.transform.position.y;
+        float moveX = _target.transform.position.x - gameObject.transform.position.x;
+        float moveY = _target.transform.position.y - gameObject.transform.position.y;
 
 
         if (_leftLimiter == true && moveX < 0)
@@ -113,5 +113,11 @@ public class CameraController : MonoBehaviour
         float positionY = gameObject.transform.position.y + moveY;
 
         gameObject.transform.position = new Vector3(positionX, positionY, _z);
+    }
+
+
+    public void ChangeTarget(Transform target)
+    {
+        _target = target;
     }
 }
