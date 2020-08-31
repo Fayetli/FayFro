@@ -11,7 +11,6 @@ public class TimelineController : MonoBehaviour
     private GameObject _player;
     private void Awake()
     {
-        Debug.Log("Off");
         if(OnAwake == null)
         {
             OnAwake = new UnityEvent();
@@ -34,7 +33,6 @@ public class TimelineController : MonoBehaviour
 
     private void OnDisable()
     {
-        Debug.Log("On");
         OnSleep.Invoke();
 
         if (_player == null || GameObject.FindObjectOfType<DialogueBox>() != null)

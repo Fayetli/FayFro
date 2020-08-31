@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
 
     private float _horizontalMove = 0f;
 
-    private float _runSpeed = 23f;
+    private float _runSpeed = 18f;
 
     private bool _jump = false;
 
