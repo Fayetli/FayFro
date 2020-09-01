@@ -42,6 +42,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Forest/ch_0_lvl_8.unity
     guid: fe9e4564b7e788b408eb6b2855dee3bc
   - enabled: 1
+    path: Assets/Scenes/Forest/ch_0_lvl_9.unity
+    guid: 92ec45fd3d8d00042850a0377ddc3df7
+  - enabled: 1
+    path: Assets/Scenes/Forest/ch_0_lvl_10.unity
+    guid: 58e9648f1b8bf794698cb7f3e55c7299
+  - enabled: 1
+    path: Assets/Scenes/Forest/ch_0_lvl_11.unity
+    guid: d62d7a96282154443b89f66175bf8361
+  - enabled: 1
     path: Assets/Scenes/Temple 2.0/Chapter 1/ch_1_lvl_1.unity
     guid: ee3cc550399c76a4aae1241b3070afd4
   - enabled: 1
