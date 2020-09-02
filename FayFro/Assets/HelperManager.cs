@@ -10,7 +10,10 @@ public class HelperManager : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<CharacterController2D>() != null)
         {
-            _activateObject.SetActive(true);
+            if(_activateObject != null)
+            {
+                _activateObject.SetActive(true);
+            }
         }
     }
 
@@ -18,7 +21,11 @@ public class HelperManager : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<CharacterController2D>() != null)
         {
-            _activateObject.SetActive(false);
+            if(_activateObject != null)
+            {
+                _activateObject.SetActive(false);
+
+            }
         }
     }
 

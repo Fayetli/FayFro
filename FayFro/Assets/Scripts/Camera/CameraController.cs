@@ -15,6 +15,7 @@ public class CameraController : MonoBehaviour
     private bool _bottomLimiter = false;
     private bool _upperLimiter = false;
 
+    const float _clampMax = 0.08f;
 
     public enum CameraDirection
     {
@@ -98,13 +99,13 @@ public class CameraController : MonoBehaviour
         moveX *= _clamp;
         moveY *= _clamp;
         
-        if(moveX > 0.04f)
+        if(moveX > _clampMax)
         {
-            moveX = 0.04f;
+            moveX = _clampMax;
         }
-        else if(moveX < -0.04f)
+        else if(moveX < -_clampMax)
         {
-            moveX = -0.04f;
+            moveX = -_clampMax;
         }
 
         
