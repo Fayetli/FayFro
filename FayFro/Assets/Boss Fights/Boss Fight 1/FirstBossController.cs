@@ -52,6 +52,7 @@ class FirstBossController : DefaultBoss
     }
     public override void StartAttack()
     {
+        Debug.Log("Start attack");
         StartCoroutine(Attacking());
     }
 
@@ -59,6 +60,61 @@ class FirstBossController : DefaultBoss
 
     public override void FinishAttack()
     {
+        StartCoroutine(Finigshing());
+    }
+
+    [SerializeField] private Sprite _tpWallSprite;
+    [SerializeField] private GameObject _helpMassege;
+    [SerializeField] private GameObject _OffTrigger;
+    [SerializeField] private Animator _columnToNextLevel;
+    private IEnumerator Finigshing()
+    {
+        SpawnSymbol(_symbolsTransform[0], _redSymbolPref);
+        SpawnSymbol(_symbolsTransform[2], _redSymbolPref);
+        StartCoroutine(_chapterSpires[0].MovingUpCoroutine());
+        yield return StartCoroutine(_chapterSpires[2].MovingUpCoroutine());
+
+        _spiresDown.ChangeDistance(5);
+        yield return StartCoroutine(_spiresDown.MovingUpCoroutine());
+        yield return StartCoroutine(_chapterSpires[2].MovingDownCoroutine());
+
+        _spiresDown.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().sprite = _tpWallSprite;
+
+        _spiresUp.ChangeDistance(4);
+        yield return StartCoroutine(_spiresUp.MovingDownCoroutine());
+        _OffTrigger.SetActive(true);
+        _helpMassege.SetActive(true);
+
+        _columnToNextLevel.SetBool("isUnlock", true);
+    }
+
+    public void DeactivateAll()
+    {
+        Debug.Log("Deactivate");
+
+        StartCoroutine(DeactivatingAll());
+    }
+
+    private IEnumerator DeactivatingAll()
+    {
+        _helpMassege.SetActive(false);
+        _spiresUp.ChangeDistance(2);
+        yield return StartCoroutine(_spiresUp.MovingDownCoroutine());
+
+        _spiresUp.ChangeDistance(6);
+        StartCoroutine(_spiresUp.MovingUpCoroutine());
+        StartCoroutine(_chapterSpires[0].MovingDownCoroutine());
+        yield return StartCoroutine(_spiresDown.MovingDownCoroutine());
+
+        _chapterSpires[0].ChangeDistance(1);
+        foreach (VerticalMover chapterSpire in _chapterSpires)
+        {
+            StartCoroutine(chapterSpire.MovingDownCoroutine());
+        }
+
+        yield return StartCoroutine(_spiresDown.MovingDownCoroutine());
+
+
 
     }
 
@@ -68,6 +124,14 @@ class FirstBossController : DefaultBoss
         foreach (var box in lateBoxes)
         {
             Destroy(box);
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            _hp = 0;
         }
     }
 
@@ -285,7 +349,7 @@ class FirstBossController : DefaultBoss
         }
 
 
-
+        FinishAttack();
 
     }
 }

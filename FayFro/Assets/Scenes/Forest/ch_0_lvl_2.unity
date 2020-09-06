@@ -4392,6 +4392,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 6.99
       objectReference: {fileID: 0}
+    - target: {fileID: 5696129764190715307, guid: a793d717e54157f4c8f72e16d646e1d4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.58
+      objectReference: {fileID: 0}
     - target: {fileID: 6463607565047126172, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
       propertyPath: m_Tiles.Array.size

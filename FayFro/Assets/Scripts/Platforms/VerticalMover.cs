@@ -13,6 +13,11 @@ public class VerticalMover : LinearMover
         }
     }
 
+    public void ChangeDistance(float distance)
+    {
+        _distance = distance;
+    }
+
     public override void ActivateMove()
     {
         StartCoroutine(VerticalMoveObject());

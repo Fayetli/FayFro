@@ -75,6 +75,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Temple 2.0/Chapter 1/ch_1_lvl_8.unity
     guid: 466724dde132b9745a57dc7fd6831da2
   - enabled: 1
+    path: Assets/Scenes/Temple 2.0/Chapter 1/ch_1_lvl_9.unity
+    guid: a0c54d9c174f1fb41934cecc2e67dfb4
+  - enabled: 1
+    path: Assets/Scenes/BossFight_1.unity
+    guid: feb7233e4d3e5cc46b9bd9e5a5c30ec8
+  - enabled: 1
     path: Assets/Scenes/Temple 2.0/Chapter 2/ch_2_lvl_1.unity
     guid: 103e6285c62d76b41b485e65a24ded09
   - enabled: 1
