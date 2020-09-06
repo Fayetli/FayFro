@@ -60,15 +60,33 @@ class FirstBossController : DefaultBoss
 
     public override void FinishAttack()
     {
-        StartCoroutine(Finigshing());
+        StartCoroutine(Finishing());
     }
 
     [SerializeField] private Sprite _tpWallSprite;
     [SerializeField] private GameObject _helpMassege;
     [SerializeField] private GameObject _OffTrigger;
     [SerializeField] private Animator _columnToNextLevel;
-    private IEnumerator Finigshing()
+    [SerializeField] private GameObject _ravenWalkingTimeline;
+
+    private IEnumerator RavenEscaping()
     {
+        GameObject raven = GameObject.FindObjectOfType<Raven>().gameObject;
+        _ravenWalkingTimeline.SetActive(false);
+        raven.GetComponent<Animator>().SetTrigger("FlyUp");
+        for (int i = 0; i < 100; i++)
+        {
+            raven.transform.position = raven.transform.position + new Vector3(0.025f, 0.025f);
+
+            yield return null;
+
+        }
+    }
+
+    private IEnumerator Finishing()
+    {
+        StartCoroutine(RavenEscaping());
+        
         SpawnSymbol(_symbolsTransform[0], _redSymbolPref);
         SpawnSymbol(_symbolsTransform[2], _redSymbolPref);
         StartCoroutine(_chapterSpires[0].MovingUpCoroutine());
