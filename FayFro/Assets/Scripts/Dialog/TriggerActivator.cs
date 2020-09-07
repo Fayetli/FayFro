@@ -9,6 +9,7 @@ public class TriggerActivator : MonoBehaviour
     [SerializeField] private OffAfterActivate _offMode = OffAfterActivate.Object;
     [SerializeField] private string _layer;
     public UnityEvent OnActivate;
+    public UnityEvent OnDeactivate;
 
     enum ActivateСondition
     {
@@ -20,7 +21,8 @@ public class TriggerActivator : MonoBehaviour
     {
         Object,
         ColliderComponent,
-        Activator
+        Activator,
+        None
     }
 
 
@@ -31,6 +33,10 @@ public class TriggerActivator : MonoBehaviour
         {
             OnActivate = new UnityEvent();
         }
+        if(OnDeactivate == null)
+        {
+            OnDeactivate = new UnityEvent();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,7 +44,7 @@ public class TriggerActivator : MonoBehaviour
         if (_condition != ActivateСondition.OnTriggerEnter)
             return;
 
-        TryToInvokeEvent(collision);
+        TryToInvokeEvent(collision, OnActivate);
 
     }
 
@@ -46,23 +52,30 @@ public class TriggerActivator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            TryToInvokeEvent(collision);
+            TryToInvokeEvent(collision, OnActivate);
         }
 
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        TryToInvokeEvent(collision, OnDeactivate);
+    }
 
-    private void TryToInvokeEvent(Collider2D collision)
+
+    private void TryToInvokeEvent(Collider2D collision, UnityEvent currentEvent)
     {
         if (_layer == "" || LayerMask.NameToLayer(_layer) == collision.gameObject.layer)
         {
-            InvokeEvent();
+            InvokeEvent(currentEvent);
         }
     }
 
-    private void InvokeEvent()
+
+
+    private void InvokeEvent(UnityEvent currentEvent)
     {
-        OnActivate.Invoke();
+        currentEvent.Invoke();
 
         switch (_offMode)
         {

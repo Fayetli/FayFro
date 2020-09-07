@@ -82,11 +82,14 @@ class FirstBossController : DefaultBoss
 
         }
     }
+    [SerializeField] private Animator _petalAnim;
 
     private IEnumerator Finishing()
     {
-        StartCoroutine(RavenEscaping());
-        
+        yield return StartCoroutine(RavenEscaping());
+        _petalAnim.SetTrigger("down");
+
+
         SpawnSymbol(_symbolsTransform[0], _redSymbolPref);
         SpawnSymbol(_symbolsTransform[2], _redSymbolPref);
         StartCoroutine(_chapterSpires[0].MovingUpCoroutine());
@@ -147,7 +150,7 @@ class FirstBossController : DefaultBoss
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O) && Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.LeftControl))
         {
             _hp = 0;
         }

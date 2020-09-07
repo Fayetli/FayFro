@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossAttackElement : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class BossAttackElement : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<CharacterController2D>() != null)
         {
-            Debug.Log("Take damage");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         else if(collision.gameObject.GetComponent<Box>() != null)
         {

@@ -274,6 +274,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!58 &124057746
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -428,7 +431,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300621298}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.27, y: -1.97, z: 0}
+  m_LocalPosition: {x: 8.27, y: -2.025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1707171106}
@@ -858,6 +861,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &420901307
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26319,6 +26325,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &884378969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32478,6 +32487,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2126699585
 GameObject:
   m_ObjectHideFlags: 0
