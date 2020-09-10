@@ -23,6 +23,7 @@ public class VerticalBouncer : MonoBehaviour
 
         if (_onBouncer)
         {
+            _bounceObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             gameObject.GetComponent<Animator>().SetBool("push", true);
             Rigidbody2D rigidBody = _bounceObject.GetComponent<Rigidbody2D>();
             rigidBody.AddForce(new Vector2(0f, _bounceForce * rigidBody.mass));

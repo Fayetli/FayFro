@@ -40,29 +40,47 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
         gameObject.transform.parent = _startParent;
     }
 
-    private void Update()
+    public void StopMove()
     {
-        _horizontalMove = Input.GetAxis("Horizontal");
+        StopCoroutine(TrackingKeys());
+        _horizontalMove = 0f;
+        _jump = _dash = _useShield = false;
+        _controller.Move(_horizontalMove, _jump, _dash, _useShield);
+    }
 
-        _horizontalMove *= _runSpeed;
+    public void ContinueMove()
+    {
+        StartCoroutine(TrackingKeys());
+    }
 
-        if (Input.GetButtonDown("Jump"))
+    IEnumerator TrackingKeys() {
+
+        while (true)
         {
-            _jump = true;
-        }
-        if (Input.GetKeyDown(KeyCode.X) && _HaveTP)
-        {
-            _dash = true;
-        }
-        if (Input.GetKeyDown(KeyCode.V) && _HaveShield)
-        {
-            _useShield = true;
-        }
-        else if (Input.GetKeyUp(KeyCode.V) && _HaveShield)
-        {
-            _useShield = false;
+            _horizontalMove = Input.GetAxis("Horizontal");
+
+            _horizontalMove *= _runSpeed;
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                _jump = true;
+            }
+            if (Input.GetKeyDown(KeyCode.X) && _HaveTP)
+            {
+                _dash = true;
+            }
+            if (Input.GetKeyDown(KeyCode.V) && _HaveShield)
+            {
+                _useShield = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.V) && _HaveShield)
+            {
+                _useShield = false;
+            }
+            yield return null;
         }
     }
+
     void FixedUpdate()
     {
 
@@ -76,7 +94,6 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
 
     private void OnDisable()
     {
-        _controller.Move(0.0f, false, false, false);
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
     }
 
