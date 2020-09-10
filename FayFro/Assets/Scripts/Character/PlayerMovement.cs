@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
 {
     private CharacterController2D _controller;
 
+    private BoxPlayerMover _boxMover;
+
     [SerializeField] private bool _HaveTP = false;
 
     [SerializeField] private bool _HaveShield = false;
@@ -25,14 +27,20 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
     private bool _useShield = false;
 
     Transform _startParent;
-    private void Start()
+    private void Awake()
     {
         _controller = GetComponent<CharacterController2D>();
+        _boxMover = GetComponent<BoxPlayerMover>();
         _startParent = gameObject.transform.parent;
         if (_HaveDoubleJump)
         {
             _controller.SetHaveDoubleJumpTrue();
         }
+    }
+
+    private void Start()
+    {
+        ContinueMove();
     }
 
     public void SetStartParent()
@@ -42,7 +50,9 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
 
     public void StopMove()
     {
-        StopCoroutine(TrackingKeys());
+        Debug.Log("Stop moving");
+        _boxMover.StopDrag();
+        StopAllCoroutines();
         _horizontalMove = 0f;
         _jump = _dash = _useShield = false;
         _controller.Move(_horizontalMove, _jump, _dash, _useShield);
@@ -50,11 +60,14 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
 
     public void ContinueMove()
     {
+        Debug.Log("Start moving");
+        _boxMover.ContinueDrag();
         StartCoroutine(TrackingKeys());
+        StartCoroutine(InvokingMove());
     }
 
     IEnumerator TrackingKeys() {
-
+        Debug.Log("Start tracking");
         while (true)
         {
             _horizontalMove = Input.GetAxis("Horizontal");
@@ -81,15 +94,19 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
         }
     }
 
-    void FixedUpdate()
+    IEnumerator InvokingMove()
     {
+        Debug.Log("Start Invoking");
+        while (true)
+        {
+            _controller.Move(_horizontalMove * Time.fixedDeltaTime, _jump, _dash, _useShield);
 
-        _controller.Move(_horizontalMove * Time.fixedDeltaTime, _jump, _dash, _useShield);
+            _jump = false;
 
-        _jump = false;
+            _dash = false;
 
-        _dash = false;
-
+            yield return new WaitForFixedUpdate();
+        }
     }
 
     private void OnDisable()

@@ -16,6 +16,8 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private Transform _tpRaycaster = null;
     [SerializeField] private GameObject _shield = null;
 
+    [SerializeField] private ParticleSystem _particleSystem;
+
     private Animator animator;
     [SerializeField] private GameObject ch_destroy_on_tp;
 
@@ -37,17 +39,21 @@ public class CharacterController2D : MonoBehaviour
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
-        _shield.SetActive(false);
-        _boxMover = gameObject.GetComponent<BoxPlayerMover>();
+
     }
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
+        _shield.SetActive(false);
+
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
 
         if (OnLandEvent == null)
             OnLandEvent = new UnityEvent();
+
+        _boxMover = gameObject.GetComponent<BoxPlayerMover>();
+
     }
 
     private void FixedUpdate()
@@ -61,7 +67,10 @@ public class CharacterController2D : MonoBehaviour
         if (m_Grounded)
         {
             if (!wasGrounded)
+            {
+                CreateDust();
                 OnLandEvent.Invoke();
+            }
 
             if (_haveDoubleJump)
             {
@@ -163,6 +172,10 @@ public class CharacterController2D : MonoBehaviour
         //only control the player if grounded or airControl is turned on
         if (m_Grounded || m_AirControl)
         {
+            if (m_Grounded && Mathf.Abs(move) > 0)
+            {
+                CreateDust();
+            }
             // Move the character by finding the target velocity
             Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
             // And then smoothing it out and applying it to the character
@@ -188,12 +201,13 @@ public class CharacterController2D : MonoBehaviour
         // If the player should jump...
         if (m_Grounded && jump)
         {
+            CreateDust();
             // Add a vertical force to the player.
             m_Grounded = false;
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-            
+
         }
-        else if(jump && _jumpOnAir)
+        else if (jump && _jumpOnAir)
         {
             m_Rigidbody2D.velocity = new Vector2(0, 0);
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
@@ -206,10 +220,19 @@ public class CharacterController2D : MonoBehaviour
     {
         m_FacingRight = !m_FacingRight;
         transform.Rotate(0f, 180f, 0f);
+        if (m_Grounded)
+        {
+            CreateDust();
+        }
     }
 
     public void CameraFlip()
     {
         m_FacingRight = !m_FacingRight;
+    }
+
+    private void CreateDust()
+    {
+        _particleSystem.Play();
     }
 }

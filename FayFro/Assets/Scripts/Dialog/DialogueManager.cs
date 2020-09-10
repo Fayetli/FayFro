@@ -17,12 +17,14 @@ public class DialogueManager : MonoBehaviour
 
     public UnityEvent OnDialogueEnd;
 
+    private bool _dialoging = false;
+
     void Start()
     {
         _sentences = new Queue<string>();
         _player = GameObject.FindObjectOfType<CharacterController2D>().gameObject;
 
-        if(OnDialogueEnd == null)
+        if (OnDialogueEnd == null)
         {
             OnDialogueEnd = new UnityEvent();
         }
@@ -40,7 +42,9 @@ public class DialogueManager : MonoBehaviour
 
         _sentences.Clear();
 
-        foreach(string sentence in dialogue._sentences)
+        _dialoging = true;
+
+        foreach (string sentence in dialogue._sentences)
         {
             _sentences.Enqueue(sentence);
         }
@@ -50,22 +54,19 @@ public class DialogueManager : MonoBehaviour
 
     private void PlayerControllOff()
     {
-        _player.GetComponent<CharacterController2D>().enabled = false;
-        _player.GetComponent<PlayerMovement>().enabled = false;
-        _player.GetComponent<BoxPlayerMover>().enabled = false;
+        _player.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        _player.GetComponent<PlayerMovement>().StopMove();
     }
 
     private void PlayerControllOn()
     {
         _player.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        _player.GetComponent<CharacterController2D>().enabled = true;
-        _player.GetComponent<PlayerMovement>().enabled = true;
-        _player.GetComponent<BoxPlayerMover>().enabled = true;
+        _player.GetComponent<PlayerMovement>().ContinueMove();
     }
 
     public void DisplayNextSentence()
     {
-        if(_sentences.Count == 0)
+        if (_sentences.Count == 0)
         {
             EndDialogue();
             return;
@@ -79,7 +80,7 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator TypeSentence(string sentence)
     {
         _dialogueText.text = "";
-        foreach(char letter in sentence.ToCharArray())
+        foreach (char letter in sentence.ToCharArray())
         {
             _dialogueText.text += letter;
             yield return null;
@@ -92,19 +93,24 @@ public class DialogueManager : MonoBehaviour
         _dialogueObejct.SetActive(false);
         PlayerControllOn();
 
-        if(_activateObject != null)
+        if (_activateObject != null)
         {
             _activateObject.Activate();
             _activateObject = null;
         }
 
+        _dialoging = false;
+
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space))
         {
-            DisplayNextSentence();
+            if (_dialoging)
+            {
+                DisplayNextSentence();
+            }
         }
     }
 

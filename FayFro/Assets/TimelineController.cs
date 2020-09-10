@@ -26,21 +26,18 @@ public class TimelineController : MonoBehaviour
             return;
 
         _player.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-        _player.gameObject.GetComponent<PlayerMovement>().enabled = false;
-        _player.gameObject.GetComponent<CharacterController2D>().enabled = false;
-        _player.gameObject.GetComponent<BoxPlayerMover>().enabled = false;
+        _player.gameObject.GetComponent<PlayerMovement>().StopMove();
     }
 
     private void OnDisable()
     {
+        Debug.Log("Disabling");
         OnSleep.Invoke();
 
         if (_player == null || GameObject.FindObjectOfType<DialogueBox>() != null)
             return;
 
         _player.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        _player.gameObject.GetComponent<PlayerMovement>().enabled = true;
-        _player.gameObject.GetComponent<CharacterController2D>().enabled = true;
-        _player.gameObject.GetComponent<BoxPlayerMover>().enabled = true;
+        _player.gameObject.GetComponent<PlayerMovement>().ContinueMove();
     }
 }
