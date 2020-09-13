@@ -978,7 +978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _condition: 1
-  _offMode: 0
+  _offMode: 3
   _layer: Player
   OnActivate:
     m_PersistentCalls:
@@ -14274,7 +14274,7 @@ PrefabInstance:
     - target: {fileID: 1467710235403748193, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.93
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 2254025118125741719, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
@@ -14361,6 +14361,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 3.13
       objectReference: {fileID: 0}
+    - target: {fileID: 5758334992608855456, guid: a793d717e54157f4c8f72e16d646e1d4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0bb4bcf7af0bc714d96f4359709d590d, type: 2}
     - target: {fileID: 6416807839241397051, guid: a793d717e54157f4c8f72e16d646e1d4,
         type: 3}
       propertyPath: m_TileAssetArray.Array.size

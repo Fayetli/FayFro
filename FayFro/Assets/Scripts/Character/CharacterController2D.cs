@@ -6,65 +6,83 @@ using UnityEngine.Events;
 [RequireComponent(typeof(CapsuleCollider2D), typeof(Animator), typeof(BoxPlayerMover))]
 public class CharacterController2D : MonoBehaviour
 {
-    [SerializeField] private float m_JumpForce = 365f;                          // Amount of force added when the player jumps.
-    private float m_MovementSmoothing = .01f;  // How much to smooth out the movement
-    private bool m_AirControl = true;                         // Whether or not a player can steer while jumping;
-    [SerializeField] private LayerMask m_WhatIsGround = 0;                          // A mask determining what is ground to the character
+
+    [Header("Settings")]
+    [Space]
+    [SerializeField] private float _jumpForce = 365f;
+    [SerializeField] private LayerMask _whatIsGround = 0;
     [SerializeField] private LayerMask _whatIsTPWall = 0;
-    [SerializeField] private Transform m_GroundCheck = null;                           // A position marking where to check if the player is grounded.
-                                                                                       //[SerializeField] private Transform m_CeilingCheck;                          // A position marking where to check for ceilings
+    [SerializeField] private bool _facingRight = true;
+    const float k_groundedRadius = 0.02f;
+    const float k_tpDistance = 2.56f;
+    private float WaitToDashTime
+    {
+        get
+        {
+            return 0.2f;
+        }
+    }
+    private float MovementSmoothing
+    {
+        get
+        {
+            return .01f;
+        }
+    }
+    private bool AirControl
+    {
+        get
+        {
+            return true;
+        }
+    }
+
+    [Header("Require Components")]
+    [Space]
+    [SerializeField] private Transform _groundCheck = null;                           
     [SerializeField] private Transform _tpRaycaster = null;
     [SerializeField] private GameObject _shield = null;
-
     [SerializeField] private ParticleSystem _particleSystem;
-
-    private Animator animator;
-    [SerializeField] private GameObject ch_destroy_on_tp;
-
-    const float k_GroundedRadius = 0.02f; // Radius of the overlap circle to determine if grounded
-    private bool m_Grounded;            // Whether or not the player is grounded.
-                                        //const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
-    private Rigidbody2D m_Rigidbody2D;
-    [SerializeField] private bool m_FacingRight = true;  // For determining which way the player is currently facing.
-    private Vector3 m_Velocity = Vector3.zero;
-    const float _tpDistance = 2.56f;
+    [SerializeField] private GameObject _destroyObject;
+    private Animator _animator;
+    private Rigidbody2D _rigidbody;
     private BoxPlayerMover _boxMover;
+
+    #region AutoSettings
+    private Vector3 _velocity = Vector3.zero;
     private bool _haveDoubleJump = false;
     private bool _jumpOnAir = false;
+    private bool _grounded;
+    #endregion
 
     [Header("Events")]
     [Space]
 
     public UnityEvent OnLandEvent;
 
-    private void Start()
-    {
-
-    }
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
         _shield.SetActive(false);
 
-        m_Rigidbody2D = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
 
         if (OnLandEvent == null)
             OnLandEvent = new UnityEvent();
 
         _boxMover = gameObject.GetComponent<BoxPlayerMover>();
-
     }
 
     private void FixedUpdate()
     {
-        bool wasGrounded = m_Grounded;
+        bool wasGrounded = _grounded;
 
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         // This can be done using layers instead but Sample Assets will not overwrite your project settings.
-        m_Grounded = Physics2D.OverlapCircle(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
+        _grounded = Physics2D.OverlapCircle(_groundCheck.position, k_groundedRadius, _whatIsGround);
 
-        if (m_Grounded)
+        if (_grounded)
         {
             if (!wasGrounded)
             {
@@ -77,8 +95,8 @@ public class CharacterController2D : MonoBehaviour
                 _jumpOnAir = true;
             }
         }
-        animator.SetBool("Ground", m_Grounded);
-        animator.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
+        _animator.SetBool("Ground", _grounded);
+        _animator.SetFloat("vSpeed", _rigidbody.velocity.y);
 
     }
 
@@ -88,16 +106,15 @@ public class CharacterController2D : MonoBehaviour
     }
     public bool IsGrounded()
     {
-        return m_Grounded;
+        return _grounded;
     }
 
-    private float waitToDashTime = 0.2f;
     private IEnumerator Dash(float x, float y, float direction)
     {
-        yield return new WaitForSeconds(waitToDashTime);
+        yield return new WaitForSeconds(WaitToDashTime);
 
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        m_Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        _rigidbody.bodyType = RigidbodyType2D.Dynamic;
 
         transform.position = new Vector2(x + direction * 0.96f, y);
     }
@@ -105,19 +122,19 @@ public class CharacterController2D : MonoBehaviour
 
     private void TryToDash()
     {
-        RaycastHit2D hit = Physics2D.Raycast(_tpRaycaster.transform.position, transform.TransformDirection(Vector2.right), _tpDistance, _whatIsTPWall);
+        RaycastHit2D hit = Physics2D.Raycast(_tpRaycaster.transform.position, transform.TransformDirection(Vector2.right), k_tpDistance, _whatIsTPWall);
 
         if (hit.collider != null)
         {
-            GameObject anim = Instantiate(ch_destroy_on_tp);
+            GameObject anim = Instantiate(_destroyObject);
             anim.transform.position = gameObject.transform.position;
-            if (m_FacingRight == false)
+            if (_facingRight == false)
             {
                 anim.transform.Rotate(0f, 180f, 0f);
             }
 
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            m_Rigidbody2D.bodyType = RigidbodyType2D.Static;
+            _rigidbody.bodyType = RigidbodyType2D.Static;
 
 
             float direction = transform.TransformDirection(Vector3.right).x;
@@ -170,28 +187,28 @@ public class CharacterController2D : MonoBehaviour
         }
 
         //only control the player if grounded or airControl is turned on
-        if (m_Grounded || m_AirControl)
+        if (_grounded || AirControl)
         {
-            if (m_Grounded && Mathf.Abs(move) > 0)
+            if (_grounded && Mathf.Abs(move) > 0)
             {
-                CreateDust();
+                //CreateDust();
             }
             // Move the character by finding the target velocity
-            Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+            Vector3 targetVelocity = new Vector2(move * 10f, _rigidbody.velocity.y);
             // And then smoothing it out and applying it to the character
-            m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+            _rigidbody.velocity = Vector3.SmoothDamp(_rigidbody.velocity, targetVelocity, ref _velocity, MovementSmoothing);
 
-            animator.SetFloat("Speed", Mathf.Abs(move));
+            _animator.SetFloat("Speed", Mathf.Abs(move));
 
             if (withBox == false)
             {
                 // If the input is moving the player right and the player is facing left...
-                if (move > 0 && !m_FacingRight)
+                if (move > 0 && !_facingRight)
                 {
                     Flip();
                 }
                 // Otherwise if the input is moving the player left and the player is facing right...
-                else if (move < 0 && m_FacingRight)
+                else if (move < 0 && _facingRight)
                 {
 
                     Flip();
@@ -199,28 +216,21 @@ public class CharacterController2D : MonoBehaviour
             }
         }
         // If the player should jump...
-        if (m_Grounded && jump)
+        if ((_grounded || _jumpOnAir) && jump)
         {
             CreateDust();
-            // Add a vertical force to the player.
-            m_Grounded = false;
-            m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-
-        }
-        else if (jump && _jumpOnAir)
-        {
-            m_Rigidbody2D.velocity = new Vector2(0, 0);
-            m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-            _jumpOnAir = false;
+            _rigidbody.velocity = new Vector2(0, 0);
+            _rigidbody.AddForce(new Vector2(0f, _jumpForce));
+            _grounded = false;
         }
     }
 
 
     private void Flip()
     {
-        m_FacingRight = !m_FacingRight;
+        _facingRight = !_facingRight;
         transform.Rotate(0f, 180f, 0f);
-        if (m_Grounded)
+        if (_grounded)
         {
             CreateDust();
         }
@@ -228,7 +238,7 @@ public class CharacterController2D : MonoBehaviour
 
     public void CameraFlip()
     {
-        m_FacingRight = !m_FacingRight;
+        _facingRight = !_facingRight;
     }
 
     private void CreateDust()

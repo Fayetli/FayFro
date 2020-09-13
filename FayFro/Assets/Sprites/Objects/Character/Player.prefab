@@ -192,20 +192,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dff2bb5cc96e884e8693745fcca76e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 365
-  m_WhatIsGround:
+  _jumpForce: 365
+  _whatIsGround:
     serializedVersion: 2
     m_Bits: 256
   _whatIsTPWall:
     serializedVersion: 2
     m_Bits: 524288
-  m_GroundCheck: {fileID: 1871871446627245947}
+  _facingRight: 1
+  _groundCheck: {fileID: 1871871446627245947}
   _tpRaycaster: {fileID: 2260752970556021327}
   _shield: {fileID: 7451285983487915411}
   _particleSystem: {fileID: 6716767806218576499}
-  ch_destroy_on_tp: {fileID: 4090472522795615308, guid: be30f43256fb9ad47832d1bc466baed1,
+  _destroyObject: {fileID: 4511384570525314181, guid: be5ec535c5d474243b4b5ba45f293b63,
     type: 3}
-  m_FacingRight: 1
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -355,7 +355,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7260420877040704148}
   serializedVersion: 6
-  lengthInSec: 0.1
+  lengthInSec: 0.05
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -430,7 +430,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.35
+      scalar: 0.75
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1180,7 +1180,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1619,32 +1619,32 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 0}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
+        key1: {r: 1, g: 1, b: 1, a: 0.9137255}
+        key2: {r: 1, g: 1, b: 1, a: 0.72156864}
+        key3: {r: 0, g: 0, b: 0, a: 0.43137255}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
         ctime1: 65535
-        ctime2: 0
+        ctime2: 65535
         ctime3: 0
         ctime4: 0
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
+        atime1: 37779
+        atime2: 51850
+        atime3: 58789
+        atime4: 65535
         atime5: 0
         atime6: 0
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumAlphaKeys: 5
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5049,7 +5049,7 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 0.25
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
