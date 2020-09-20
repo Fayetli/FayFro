@@ -1,0 +1,36 @@
+{
+  "chapters": [
+    {
+      "bonuses": [
+        {
+          "sceneID": 10,
+          "isActivated": false
+        },
+        {
+          "sceneID": 12,
+          "isActivated": false
+        },
+        {
+          "sceneID": 13,
+          "isActivated": false
+        }
+      ]
+    },
+    {
+      "bonuses": [
+        {
+          "sceneID": 17,
+          "isActivated": false
+        },
+        {
+          "sceneID": 18,
+          "isActivated": false
+        },
+        {
+          "sceneID": 19,
+          "isActivated": false
+        }
+      ]
+    }
+  ]
+}

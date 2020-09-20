@@ -1071,6 +1071,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: feather
       objectReference: {fileID: 0}
+    - target: {fileID: 561871472464731611, guid: 1a65c9e3dc1faf642843529d45c8a43c,
+        type: 3}
+      propertyPath: _stageID
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a65c9e3dc1faf642843529d45c8a43c, type: 3}
 --- !u!4 &167150317 stripped
@@ -6366,7 +6371,7 @@ PrefabInstance:
     - target: {fileID: 2383630509963629300, guid: 6696bf7d245e42c47893fd0fa8a4ff77,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2383630509963629300, guid: 6696bf7d245e42c47893fd0fa8a4ff77,
         type: 3}
@@ -8942,7 +8947,7 @@ PrefabInstance:
     - target: {fileID: 2383630509963629300, guid: 6696bf7d245e42c47893fd0fa8a4ff77,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2383630509963629301, guid: 6696bf7d245e42c47893fd0fa8a4ff77,
         type: 3}

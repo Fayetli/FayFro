@@ -593,6 +593,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: feather
       objectReference: {fileID: 0}
+    - target: {fileID: 561871472464731611, guid: 1a65c9e3dc1faf642843529d45c8a43c,
+        type: 3}
+      propertyPath: _stageID
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a65c9e3dc1faf642843529d45c8a43c, type: 3}
 --- !u!1001 &700543166
