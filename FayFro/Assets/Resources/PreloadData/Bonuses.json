@@ -1,36 +1,36 @@
 {
-  "chapters": [
-    {
-      "bonuses": [
+    "chapters": [
         {
-          "sceneID": 10,
-          "isActivated": false
+            "bonuses": [
+                {
+                    "sceneID": 10,
+                    "isActivated": false
+                },
+                {
+                    "sceneID": 12,
+                    "isActivated": true
+                },
+                {
+                    "sceneID": 13,
+                    "isActivated": true
+                }
+            ]
         },
         {
-          "sceneID": 12,
-          "isActivated": false
-        },
-        {
-          "sceneID": 13,
-          "isActivated": false
+            "bonuses": [
+                {
+                    "sceneID": 17,
+                    "isActivated": true
+                },
+                {
+                    "sceneID": 18,
+                    "isActivated": true
+                },
+                {
+                    "sceneID": 19,
+                    "isActivated": true
+                }
+            ]
         }
-      ]
-    },
-    {
-      "bonuses": [
-        {
-          "sceneID": 17,
-          "isActivated": false
-        },
-        {
-          "sceneID": 18,
-          "isActivated": false
-        },
-        {
-          "sceneID": 19,
-          "isActivated": false
-        }
-      ]
-    }
-  ]
+    ]
 }
