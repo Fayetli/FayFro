@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
 
     private bool _useShield = false;
 
+    private bool _Ladding = false;
+
     Transform _startParent;
     private void Awake()
     {
@@ -50,7 +52,6 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
 
     public void StopMove()
     {
-        Debug.Log("Stop moving");
         _boxMover.StopDrag();
         StopAllCoroutines();
         _horizontalMove = 0f;
@@ -60,19 +61,22 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
 
     public void ContinueMove()
     {
-        Debug.Log("Start moving");
         _boxMover.ContinueDrag();
         StartCoroutine(TrackingKeys());
         StartCoroutine(InvokingMove());
     }
 
     IEnumerator TrackingKeys() {
-        Debug.Log("Start tracking");
         while (true)
         {
             _horizontalMove = Input.GetAxis("Horizontal");
 
             _horizontalMove *= _runSpeed;
+
+            if (_Ladding)
+            {
+                _horizontalMove = 0.0f;
+            }
 
             if (Input.GetButtonDown("Jump"))
             {
@@ -96,7 +100,6 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
 
     IEnumerator InvokingMove()
     {
-        Debug.Log("Start Invoking");
         while (true)
         {
             _controller.Move(_horizontalMove * Time.fixedDeltaTime, _jump, _dash, _useShield);
@@ -114,5 +117,8 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
     }
 
-
+    public void ChangeLadding(bool ladding)
+    {
+        _Ladding = ladding;
+    }
 }
