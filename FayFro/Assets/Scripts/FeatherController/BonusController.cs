@@ -60,6 +60,8 @@ public class Bonuses
 public class BonusController : MonoBehaviour
 {
     public static Bonuses _all;
+
+    const string fileName = "Bonuses.json";
     private void Awake()
     {
         Load();
@@ -68,20 +70,48 @@ public class BonusController : MonoBehaviour
 
     public void Load()
     {
-        TextAsset textAssetBonuses = Resources.Load("PreloadData/Bonuses") as TextAsset;
 
-        string jsonBonuses = textAssetBonuses.text;
+        string json;
 
-        Bonuses bonuses = JsonUtility.FromJson<Bonuses>(jsonBonuses);
+        string path = GetPath();
 
-        _all = bonuses;
+        if(File.Exists(path) == false)
+        {
+            TextAsset textAssetBonuses = Resources.Load("PreloadData/Bonuses") as TextAsset;
+
+            json = textAssetBonuses.text;
+
+        }
+        else
+        {
+            FileStream fileStream = new FileStream(GetPath(), FileMode.Open);
+
+            StreamReader reader = new StreamReader(fileStream);
+
+            json = reader.ReadToEnd();
+
+        }
+
+        _all = JsonUtility.FromJson<Bonuses>(json);
+
     }
 
     private static void Upload()
     {
-        string json = JsonUtility.ToJson(_all, true);
+        FileStream fileStream = new FileStream(GetPath(), FileMode.OpenOrCreate);
 
-        File.WriteAllText(Application.dataPath + "/Resources/PreloadData/Bonuses.json", json);
+        using (StreamWriter writer = new StreamWriter(fileStream))
+        {
+            string json = JsonUtility.ToJson(_all, true);
+
+            writer.Write(json);
+        }
+
+    }
+
+    private static string GetPath()
+    {
+        return Application.persistentDataPath + "/" + fileName;
     }
 
     public static void ReActivate()
