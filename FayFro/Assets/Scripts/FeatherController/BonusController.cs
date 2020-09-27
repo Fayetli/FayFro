@@ -11,9 +11,6 @@ public class Bonus
     public bool isActivated;
 }
 
-
-
-
 [System.Serializable]
 public class Bonuses
 {
@@ -52,11 +49,6 @@ public class Bonuses
     }
 }
 
-
-
-
-
-
 public class BonusController : MonoBehaviour
 {
     public static Bonuses _all;
@@ -64,6 +56,7 @@ public class BonusController : MonoBehaviour
     const string fileName = "Bonuses.json";
     private void Awake()
     {
+        Debug.Log(GetPath());
         Load();
         DebugOutPut();
     }
@@ -98,7 +91,12 @@ public class BonusController : MonoBehaviour
 
     private static void Upload()
     {
-        FileStream fileStream = new FileStream(GetPath(), FileMode.OpenOrCreate);
+        string path = GetPath();
+        if (File.Exists(path))
+            File.Delete(path);
+        
+
+        FileStream fileStream = new FileStream(GetPath(), FileMode.Create);
 
         using (StreamWriter writer = new StreamWriter(fileStream))
         {

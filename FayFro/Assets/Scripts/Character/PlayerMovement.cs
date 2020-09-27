@@ -121,4 +121,9 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
     {
         _Ladding = ladding;
     }
+
+    public bool GetLadding()
+    {
+        return _Ladding;
+    }
 }

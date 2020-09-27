@@ -24,16 +24,17 @@ public class Ladder : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(_NoExit);
         if (_Ladding)
         {
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))
             {
                 if (_NoExit == false)
                 {
-                    float direction = Input.GetAxisRaw("Horizontal");
+                    int direction = (int)Input.GetAxisRaw("Horizontal");
 
-                    _player.transform.position = new Vector2(_player.transform.position.x + 0.5f * direction, _player.transform.position.y);
+                    //_player.transform.position = new Vector2(_player.transform.position.x + 0.5f * direction, _player.transform.position.y);
+                    _rigidbody.AddForce(new Vector2(500f * direction, 0f));
+
 
                     ExitFromLadder();
                 }
@@ -64,7 +65,7 @@ public class Ladder : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
         {
-            if (_Ladding == false && collision.gameObject == _player)
+            if (_Ladding == false && collision.gameObject == _player && _player.GetComponent<PlayerMovement>().GetLadding() == false && _player.GetComponent<BoxPlayerMover>().IsBox == false)
             {
                 EnterToLadder();
             }
@@ -73,12 +74,9 @@ public class Ladder : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<CharacterController2D>() != null)
+        if (collision.GetComponent<CharacterController2D>() != null && _Ladding)
         {
-            if (_Ladding)
-            {
-                ExitFromLadder();
-            }
+            ExitFromLadder();
         }
     }
 
