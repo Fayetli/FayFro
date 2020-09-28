@@ -5,8 +5,14 @@ using UnityEngine;
 public class VerticalMover : LinearMover
 {
     [SerializeField] private bool FirstMoveOnUp = true;
+
+    private Vector3 _startPosition;
     void Start()
     {
+        _startPosition = gameObject.transform.position;
+
+        DeadZone.OnReset += Reset;
+
         if (OnStart)
         {
             StartCoroutine(VerticalMoveObject());
@@ -41,7 +47,7 @@ public class VerticalMover : LinearMover
             yield return new WaitForSeconds(beetwenWaitTime);
         }
         while (true) {
-            while (_stopMove)
+            while (_stopMove && FirstMoveOnUp)
             {
                 yield return null;
                 
@@ -50,7 +56,7 @@ public class VerticalMover : LinearMover
             yield return StartCoroutine(MovingUpCoroutine());
             yield return new WaitForSeconds(beetwenWaitTime);
 
-            while (_stopMove)
+            while (_stopMove && !FirstMoveOnUp)
             {
                 yield return null;
                 
@@ -85,5 +91,19 @@ public class VerticalMover : LinearMover
             yield return new WaitForFixedUpdate();
         }
         
+    }
+
+    private void Reset()
+    {
+        StopAllCoroutines();
+        gameObject.transform.position = _startPosition;
+        _stopMove = false;
+        if (OnStart)
+            StartCoroutine(VerticalMoveObject());
+    }
+
+    private void OnDisable()
+    {
+        DeadZone.OnReset -= Reset;
     }
 }

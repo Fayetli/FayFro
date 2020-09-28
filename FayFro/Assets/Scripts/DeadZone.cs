@@ -13,11 +13,14 @@ public class DeadZone : MonoBehaviour
     }
     private void Start()
     {
+
         _checkPoint = GameObject.Find("CheckPoint(0)").gameObject.transform;
     }
 
 
-  
+    public delegate void Reset();
+    public static event Reset OnReset;
+    
 
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -31,6 +34,8 @@ public class DeadZone : MonoBehaviour
             {
                 obj.Reset();
             }
+
+            OnReset?.Invoke();
         }
         else if(collision.gameObject.GetComponent<ResetObject>() != null)
         {

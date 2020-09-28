@@ -16355,7 +16355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a82d2252920f6e43a522cd3bca3d8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 8
+  _hp: 5
   _waitTime: 3
   _columns: {fileID: 481046829}
   _spiresDown: {fileID: 1877292923}
@@ -16366,8 +16366,8 @@ MonoBehaviour:
   _startBox: {fileID: 2118357543}
   _boxSpawnTransform: {fileID: 1129065341}
   _boxPref: {fileID: 643720832760640295, guid: 5aa9585b3bb86dc4da2ea8ececa190fb, type: 3}
-  _bossSecondStageHPValue: 6
-  _bossThirdStageHPValue: 4
+  _bossSecondStageHPValue: 4
+  _bossThirdStageHPValue: 3
   _bossFourthStageHPValue: 2
   _symbolsTransform:
   - {fileID: 1628135290}

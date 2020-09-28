@@ -16,7 +16,14 @@ public class LeverActivate : MonoBehaviour
     [SerializeField] private GameObject _activateObject = null;
     [SerializeField] private Mode mode;
     [SerializeField] private bool _activate = true;
+    private bool _startActivate;
 
+    private void Start()
+    {
+        _startActivate = _activate;
+
+        DeadZone.OnReset += Reset;
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -87,4 +94,14 @@ public class LeverActivate : MonoBehaviour
         }
     }
 
+    private void Reset()
+    {
+        _activate = _startActivate;
+        gameObject.GetComponent<Animator>().SetBool("isActive", false);
+    }
+
+    private void OnDisable()
+    {
+        DeadZone.OnReset -= Reset;
+    }
 }

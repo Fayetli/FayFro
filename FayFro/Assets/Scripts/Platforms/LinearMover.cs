@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public abstract class LinearMover : MonoBehaviour
 {
     [Tooltip("abs(module) value")]

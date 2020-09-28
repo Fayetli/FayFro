@@ -6,8 +6,20 @@ public class HorizontalMover : LinearMover
 {
 
     [SerializeField] private bool FirstMoveOnRight = true;
-    
-    
+
+    private Vector3 _startPosition;
+   
+    void Start()
+    {
+        _startPosition = gameObject.transform.position;
+
+        DeadZone.OnReset += Reset;
+
+        if (OnStart)
+        {
+            StartCoroutine(HorizontalMoveObject());
+        }
+    }
     public override void StopMove()
     {
         _stopMove = true;
@@ -17,13 +29,6 @@ public class HorizontalMover : LinearMover
     {
         _stopMove = false;
     }
-    void Start()
-    {
-        if (OnStart)
-        {
-            StartCoroutine(HorizontalMoveObject());
-        }
-    }
 
     public override void ActivateMove()
     {
@@ -32,7 +37,7 @@ public class HorizontalMover : LinearMover
 
     private IEnumerator HorizontalMoveObject()
     {
-        
+
         yield return new WaitForSeconds(waitTime);
         if (!FirstMoveOnRight)
         {
@@ -41,17 +46,23 @@ public class HorizontalMover : LinearMover
         }
         while (true)
         {
-            if (!_stopMove)
-            {
-                yield return StartCoroutine(MovingRightCoroutine());
-                yield return new WaitForSeconds(beetwenWaitTime);
-                yield return StartCoroutine(MovingLeftCoroutine());
-                yield return new WaitForSeconds(beetwenWaitTime);
-            }
-            else
+            while (_stopMove && FirstMoveOnRight)
             {
                 yield return null;
+
             }
+
+            yield return StartCoroutine(MovingRightCoroutine());
+            yield return new WaitForSeconds(beetwenWaitTime);
+
+            while (_stopMove && FirstMoveOnRight)
+            {
+                yield return null;
+
+            }
+
+            yield return StartCoroutine(MovingLeftCoroutine());
+            yield return new WaitForSeconds(beetwenWaitTime);
         }
 
     }
@@ -81,5 +92,20 @@ public class HorizontalMover : LinearMover
         }
 
     }
+
+    private void Reset()
+    {
+        StopAllCoroutines();
+        gameObject.transform.position = _startPosition;
+        _stopMove = false;
+        if (OnStart)
+            StartCoroutine(HorizontalMoveObject());
+    }
+
+    private void OnDisable()
+    {
+        DeadZone.OnReset -= Reset;
+    }
+
 
 }
