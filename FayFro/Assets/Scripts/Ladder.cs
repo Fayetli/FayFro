@@ -58,6 +58,7 @@ public class Ladder : MonoBehaviour
             }
 
             _animator.SetFloat("vSpeed", _rigidbody.velocity.y);
+            Debug.Log(_rigidbody.velocity.y);
         }
     }
 

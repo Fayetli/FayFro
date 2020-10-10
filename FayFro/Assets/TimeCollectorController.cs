@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TimeCollectorController : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
+    [SerializeField] private GameObject _healthBarImage;
     [SerializeField] private ParticleSystem _completeParticleSystem;
     [SerializeField] private ParticleSystem _lessingParticleSystem;
     private bool OnPause = false;
@@ -71,6 +72,7 @@ public class TimeCollectorController : MonoBehaviour
         }
 
         _slider.gameObject.SetActive(false);
+        _healthBarImage.SetActive(false);
     }
 
 

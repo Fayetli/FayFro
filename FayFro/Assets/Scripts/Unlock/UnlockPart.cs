@@ -7,6 +7,7 @@ public class UnlockPart : MonoBehaviour
 {
     private UnlockController _controller;
     public UnityEvent OnUnlock;
+    private bool _PlayerStay = false;
     void Start()
     {
         _controller = GameObject.FindObjectOfType<UnlockController>();
@@ -14,18 +15,37 @@ public class UnlockPart : MonoBehaviour
         if (OnUnlock == null)
             OnUnlock = new UnityEvent();
     }
-
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<CharacterController2D>() != null)
         {
+            _PlayerStay = true;
+        }
+    }
+
+    private void Update()
+    {
+        if (_PlayerStay)
+        {
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                _controller.AddCurrentUnlockPartCount();
-                this.GetComponent<Animator>().SetBool("isUnlock", true);
-                OnUnlock.Invoke();
-                Destroy(this);
+                Use();
             }
         }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<CharacterController2D>() != null)
+        {
+            _PlayerStay = false;
+        }
+    }
+
+    private void Use()
+    {
+        _controller.AddCurrentUnlockPartCount();
+        this.GetComponent<Animator>().SetBool("isUnlock", true);
+        OnUnlock.Invoke();
+        Destroy(this);
     }
 }

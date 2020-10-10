@@ -14,4 +14,6 @@ public class Box : ResetObject, BounceObject, PlatformerObject, IChilderObject
     {
         gameObject.transform.parent = _startParent;
     }
+
+   
 }
