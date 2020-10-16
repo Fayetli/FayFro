@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour, PlatformerObject, IChilderObject
         _startParent = gameObject.transform.parent;
         if (_HaveDoubleJump)
         {
-            _controller.SetHaveDoubleJumpTrue();
+            _controller.SetJumpOnAirMaxCount(1);
         }
     }
 

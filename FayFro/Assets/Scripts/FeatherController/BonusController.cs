@@ -112,7 +112,7 @@ public class BonusController : MonoBehaviour
         return Application.persistentDataPath + "/" + fileName;
     }
 
-    public static void ReActivate()
+    public static void ResetAllProgress()
     {
         foreach (Bonuses.ChapterBonuses chapter in _all.chapters)
         {
