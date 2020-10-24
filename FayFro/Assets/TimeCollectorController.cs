@@ -55,6 +55,7 @@ public class TimeCollectorController : MonoBehaviour
     public void Complete()
     {
         StopAllCoroutines();
+        GameObject.FindObjectOfType<RestartLevel>().StopRestart();
         StartCoroutine(Completing());
     }
 

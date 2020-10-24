@@ -10,20 +10,17 @@ public class RestartLevel : MonoBehaviour
 
     [SerializeField] private float _timeToReset = 0.4f;
 
-    private int _scoreOnStart;
-
-
-
-    private void Start()
-    {
-        _scoreOnStart = Score.get_value();
-    }
     public IEnumerator Restart()
     {
         float fadeTime = GameObject.FindObjectOfType<Fading>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Score.set_value(_scoreOnStart);
+    }
+
+    public void StopRestart()
+    {
+        StopAllCoroutines();
+        GameObject.FindObjectOfType<Fading>().BeginFade(-1);
     }
 
     public void StartRestart()

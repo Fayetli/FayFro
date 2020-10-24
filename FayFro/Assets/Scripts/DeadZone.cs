@@ -5,16 +5,17 @@ using UnityEngine;
 
 public class DeadZone : MonoBehaviour
 {
-    static private Transform _checkPoint = null;
+    static private Vector2 _checkPoint;
 
     public static void SetCheckPoint(Transform transform)//when triggered
     {
-        _checkPoint = transform;
+        _checkPoint = transform.position;
     }
     private void Start()
     {
 
-        _checkPoint = GameObject.Find("CheckPoint(0)").gameObject.transform;
+        _checkPoint = GameObject.Find("CheckPoint(0)")?.gameObject?.transform?.position ?? GameObject.FindObjectOfType<CharacterController2D>().gameObject.transform.position;
+
     }
 
 

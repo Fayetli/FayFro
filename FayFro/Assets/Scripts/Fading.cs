@@ -29,7 +29,7 @@ public class Fading : MonoBehaviour
         _fadeDir = direction;
         return _fadeSpeed;
     }
-
+    
     private void OnLevelWasLoaded(int level)
     {
         BeginFade(-1);

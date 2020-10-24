@@ -6,12 +6,12 @@ public class PlayerReset : MonoBehaviour
 {
     [SerializeField] private GameObject _destroyPlayerObject = null;
 
-    public void ResetPlayer(Transform newTransform)
+    public void ResetPlayer(Vector3 newPosition)
     {
         GameObject playerDstroyAnim = Instantiate(_destroyPlayerObject);
         playerDstroyAnim.transform.position = gameObject.transform.position;
 
-        gameObject.transform.position = newTransform.position;
+        gameObject.transform.position = newPosition;
     }
     
 }

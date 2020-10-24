@@ -6,14 +6,14 @@ using UnityEngine.Events;
 [RequireComponent(typeof(CapsuleCollider2D), typeof(Animator), typeof(BoxPlayerMover))]
 public class CharacterController2D : MonoBehaviour
 {
-    #region JumpSettings
+    #region Settings
     [Header("Settings")]
     [Space]
     [SerializeField] private float _jumpForce = 365f;
     [SerializeField] private LayerMask _whatIsGround = 0;
     [SerializeField] private LayerMask _whatIsTPWall = 0;
     [SerializeField] private bool _facingRight = true;
-    const float k_groundedRadius = 0.01f;
+    const float k_groundedRadius = 0.05f;
     const float k_tpDistance = 2.56f;
     private float WaitToDashTime
     {
