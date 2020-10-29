@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Preload Scene.unity
     guid: ecc155abb3009fb458a7bd875515cfe8
   - enabled: 1
-    path: Assets/Scenes/Start Menu.unity
+    path: Assets/Scenes/Start menu.unity
     guid: fdf20126a5f5ddc4e800b2d4c92f7459
   - enabled: 1
     path: Assets/Scenes/Story Scene.unity
@@ -38,6 +38,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Forest/ch_0_lvl_7.unity
     guid: 928c9fc5406302c4e9368baa7e0f9cb7
+  - enabled: 1
+    path: Assets/Scenes/Forest/ch_0_lvl_8.unity
+    guid: 1aee903387220be45b3e9895c8a0445d
+  - enabled: 1
+    path: Assets/Scenes/Forest/ch_0_lvl_9.unity
+    guid: 239625ed795129441b4b8475411800b9
+  - enabled: 1
+    path: Assets/Scenes/Forest/ch_0_lvl_10.unity
+    guid: 144600f2f1ea0a547911fb5f0a122f30
+  - enabled: 1
+    path: Assets/Scenes/Forest/ch_0_lvl_11.unity
+    guid: 46fd983bd4909d946b324271919b3502
   - enabled: 1
     path: Assets/Scenes/Forest/ch_0_lvl_12.unity
     guid: fe9e4564b7e788b408eb6b2855dee3bc
