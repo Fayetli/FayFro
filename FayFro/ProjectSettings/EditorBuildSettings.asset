@@ -90,6 +90,21 @@ EditorBuildSettings:
     path: Assets/Scenes/Temple/Chapter 1/ch_1_lvl_9.unity
     guid: a0c54d9c174f1fb41934cecc2e67dfb4
   - enabled: 1
+    path: Assets/Scenes/Temple/Chapter 1/ch_1_lvl_10.unity
+    guid: af3adb48f88983f48b1a13823915a685
+  - enabled: 1
+    path: Assets/Scenes/Temple/Chapter 1/ch_1_lvl_11.unity
+    guid: f600a00e35342434185f4ab919f60301
+  - enabled: 1
+    path: Assets/Scenes/Temple/Chapter 1/ch_1_lvl_12.unity
+    guid: 5e02c59fae9ff9f42ba9837a1d3ec9d2
+  - enabled: 1
+    path: Assets/Scenes/Temple/Chapter 1/ch_1_lvl_13.unity
+    guid: f97ca1ce28badba4f9f5ffe9186d467d
+  - enabled: 1
+    path: Assets/Scenes/Temple/Chapter 1/ch_1_lvl_14.unity
+    guid: 9f45270a51c802b4bae28d1f3d3dd119
+  - enabled: 1
     path: Assets/Scenes/BossFight_1.unity
     guid: feb7233e4d3e5cc46b9bd9e5a5c30ec8
   - enabled: 1
